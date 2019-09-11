@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qmD-ED-ZlD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -47,15 +47,18 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEu-Do-is0">
                                         <rect key="frame" x="0.0" y="112" width="335" height="45"/>
-                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="upX-mv-Qq5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" red="1" green="0.82572372120886661" blue="0.40408967748035296" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="titleShadowColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="qmD-ED-ZlD" kind="presentation" id="xUQ-EX-Pb0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -73,7 +76,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.82572372120000004" blue="0.40408967750000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CEv-Iw-nCc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DHm-yc-izk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rlZ-pp-Ucq" secondAttribute="trailing" constant="20" id="I89-pq-gqb"/>
@@ -90,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-104" y="35"/>
+            <point key="canvasLocation" x="-106" y="-521"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="tuy-pV-u4x">
@@ -145,15 +148,18 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBb-BD-2Lz">
                                         <rect key="frame" x="0.0" y="168" width="335" height="45"/>
-                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="lB6-P8-0ng"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="Sign Up">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <color key="titleShadowColor" red="1" green="0.82572372120000004" blue="0.40408967750000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="titleShadowColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="qmD-ED-ZlD" kind="presentation" id="vDF-oc-x0M"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -164,7 +170,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.82572372120000004" blue="0.40408967750000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4ee-X0-oFA" firstAttribute="trailing" secondItem="CEe-5F-LmV" secondAttribute="trailing" constant="20" id="02z-I1-Xas"/>
                             <constraint firstItem="gKA-ko-McJ" firstAttribute="centerX" secondItem="OOl-JS-pTx" secondAttribute="centerX" id="NCD-rG-1W8"/>
@@ -182,12 +188,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUv-6E-CAF" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="613.125" y="34.859154929577464"/>
+            <point key="canvasLocation" x="-106" y="534"/>
         </scene>
         <!--Manage-->
         <scene sceneID="iOP-JT-a6B">
             <objects>
-                <viewController id="Fbd-0Q-BHN" sceneMemberID="viewController">
+                <viewController id="Fbd-0Q-BHN" customClass="ManageViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Ms-62-RMe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,7 +211,7 @@
         <!--Host-->
         <scene sceneID="Vka-vE-O0h">
             <objects>
-                <viewController id="Pbk-By-mpf" sceneMemberID="viewController">
+                <viewController id="Pbk-By-mpf" customClass="HostViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y95-to-X0Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -221,7 +227,7 @@
         <!--Home-->
         <scene sceneID="h9a-74-4eu">
             <objects>
-                <viewController id="zu6-81-2pt" sceneMemberID="viewController">
+                <viewController id="zu6-81-2pt" customClass="HomeViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cba-uW-W7Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -260,7 +266,7 @@
         <!--Message-->
         <scene sceneID="QHc-Ou-cLs">
             <objects>
-                <viewController id="6qq-r3-kgd" sceneMemberID="viewController">
+                <viewController id="6qq-r3-kgd" customClass="MessageViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YLt-q2-pFN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,7 +282,7 @@
         <!--profile-->
         <scene sceneID="lLJ-cV-6Im">
             <objects>
-                <viewController id="dfi-1G-tAd" sceneMemberID="viewController">
+                <viewController id="dfi-1G-tAd" customClass="ProfileViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tbH-wb-xa4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -303,4 +309,7 @@
         <image name="user" width="29" height="29"/>
         <image name="userSeleted" width="29" height="29"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xUQ-EX-Pb0"/>
+    </inferredMetricsTieBreakers>
 </document>

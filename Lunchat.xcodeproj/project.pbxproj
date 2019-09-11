@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1D232897E4006FBA6E /* SignUpViewController.swift */; };
+		FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1F2328D78A006FBA6E /* HomeViewController.swift */; };
+		FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A212328D909006FBA6E /* ManageViewController.swift */; };
+		FC216A242328D915006FBA6E /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A232328D915006FBA6E /* HostViewController.swift */; };
+		FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A252328D928006FBA6E /* MessageViewController.swift */; };
+		FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A272328D937006FBA6E /* ProfileViewController.swift */; };
 		FC56DE262327D2C10051B708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56DE252327D2C10051B708 /* AppDelegate.swift */; };
 		FC56DE2B2327D2C10051B708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC56DE292327D2C10051B708 /* Main.storyboard */; };
 		FC56DE2D2327D2C40051B708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC56DE2C2327D2C40051B708 /* Assets.xcassets */; };
@@ -17,6 +22,11 @@
 
 /* Begin PBXFileReference section */
 		FC216A1D232897E4006FBA6E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		FC216A1F2328D78A006FBA6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		FC216A212328D909006FBA6E /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
+		FC216A232328D915006FBA6E /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
+		FC216A252328D928006FBA6E /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		FC216A272328D937006FBA6E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FC56DE222327D2C10051B708 /* Lunchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC56DE252327D2C10051B708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC56DE2A2327D2C10051B708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,6 +67,11 @@
 			isa = PBXGroup;
 			children = (
 				FC56DE252327D2C10051B708 /* AppDelegate.swift */,
+				FC216A272328D937006FBA6E /* ProfileViewController.swift */,
+				FC216A252328D928006FBA6E /* MessageViewController.swift */,
+				FC216A232328D915006FBA6E /* HostViewController.swift */,
+				FC216A212328D909006FBA6E /* ManageViewController.swift */,
+				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
 				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
 				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
 				FC56DE292327D2C10051B708 /* Main.storyboard */,
@@ -140,7 +155,12 @@
 			files = (
 				FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */,
 				FC56DE382327E7AC0051B708 /* SigninViewController.swift in Sources */,
+				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
 				FC56DE262327D2C10051B708 /* AppDelegate.swift in Sources */,
+				FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */,
+				FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */,
+				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,
+				FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

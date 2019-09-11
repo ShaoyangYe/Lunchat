@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Manage-->
+        <scene sceneID="iOP-JT-a6B">
+            <objects>
+                <viewController id="Fbd-0Q-BHN" customClass="ManageViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1Ms-62-RMe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bZu-FR-3QC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Manage" id="a6u-bI-KAk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uoq-yT-CFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3226.4000000000001" y="-307.38916256157637"/>
+        </scene>
+        <!--Manage-->
+        <scene sceneID="esv-Wn-fbY">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationManage" automaticallyAdjustsScrollViewInsets="NO" id="lli-2l-LVp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Manage" image="calendar" selectedImage="calendarSeletedpng" id="m8M-QO-DWL">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zk3-Hk-Ohr">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fbd-0Q-BHN" kind="relationship" relationship="rootViewController" id="7FV-LR-Cc6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NE5-qf-mb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3226" y="-1047"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="calendar" width="29" height="29"/>
+        <image name="calendarSeletedpng" width="29" height="29"/>
+    </resources>
+</document>

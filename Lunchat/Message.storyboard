@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Message-->
+        <scene sceneID="QHc-Ou-cLs">
+            <objects>
+                <viewController id="6qq-r3-kgd" customClass="MessageViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YLt-q2-pFN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Ge6-Fa-qvk"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Message" id="l9U-hX-eLA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pRI-qv-jNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5080" y="-308"/>
+        </scene>
+        <!--Message-->
+        <scene sceneID="hal-hG-oOW">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationMessage" automaticallyAdjustsScrollViewInsets="NO" id="rfX-rS-sXi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Message" image="message" selectedImage="messageSeleted" id="blU-Hf-UJS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gi4-SH-eGL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6qq-r3-kgd" kind="relationship" relationship="rootViewController" id="nPu-D8-lMO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGa-pR-zg3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5081" y="-1047"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="message" width="29" height="29"/>
+        <image name="messageSeleted" width="29" height="29"/>
+    </resources>
+</document>

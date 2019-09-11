@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Host-->
+        <scene sceneID="Vka-vE-O0h">
+            <objects>
+                <viewController id="Pbk-By-mpf" customClass="HostViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y95-to-X0Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="aW0-HA-S8c"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Host" id="Mrc-pd-PwR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hF2-Dd-JIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4170" y="-308"/>
+        </scene>
+        <!--Host-->
+        <scene sceneID="3iX-8u-e2d">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationHost" automaticallyAdjustsScrollViewInsets="NO" id="rFj-wZ-4AF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Host" image="dinner" selectedImage="dinnerSeleted" id="BPh-46-uiU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O60-Zx-k59">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Pbk-By-mpf" kind="relationship" relationship="rootViewController" id="tCw-Ki-e64"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSQ-m1-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4170" y="-1047"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="dinner" width="29" height="29"/>
+        <image name="dinnerSeleted" width="29" height="29"/>
+    </resources>
+</document>

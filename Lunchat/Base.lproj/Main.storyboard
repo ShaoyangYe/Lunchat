@@ -200,13 +200,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bZu-FR-3QC"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Manage" image="calendar" selectedImage="calendarSeletedpng" id="m8M-QO-DWL">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Manage" id="a6u-bI-KAk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uoq-yT-CFc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="-307"/>
+            <point key="canvasLocation" x="3226.4000000000001" y="-307.38916256157637"/>
         </scene>
         <!--Host-->
         <scene sceneID="Vka-vE-O0h">
@@ -218,11 +216,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aW0-HA-S8c"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Host" image="dinner" selectedImage="dinnerSeleted" id="BPh-46-uiU"/>
+                    <navigationItem key="navigationItem" title="Host" id="Mrc-pd-PwR"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hF2-Dd-JIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="433"/>
+            <point key="canvasLocation" x="3226.4000000000001" y="432.26600985221677"/>
         </scene>
         <!--Home-->
         <scene sceneID="h9a-74-4eu">
@@ -234,13 +232,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="SHV-lx-qQo"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="homeSeleted" id="Jrk-bo-YGj">
-                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Home" id="vdu-GY-SJQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOM-OB-J89" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="-1046"/>
+            <point key="canvasLocation" x="3226.4000000000001" y="-1046.305418719212"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qhW-N1-gCw">
@@ -252,11 +248,11 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="zu6-81-2pt" kind="relationship" relationship="viewControllers" id="Prh-ta-3FG"/>
-                        <segue destination="Fbd-0Q-BHN" kind="relationship" relationship="viewControllers" id="qef-6Y-8Zt"/>
-                        <segue destination="Pbk-By-mpf" kind="relationship" relationship="viewControllers" id="cN7-CH-bbJ"/>
-                        <segue destination="6qq-r3-kgd" kind="relationship" relationship="viewControllers" id="NwM-By-nUt"/>
-                        <segue destination="dfi-1G-tAd" kind="relationship" relationship="viewControllers" id="29W-RK-p2G"/>
+                        <segue destination="etb-Bi-HNd" kind="relationship" relationship="viewControllers" id="Prh-ta-3FG"/>
+                        <segue destination="lli-2l-LVp" kind="relationship" relationship="viewControllers" id="qef-6Y-8Zt"/>
+                        <segue destination="rFj-wZ-4AF" kind="relationship" relationship="viewControllers" id="cN7-CH-bbJ"/>
+                        <segue destination="rfX-rS-sXi" kind="relationship" relationship="viewControllers" id="NwM-By-nUt"/>
+                        <segue destination="0aX-C6-kmJ" kind="relationship" relationship="viewControllers" id="29W-RK-p2G"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxR-D7-szK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -273,13 +269,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Ge6-Fa-qvk"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Message" image="message" selectedImage="messageSeleted" id="blU-Hf-UJS"/>
+                    <navigationItem key="navigationItem" title="Message" id="l9U-hX-eLA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pRI-qv-jNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="1156"/>
+            <point key="canvasLocation" x="3226.4000000000001" y="1155.6650246305419"/>
         </scene>
-        <!--profile-->
+        <!--Profile-->
         <scene sceneID="lLJ-cV-6Im">
             <objects>
                 <viewController id="dfi-1G-tAd" customClass="ProfileViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
@@ -289,11 +285,110 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2Fo-Ug-Fs3"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="profile" image="user" selectedImage="userSeleted" id="AwL-1o-u9Z"/>
+                    <navigationItem key="navigationItem" title="Profile" id="0Mg-kl-42H"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcB-Mh-5n1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="1901"/>
+            <point key="canvasLocation" x="3226.4000000000001" y="1900.4926108374384"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="t2N-1h-0hI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="etb-Bi-HNd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home" selectedImage="homeSeleted" id="Jrk-bo-YGj">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Tpq-YN-bhr">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zu6-81-2pt" kind="relationship" relationship="rootViewController" id="9Hw-pb-Q5i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1P6-Wj-Zh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="-1046.305418719212"/>
+        </scene>
+        <!--Manage-->
+        <scene sceneID="esv-Wn-fbY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lli-2l-LVp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Manage" image="calendar" selectedImage="calendarSeletedpng" id="m8M-QO-DWL">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zk3-Hk-Ohr">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fbd-0Q-BHN" kind="relationship" relationship="rootViewController" id="7FV-LR-Cc6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NE5-qf-mb7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="-307.38916256157637"/>
+        </scene>
+        <!--Host-->
+        <scene sceneID="3iX-8u-e2d">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rFj-wZ-4AF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Host" image="dinner" selectedImage="dinnerSeleted" id="BPh-46-uiU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O60-Zx-k59">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Pbk-By-mpf" kind="relationship" relationship="rootViewController" id="tCw-Ki-e64"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSQ-m1-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="432.26600985221677"/>
+        </scene>
+        <!--Message-->
+        <scene sceneID="hal-hG-oOW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rfX-rS-sXi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Message" image="message" selectedImage="messageSeleted" id="blU-Hf-UJS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gi4-SH-eGL">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6qq-r3-kgd" kind="relationship" relationship="rootViewController" id="nPu-D8-lMO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CGa-pR-zg3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="1155.6650246305419"/>
+        </scene>
+        <!--profile-->
+        <scene sceneID="8pW-k0-zaN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0aX-C6-kmJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="profile" image="user" selectedImage="userSeleted" id="AwL-1o-u9Z"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b5A-F7-nat">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dfi-1G-tAd" kind="relationship" relationship="rootViewController" id="DxH-PK-RK6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I9w-4b-Lp5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2284" y="1900.4926108374384"/>
         </scene>
     </scenes>
     <resources>

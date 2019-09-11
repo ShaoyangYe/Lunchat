@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="-104" y="35"/>
         </scene>
-        <!--Signin View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="tuy-pV-u4x">
             <objects>
-                <viewController id="UPD-eO-crS" customClass="SigninViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UPD-eO-crS" customClass="SignUpViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OOl-JS-pTx" customClass="Signin">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -104,16 +104,19 @@
                                     <constraint firstAttribute="height" constant="45" id="pIZ-ry-V1w"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Don't have an account?">
+                                <state key="normal" title="Already have an account?">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismiss_onClick:" destination="UPD-eO-crS" eventType="touchUpInside" id="akq-pn-JIu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBb-BD-2Lz">
                                 <rect key="frame" x="20" y="484" width="374" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Sign In">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" red="1" green="0.82572372120000004" blue="0.40408967750000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>

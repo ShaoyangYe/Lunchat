@@ -14,13 +14,13 @@
 		FC216A242328D915006FBA6E /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A232328D915006FBA6E /* HostViewController.swift */; };
 		FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A252328D928006FBA6E /* MessageViewController.swift */; };
 		FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A272328D937006FBA6E /* ProfileViewController.swift */; };
-		FC324D58232BD18C00D1E7A0 /* GoogleService-Info .plist in Resources */ = {isa = PBXBuildFile; fileRef = FC324D57232BD18C00D1E7A0 /* GoogleService-Info .plist */; };
 		FC4080952328F36000EFF9B4 /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4080942328F36000EFF9B4 /* HomePage.storyboard */; };
 		FC4080972328F81600EFF9B4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4080962328F81600EFF9B4 /* Home.storyboard */; };
 		FC4080992328F8D300EFF9B4 /* Manage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4080982328F8D300EFF9B4 /* Manage.storyboard */; };
 		FC40809B2328F94300EFF9B4 /* Host.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC40809A2328F94300EFF9B4 /* Host.storyboard */; };
 		FC40809D2328F99100EFF9B4 /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC40809C2328F99100EFF9B4 /* Message.storyboard */; };
 		FC40809F2328F9EF00EFF9B4 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC40809E2328F9EF00EFF9B4 /* Profile.storyboard */; };
+		FC50E1BD232BE3C800FDC25F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC50E1BC232BE3C700FDC25F /* GoogleService-Info.plist */; };
 		FC56DE262327D2C10051B708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56DE252327D2C10051B708 /* AppDelegate.swift */; };
 		FC56DE2B2327D2C10051B708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC56DE292327D2C10051B708 /* Main.storyboard */; };
 		FC56DE2D2327D2C40051B708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC56DE2C2327D2C40051B708 /* Assets.xcassets */; };
@@ -38,13 +38,13 @@
 		FC216A232328D915006FBA6E /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
 		FC216A252328D928006FBA6E /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		FC216A272328D937006FBA6E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		FC324D57232BD18C00D1E7A0 /* GoogleService-Info .plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info .plist"; sourceTree = "<group>"; };
 		FC4080942328F36000EFF9B4 /* HomePage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomePage.storyboard; sourceTree = "<group>"; };
 		FC4080962328F81600EFF9B4 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		FC4080982328F8D300EFF9B4 /* Manage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manage.storyboard; sourceTree = "<group>"; };
 		FC40809A2328F94300EFF9B4 /* Host.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Host.storyboard; sourceTree = "<group>"; };
 		FC40809C2328F99100EFF9B4 /* Message.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
 		FC40809E2328F9EF00EFF9B4 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		FC50E1BC232BE3C700FDC25F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC56DE222327D2C10051B708 /* Lunchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lunchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC56DE252327D2C10051B708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC56DE2A2327D2C10051B708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,6 +83,43 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FC50E1B7232BE1AB00FDC25F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FC56DE252327D2C10051B708 /* AppDelegate.swift */,
+				FC216A272328D937006FBA6E /* ProfileViewController.swift */,
+				FC216A252328D928006FBA6E /* MessageViewController.swift */,
+				FC216A232328D915006FBA6E /* HostViewController.swift */,
+				FC216A212328D909006FBA6E /* ManageViewController.swift */,
+				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
+				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
+				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FC50E1B8232BE1AF00FDC25F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FC4080942328F36000EFF9B4 /* HomePage.storyboard */,
+				FC40809E2328F9EF00EFF9B4 /* Profile.storyboard */,
+				FC40809C2328F99100EFF9B4 /* Message.storyboard */,
+				FC40809A2328F94300EFF9B4 /* Host.storyboard */,
+				FC4080982328F8D300EFF9B4 /* Manage.storyboard */,
+				FC4080962328F81600EFF9B4 /* Home.storyboard */,
+				FC56DE292327D2C10051B708 /* Main.storyboard */,
+				FC56DE2E2327D2C40051B708 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FC50E1B9232BE1B300FDC25F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FC56DE192327D2C00051B708 = {
 			isa = PBXGroup;
 			children = (
@@ -104,25 +141,12 @@
 		FC56DE242327D2C10051B708 /* Lunchat */ = {
 			isa = PBXGroup;
 			children = (
-				FC4080942328F36000EFF9B4 /* HomePage.storyboard */,
-				FC40809E2328F9EF00EFF9B4 /* Profile.storyboard */,
-				FC40809C2328F99100EFF9B4 /* Message.storyboard */,
-				FC40809A2328F94300EFF9B4 /* Host.storyboard */,
-				FC4080982328F8D300EFF9B4 /* Manage.storyboard */,
-				FC4080962328F81600EFF9B4 /* Home.storyboard */,
-				FC56DE252327D2C10051B708 /* AppDelegate.swift */,
-				FC216A272328D937006FBA6E /* ProfileViewController.swift */,
-				FC216A252328D928006FBA6E /* MessageViewController.swift */,
-				FC216A232328D915006FBA6E /* HostViewController.swift */,
-				FC216A212328D909006FBA6E /* ManageViewController.swift */,
-				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
-				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
-				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
-				FC56DE292327D2C10051B708 /* Main.storyboard */,
+				FC50E1BC232BE3C700FDC25F /* GoogleService-Info.plist */,
+				FC50E1B9232BE1B300FDC25F /* Model */,
+				FC50E1B8232BE1AF00FDC25F /* View */,
+				FC50E1B7232BE1AB00FDC25F /* Controller */,
 				FC56DE2C2327D2C40051B708 /* Assets.xcassets */,
-				FC56DE2E2327D2C40051B708 /* LaunchScreen.storyboard */,
 				FC56DE312327D2C40051B708 /* Info.plist */,
-				FC324D57232BD18C00D1E7A0 /* GoogleService-Info .plist */,
 			);
 			path = Lunchat;
 			sourceTree = "<group>";
@@ -188,7 +212,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC324D58232BD18C00D1E7A0 /* GoogleService-Info .plist in Resources */,
 				FC4080952328F36000EFF9B4 /* HomePage.storyboard in Resources */,
 				FC4080972328F81600EFF9B4 /* Home.storyboard in Resources */,
 				FC56DE302327D2C40051B708 /* LaunchScreen.storyboard in Resources */,
@@ -196,6 +219,7 @@
 				FC56DE2B2327D2C10051B708 /* Main.storyboard in Resources */,
 				FC40809B2328F94300EFF9B4 /* Host.storyboard in Resources */,
 				FC40809F2328F9EF00EFF9B4 /* Profile.storyboard in Resources */,
+				FC50E1BD232BE3C800FDC25F /* GoogleService-Info.plist in Resources */,
 				FC40809D2328F99100EFF9B4 /* Message.storyboard in Resources */,
 				FC4080992328F8D300EFF9B4 /* Manage.storyboard in Resources */,
 			);

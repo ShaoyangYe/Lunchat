@@ -12,6 +12,6 @@ pod 'Firebase/Auth'
 pod 'Firebase/Storage'
 pod 'Firebase/Database'
 pod 'Firebase/Firestore'
-pod 'SVProgressHUD'
+pod 'ProgressHUD'
 
 end

@@ -13,7 +13,7 @@
         <!--Signin View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SigninViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="BYZ-38-t0r" customClass="SigninViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="Signin">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
                                             <color key="titleShadowColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="VlW-5G-brO" kind="presentation" id="xUQ-EX-Pb0"/>
+                                            <action selector="signInButton_TouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="To3-Ma-M7t"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -93,11 +93,13 @@
                     <connections>
                         <outlet property="emailTextField" destination="gCv-5I-Rem" id="xWl-xZ-EPI"/>
                         <outlet property="passwordTextField" destination="pz2-Vi-cxt" id="pIp-Pz-Dda"/>
+                        <outlet property="signInButton" destination="JEu-Do-is0" id="cdT-gE-0s8"/>
+                        <segue destination="VlW-5G-brO" kind="show" identifier="signInToTabbarVC" id="zWa-Sp-BFu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-106" y="-521"/>
+            <point key="canvasLocation" x="-1" y="-272"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="tuy-pV-u4x">
@@ -162,15 +164,16 @@
                                             <color key="titleShadowColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="VlW-5G-brO" kind="presentation" id="vDF-oc-x0M"/>
+                                            <action selector="signUpBtn_TouchUpInside:" destination="UPD-eO-crS" eventType="touchUpInside" id="aou-Ks-qNp"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-user-image-square" translatesAutoresizingMaskIntoConstraints="NO" id="gKA-ko-McJ">
-                                <rect key="frame" x="102.33333333333333" y="98.999999999999986" width="170.33333333333337" height="170.66666666666663"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-user-image-square" translatesAutoresizingMaskIntoConstraints="NO" id="gKA-ko-McJ">
+                                <rect key="frame" x="127.66666666666669" y="99" width="120" height="120"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="gKA-ko-McJ" secondAttribute="height" multiplier="1:1" id="sqW-Kx-rmW"/>
+                                    <constraint firstAttribute="width" constant="120" id="Oyj-MN-Hak"/>
+                                    <constraint firstAttribute="height" constant="120" id="qoc-eM-gjn"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -180,7 +183,6 @@
                             <constraint firstItem="gKA-ko-McJ" firstAttribute="centerX" secondItem="OOl-JS-pTx" secondAttribute="centerX" id="NCD-rG-1W8"/>
                             <constraint firstAttribute="bottom" secondItem="CEe-5F-LmV" secondAttribute="bottom" constant="20" id="Ula-zP-lsw"/>
                             <constraint firstItem="CEe-5F-LmV" firstAttribute="leading" secondItem="4ee-X0-oFA" secondAttribute="leading" constant="20" id="hQF-0l-xOK"/>
-                            <constraint firstItem="pca-gG-8tf" firstAttribute="top" secondItem="gKA-ko-McJ" secondAttribute="bottom" constant="30" id="jde-MN-p0X"/>
                             <constraint firstItem="gKA-ko-McJ" firstAttribute="top" secondItem="4ee-X0-oFA" secondAttribute="top" constant="55" id="jg6-Ct-yRZ"/>
                             <constraint firstItem="pca-gG-8tf" firstAttribute="centerY" secondItem="OOl-JS-pTx" secondAttribute="centerY" id="k5e-Bh-L39"/>
                             <constraint firstItem="4ee-X0-oFA" firstAttribute="trailing" secondItem="pca-gG-8tf" secondAttribute="trailing" constant="20" id="pXA-Os-DSQ"/>
@@ -194,6 +196,7 @@
                         <outlet property="passwordTextField" destination="Iw8-TS-rom" id="TxO-BY-rN8"/>
                         <outlet property="profileImage" destination="gKA-ko-McJ" id="PvW-d6-Rp7"/>
                         <outlet property="usernameTextField" destination="TUB-dv-5dd" id="Fhd-bG-d08"/>
+                        <segue destination="VlW-5G-brO" kind="show" identifier="signUpToTabbarVC" id="IQr-lv-JCK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vUv-6E-CAF" sceneMemberID="firstResponder"/>
@@ -213,6 +216,6 @@
         <image name="no-user-image-square" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vDF-oc-x0M"/>
+        <segue reference="zWa-Sp-BFu"/>
     </inferredMetricsTieBreakers>
 </document>

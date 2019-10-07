@@ -1,0 +1,36 @@
+[
+	{
+		"userID": 0,
+		"name": "Alex",
+		"gender": "Male",
+		"registered": [
+			0,
+			1,
+			2
+		],
+		"hosting": [
+			0
+		]
+		"past": [
+			3,
+            4
+		]
+	}
+    {
+        "userID": 0,
+        "name": "Alex",
+        "gender": "Male",
+        "registered": [
+            0,
+            1,
+            2
+        ],
+        "hosting": [
+            1
+        ]
+        "past": [
+            3,
+            4
+        ]
+    }
+]

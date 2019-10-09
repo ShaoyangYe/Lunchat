@@ -10,6 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseStorage
 import FirebaseDatabase
+
 class AuthService {
     
     static func signIn(email: String, password: String, onSuccess: @escaping () -> Void, onError:  @escaping (_ errorMessage: String?) -> Void) {

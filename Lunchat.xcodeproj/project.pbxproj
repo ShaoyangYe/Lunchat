@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0A8B02234ACBBF0049C1BB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A8B01234ACBBF0049C1BB /* Event.swift */; };
+		0B0A8B06234ACE1F0049C1BB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A8B05234ACE1F0049C1BB /* EventModel.swift */; };
+		0B0A8B08234AD8E20049C1BB /* TEST_eventsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A8B07234AD8E20049C1BB /* TEST_eventsData.json */; };
 		750033527232F0C87A4CAA1B /* Pods_Lunchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824CD3857F41965043A667DB /* Pods_Lunchat.framework */; };
 		FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1D232897E4006FBA6E /* SignUpViewController.swift */; };
 		FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1F2328D78A006FBA6E /* HomeViewController.swift */; };
@@ -35,6 +38,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0A8B01234ACBBF0049C1BB /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		0B0A8B05234ACE1F0049C1BB /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		0B0A8B07234AD8E20049C1BB /* TEST_eventsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TEST_eventsData.json; sourceTree = "<group>"; };
 		640F8F413A805A274919D976 /* Pods-Lunchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.release.xcconfig"; sourceTree = "<group>"; };
 		69E5BF3B8706DD4FAEFCAB75 /* Pods-Lunchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.debug.xcconfig"; sourceTree = "<group>"; };
 		824CD3857F41965043A667DB /* Pods_Lunchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lunchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +136,9 @@
 		FC50E1B9232BE1B300FDC25F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0B0A8B01234ACBBF0049C1BB /* Event.swift */,
+				0B0A8B07234AD8E20049C1BB /* TEST_eventsData.json */,
+				0B0A8B05234ACE1F0049C1BB /* EventModel.swift */,
 				FC9F37A023489517001B19FF /* User.swift */,
 			);
 			path = Model;
@@ -241,6 +250,7 @@
 				FC56DE2D2327D2C40051B708 /* Assets.xcassets in Resources */,
 				FC56DE2B2327D2C10051B708 /* Main.storyboard in Resources */,
 				FC40809B2328F94300EFF9B4 /* Host.storyboard in Resources */,
+				0B0A8B08234AD8E20049C1BB /* TEST_eventsData.json in Resources */,
 				FC40809F2328F9EF00EFF9B4 /* Profile.storyboard in Resources */,
 				FC50E1BD232BE3C800FDC25F /* GoogleService-Info.plist in Resources */,
 				FC40809D2328F99100EFF9B4 /* Message.storyboard in Resources */,
@@ -343,7 +353,8 @@
 				FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */,
 				FC9F37A32348953F001B19FF /* UserApi.swift in Sources */,
 				FC56DE382327E7AC0051B708 /* SigninViewController.swift in Sources */,
-				FC9F37AD23489737001B19FF /* Config.swift in Sources */,
+				0B0A8B02234ACBBF0049C1BB /* Event.swift in Sources */,
+				FC9F37AD23489737001B19FF /* Config.swift in Sources */，
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
 				FC56DE262327D2C10051B708 /* AppDelegate.swift in Sources */,
 				FC9F37A52348958D001B19FF /* Api.swift in Sources */,
@@ -352,6 +363,7 @@
 				FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */,
 				FC9F37A123489517001B19FF /* User.swift in Sources */,
 				FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */,
+				0B0A8B06234ACE1F0049C1BB /* EventModel.swift in Sources */,
 				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,
 				FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */,
 			);

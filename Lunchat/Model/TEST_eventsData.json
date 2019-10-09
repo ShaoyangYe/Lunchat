@@ -9,7 +9,7 @@
 			1,
 			2
 		],
-		"maxParticipants": 4,
+		"maxParticipants": 3,
         "theme": "Music",
         "host": 0,
         "past": 0
@@ -17,30 +17,30 @@
     {
         "eventID": 1,
         "title": "Have you been to Tailand?",
-        "time": "Oct 10, 11:00 AM",
-        "location": "Union House",
+        "time": "Oct 11, 12:00 AM",
+        "location": "KFC",
         "participants": [
             0,
             1,
             2
         ],
         "maxParticipants": 4,
-        "theme": "Music",
+        "theme": "Travel",
         "host": 1,
         "past": 0
     },
     {
         "eventID": 2,
         "title": "Have you been to China?",
-        "time": "Oct 10, 11:00 AM",
-        "location": "Union House",
+        "time": "Oct 12, 12:30 AM",
+        "location": "Card",
         "participants": [
             0,
             1,
             2
         ],
-        "maxParticipants": 4,
-        "theme": "Music",
+        "maxParticipants": 5,
+        "theme": "Travel",
         "host": 2,
         "past": 0
     },

@@ -84,7 +84,12 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // Customize it
         let titleLabel = cell.viewWithTag(1) as? UILabel
+        let themeLabel = cell.viewWithTag(2) as? UILabel
+        let locationLabel = cell.viewWithTag(3) as? UILabel
+        let timeLabel = cell.viewWithTag(4) as? UILabel
+        let participantsLabel = cell.viewWithTag(5) as? UILabel
         
+        /*
         if titleLabel != nil {
             
             var i = 0
@@ -111,6 +116,51 @@ class ManageViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if  indexPath.row < count {
                 
                 titleLabel!.text = registeredEvents[indexPath.row]
+                
+            }
+            
+        } */
+        
+        if titleLabel != nil {
+            
+            var i = 0
+            let count = registered.count
+            var registeredEvents = [Event]()
+            
+            while i < count {
+                
+                for n in events {
+                    
+                    if registered[i] == n.eventID && n.title != nil{
+                        
+                        registeredEvents.append(n)
+                        
+                    }
+                    
+                }
+                
+                i += 1
+                
+            }
+            
+            
+            if  indexPath.row < count {
+                
+                titleLabel!.text = registeredEvents[indexPath.row].title
+                themeLabel!.text = registeredEvents[indexPath.row].theme
+                locationLabel!.text = registeredEvents[indexPath.row].location
+                timeLabel!.text = registeredEvents[indexPath.row].time
+                
+                let num = registeredEvents[indexPath.row].participants?.count
+                var content:String = ""
+                
+                if num != nil {
+                    
+                    content = "\(num!) / \(String(describing: (registeredEvents[indexPath.row].maxParticipants)))"
+                    
+                }
+                
+                participantsLabel!.text = content
                 
             }
             

@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B0A8B02234ACBBF0049C1BB /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A8B01234ACBBF0049C1BB /* Event.swift */; };
-		0B0A8B04234ACD100049C1BB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A8B03234ACD100049C1BB /* User.swift */; };
 		0B0A8B06234ACE1F0049C1BB /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A8B05234ACE1F0049C1BB /* EventModel.swift */; };
 		0B0A8B08234AD8E20049C1BB /* TEST_eventsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A8B07234AD8E20049C1BB /* TEST_eventsData.json */; };
-		0B0A8B0A234AD9F30049C1BB /* TEST_usersData.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A8B09234AD9F30049C1BB /* TEST_usersData.json */; };
-		0B0A8B0C234B2EFE0049C1BB /* test.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A8B0B234B2EFE0049C1BB /* test.json */; };
 		750033527232F0C87A4CAA1B /* Pods_Lunchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824CD3857F41965043A667DB /* Pods_Lunchat.framework */; };
 		FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1D232897E4006FBA6E /* SignUpViewController.swift */; };
 		FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1F2328D78A006FBA6E /* HomeViewController.swift */; };
@@ -36,11 +33,8 @@
 
 /* Begin PBXFileReference section */
 		0B0A8B01234ACBBF0049C1BB /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		0B0A8B03234ACD100049C1BB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0B0A8B05234ACE1F0049C1BB /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		0B0A8B07234AD8E20049C1BB /* TEST_eventsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TEST_eventsData.json; sourceTree = "<group>"; };
-		0B0A8B09234AD9F30049C1BB /* TEST_usersData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TEST_usersData.json; sourceTree = "<group>"; };
-		0B0A8B0B234B2EFE0049C1BB /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		640F8F413A805A274919D976 /* Pods-Lunchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.release.xcconfig"; sourceTree = "<group>"; };
 		69E5BF3B8706DD4FAEFCAB75 /* Pods-Lunchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.debug.xcconfig"; sourceTree = "<group>"; };
 		824CD3857F41965043A667DB /* Pods_Lunchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lunchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,9 +125,6 @@
 				0B0A8B01234ACBBF0049C1BB /* Event.swift */,
 				0B0A8B07234AD8E20049C1BB /* TEST_eventsData.json */,
 				0B0A8B05234ACE1F0049C1BB /* EventModel.swift */,
-				0B0A8B0B234B2EFE0049C1BB /* test.json */,
-				0B0A8B03234ACD100049C1BB /* User.swift */,
-				0B0A8B09234AD9F30049C1BB /* TEST_usersData.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,9 +231,7 @@
 				FC40809F2328F9EF00EFF9B4 /* Profile.storyboard in Resources */,
 				FC50E1BD232BE3C800FDC25F /* GoogleService-Info.plist in Resources */,
 				FC40809D2328F99100EFF9B4 /* Message.storyboard in Resources */,
-				0B0A8B0A234AD9F30049C1BB /* TEST_usersData.json in Resources */,
 				FC4080992328F8D300EFF9B4 /* Manage.storyboard in Resources */,
-				0B0A8B0C234B2EFE0049C1BB /* test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +336,6 @@
 				FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */,
 				0B0A8B06234ACE1F0049C1BB /* EventModel.swift in Sources */,
 				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,
-				0B0A8B04234ACD100049C1BB /* User.swift in Sources */,
 				FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

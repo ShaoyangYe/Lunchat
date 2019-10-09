@@ -127,7 +127,7 @@ DEPENDENCIES:
   - ProgressHUD
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - BoringSSL
     - Firebase
     - FirebaseAnalytics
@@ -171,4 +171,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 28edf5b1f8e4a2774213925f9054137f80d84489
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.3

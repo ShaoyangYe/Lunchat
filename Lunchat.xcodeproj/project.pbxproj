@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E153949234DA4EE007B1C7B /* MapViewSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */; };
 		750033527232F0C87A4CAA1B /* Pods_Lunchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824CD3857F41965043A667DB /* Pods_Lunchat.framework */; };
 		B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B0519234D99720083B8EB /* MessageDetailViewController.swift */; };
 		B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		640F8F413A805A274919D976 /* Pods-Lunchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.release.xcconfig"; sourceTree = "<group>"; };
 		69E5BF3B8706DD4FAEFCAB75 /* Pods-Lunchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.debug.xcconfig"; sourceTree = "<group>"; };
+		6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewSelectionController.swift; sourceTree = "<group>"; };
 		824CD3857F41965043A667DB /* Pods_Lunchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lunchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35B0519234D99720083B8EB /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageMateTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
 				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
 				B35B0519234D99720083B8EB /* MessageDetailViewController.swift */,
+				6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				FC9F37A32348953F001B19FF /* UserApi.swift in Sources */,
 				B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */,
 				FC56DE382327E7AC0051B708 /* SigninViewController.swift in Sources */,
+				6E153949234DA4EE007B1C7B /* MapViewSelectionController.swift in Sources */,
 				B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */,
 				FC9F37AD23489737001B19FF /* Config.swift in Sources */,
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,

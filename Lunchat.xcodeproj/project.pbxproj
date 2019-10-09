@@ -3,11 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		750033527232F0C87A4CAA1B /* Pods_Lunchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824CD3857F41965043A667DB /* Pods_Lunchat.framework */; };
+		B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B0519234D99720083B8EB /* MessageDetailViewController.swift */; };
+		B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */; };
+		B35B051F234D99F10083B8EB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051E234D99F10083B8EB /* MessageCell.swift */; };
 		FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1D232897E4006FBA6E /* SignUpViewController.swift */; };
 		FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1F2328D78A006FBA6E /* HomeViewController.swift */; };
 		FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A212328D909006FBA6E /* ManageViewController.swift */; };
@@ -38,6 +41,9 @@
 		640F8F413A805A274919D976 /* Pods-Lunchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.release.xcconfig"; sourceTree = "<group>"; };
 		69E5BF3B8706DD4FAEFCAB75 /* Pods-Lunchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.debug.xcconfig"; sourceTree = "<group>"; };
 		824CD3857F41965043A667DB /* Pods_Lunchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lunchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35B0519234D99720083B8EB /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
+		B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageMateTableViewCell.swift; sourceTree = "<group>"; };
+		B35B051E234D99F10083B8EB /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		FC216A1D232897E4006FBA6E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC216A1F2328D78A006FBA6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FC216A212328D909006FBA6E /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +103,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B35B051B234D99A60083B8EB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */,
+				B35B051E234D99F10083B8EB /* MessageCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		FC50E1B7232BE1AB00FDC25F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +123,7 @@
 				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
 				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
 				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
+				B35B0519234D99720083B8EB /* MessageDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -156,6 +172,7 @@
 		FC56DE242327D2C10051B708 /* Lunchat */ = {
 			isa = PBXGroup;
 			children = (
+				B35B051B234D99A60083B8EB /* Cells */,
 				FC50E1BC232BE3C700FDC25F /* GoogleService-Info.plist */,
 				FC9F37A7234896BD001B19FF /* ProgressHUD.h */,
 				FC9F37A8234896BE001B19FF /* ProgressHUD.m */,
@@ -257,20 +274,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-Lunchat/Pods-Lunchat-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-Lunchat/Pods-Lunchat-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lunchat/Pods-Lunchat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		550F3AFD13E6CAF71A744195 /* [CP] Check Pods Manifest.lock */ = {
@@ -301,36 +313,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Lunchat/Pods-Lunchat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-Lunchat/Pods-Lunchat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Lunchat/Pods-Lunchat-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -342,7 +333,9 @@
 			files = (
 				FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */,
 				FC9F37A32348953F001B19FF /* UserApi.swift in Sources */,
+				B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */,
 				FC56DE382327E7AC0051B708 /* SigninViewController.swift in Sources */,
+				B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */,
 				FC9F37AD23489737001B19FF /* Config.swift in Sources */,
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
 				FC56DE262327D2C10051B708 /* AppDelegate.swift in Sources */,
@@ -351,6 +344,7 @@
 				FC9F37A9234896BF001B19FF /* ProgressHUD.m in Sources */,
 				FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */,
 				FC9F37A123489517001B19FF /* User.swift in Sources */,
+				B35B051F234D99F10083B8EB /* MessageCell.swift in Sources */,
 				FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */,
 				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,
 				FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */,

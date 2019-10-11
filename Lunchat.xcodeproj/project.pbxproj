@@ -175,6 +175,7 @@
 		FC56DE242327D2C10051B708 /* Lunchat */ = {
 			isa = PBXGroup;
 			children = (
+				FC56DE2C2327D2C40051B708 /* Assets.xcassets */,
 				B35B051B234D99A60083B8EB /* Cells */,
 				FC50E1BC232BE3C700FDC25F /* GoogleService-Info.plist */,
 				FC9F37A7234896BD001B19FF /* ProgressHUD.h */,
@@ -182,7 +183,6 @@
 				FC50E1B9232BE1B300FDC25F /* Model */,
 				FC50E1B8232BE1AF00FDC25F /* View */,
 				FC50E1B7232BE1AB00FDC25F /* Controller */,
-				FC56DE2C2327D2C40051B708 /* Assets.xcassets */,
 				FC56DE312327D2C40051B708 /* Info.plist */,
 				FC9F37A22348953F001B19FF /* UserApi.swift */,
 				FC9F37A42348958D001B19FF /* Api.swift */,

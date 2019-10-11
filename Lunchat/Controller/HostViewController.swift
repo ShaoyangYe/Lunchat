@@ -25,11 +25,18 @@ class HostViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var btnJustChat: UIButton!
     @IBOutlet weak var btnBuildTopic: UIButton!
     @IBOutlet weak var textTime: UITextField!
-    @IBOutlet weak var btnSelectLocation: UIButton!
     @IBOutlet weak var txtLocation: UITextField!
     @IBOutlet weak var buttonViewGroup: UIView!
+    @IBOutlet weak var lbTitle: UILabel!
+    @IBOutlet weak var lbTime: UILabel!
+    @IBOutlet weak var lbAddress: UILabel!
+    @IBOutlet weak var lbChooseTopic: UILabel!
+    @IBOutlet weak var txtNumPeople: UITextField!
+    @IBOutlet weak var btnSelectLocation: UIButton!
+    
     
     let datePicker = UIDatePicker()
+    
     
     func createDatePicker()
     {
@@ -73,34 +80,52 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         customizeButtonG1(buttonName: btnJustChat, colorName: "btnJustChat.png",textPosition: 0)
         customizeButtonG1(buttonName: btnBuildTopic, colorName: "btnBuildTopic.png",textPosition: 0)
         customizeButtonG1(buttonName: btnLunchat, colorName: "",textPosition: 1)
+        customizeButtonG1(buttonName: btnSelectLocation, colorName: "map.png",textPosition: 0)
+        
         
         //textfield keyboard
         textTitle.delegate = self
+        txtNumPeople.delegate = self
         //        password.delegate = self
-        //文本框圆角
-        textTitle.borderStyle = UITextField.BorderStyle.roundedRect
-        textTitle.layer.cornerRadius = 10.0
-        textTime.borderStyle = UITextField.BorderStyle.roundedRect
-        textTime.layer.cornerRadius = 10.0
-        txtLocation.borderStyle = UITextField.BorderStyle.roundedRect
-        txtLocation.layer.cornerRadius = 10.0
-        //        btnSelectLocation.layer.borderWidth = 0.8
-        //        btnSelectLocation.layer.borderColor = UIColor.gray.cgColor
+        //文本框设置 
+        customizeText(textField: textTitle)
+        customizeText(textField: textTime)
+        customizeText(textField: txtLocation)
         
         buttonViewGroup.layer.cornerRadius = 10.0
+        buttonViewGroup.layer.borderColor = gray.cgColor
+        lbTitle.textColor = gray
+        lbTime.textColor = gray
+        lbAddress.textColor = gray
+        lbChooseTopic.textColor = gray
     }
+    
+    func customizeText (textField: UITextField)
+    {
+        textField.borderStyle = UITextField.BorderStyle.roundedRect
+        textField.layer.cornerRadius = 6
+        textField.layer.borderWidth = 1.0
+        textField.borderStyle = UITextField.BorderStyle.none;
+        textField.layer.borderColor = gray.cgColor;
+        textField.placeholderColor = gray
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    
+    let gray = (UIColor(red: 255/255.0, green: 140/255.0, blue: 105/255.0, alpha: 0.9))
     //话题选择
     func customizeButtonG1(buttonName:UIButton, colorName:String, textPosition: CGFloat) {
         // change UIbutton propertie
-        let gray = (UIColor(red: 0.0/255.0, green: 0.0/255.0, blue: 0.098/255.0, alpha: 0.22))
+        
         buttonName.backgroundColor = UIColor.white
         buttonName.layer.cornerRadius = 10
         buttonName.layer.borderWidth = 0.8
         buttonName.layer.borderColor = gray.cgColor
+        buttonName.tintColor = gray
+        buttonName.setTitleColor(gray, for: .normal)
         if textPosition == 0
         {
             buttonName.setImage(UIImage(named:colorName), for: .normal)
@@ -109,6 +134,7 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         
     }
     
+    var numtopics = 1
     @IBAction func btnMovieTouchDown(_ sender: Any) {
         changeBtnColor(button: btnMovie)
     }
@@ -137,17 +163,32 @@ class HostViewController: UIViewController , UITextFieldDelegate{
     
     func changeBtnColor(button: UIButton)
     {
-        if button.backgroundColor == UIColor.white {
-            button.backgroundColor = UIColor.gray
+        if button.backgroundColor == UIColor.white && numtopics <= 3 {
+            numtopics += 1
+            button.backgroundColor = gray
             button.setTitleColor(UIColor.white, for: .normal)
             button.tintColor = UIColor.white
             
         }
+        else if button.backgroundColor != UIColor.white
+        {
+            numtopics -= 1
+            button.backgroundColor = UIColor.white
+            button.setTitleColor(gray, for: .normal)
+            button.tintColor = gray
+        }
         else
         {
-            button.backgroundColor = UIColor.white
-            button.setTitleColor(UIColor.gray, for: .normal)
-            button.tintColor = UIColor.gray
+            let alertController = UIAlertController(title: "Alert",
+                                                    message: "Maximum three topics", preferredStyle: .alert)
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: {
+                action in
+                print("点击了确定")
+            })
+//            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -169,10 +210,9 @@ class HostViewController: UIViewController , UITextFieldDelegate{
             (action:UIAlertAction!) -> Void in
             let firstTextField = alertController.textFields![0].text
             //            let secondTextField = alertController.textFields![1] as UITextField
-            let btnNewTopic: UIButton = UIButton.init(frame: CGRect(x:170, y:290, width: 111, height: 45))
-            self.customizeButtonG1(buttonName: btnNewTopic, colorName: "",textPosition: 0)
+            let btnNewTopic: UIButton = UIButton.init(frame: CGRect(x:170, y:290, width: 150, height: 45))
+            self.customizeButtonG1(buttonName: btnNewTopic, colorName: "btnNew.png",textPosition: 0)
             btnNewTopic.setTitle(firstTextField, for: .normal)
-            btnNewTopic.setTitleColor(UIColor.gray, for: .normal)
             self.view.addSubview(btnNewTopic)
             //            btnNewTopic.tintColor = UIColor.white
             //            print("Name \(String(describing: firstTextField.text)), Password \(String(describing: secondTextField.text))")
@@ -182,7 +222,46 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
+}
+
+extension UITextField{
     
+    //MARK:-设置暂位文字的颜色
+    var placeholderColor:UIColor {
+        
+        get{
+            let color =   self.value(forKeyPath: "_placeholderLabel.textColor")
+            if(color == nil){
+                return UIColor.white;
+            }
+            return color as! UIColor;
+            
+        }
+        
+        set{
+            
+            self.setValue(newValue, forKeyPath: "_placeholderLabel.textColor")
+        }
+        
+        
+    }
+    
+    //MARK:-设置暂位文字的字体
+    var placeholderFont:UIFont{
+        get{
+            let font =   self.value(forKeyPath: "_placeholderLabel.font")
+            if(font == nil){
+                return UIFont.systemFont(ofSize: 14);
+            }
+            return font as! UIFont;
+        }
+        
+        
+        set{
+            self.setValue(newValue, forKeyPath: "_placeholderLabel.font")
+        }
+        
+    }
     
     
 }

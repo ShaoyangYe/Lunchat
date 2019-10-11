@@ -1,312 +1,351 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-<device id="retina6_1" orientation="portrait">
-<adaptation id="fullscreen"/>
-</device>
-<dependencies>
-<deployment identifier="iOS"/>
-<plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-<capability name="Safe area layout guides" minToolsVersion="9.0"/>
-<capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-</dependencies>
-<scenes>
-<!--Host a Lunchat-->
-<scene sceneID="Vka-vE-O0h">
-<objects>
-<viewController id="Pbk-By-mpf" customClass="HostViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
-<view key="view" contentMode="scaleToFill" id="Y95-to-X0Y">
-<rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXu-BR-MNV">
-<rect key="frame" x="0.0" y="88" width="414" height="774"/>
-<subviews>
-<view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21r-Sb-Vj6">
-<rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
-<subviews>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose your topic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqu-za-tiU">
-<rect key="frame" x="32" y="8" width="140" height="21"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<fontDescription key="fontDescription" type="system" pointSize="17"/>
-<color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<nil key="highlightedColor"/>
-</label>
-<view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-4Y-Vis">
-<rect key="frame" x="14" y="37" width="343" height="277"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<subviews>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nel-dW-rdZ">
-<rect key="frame" x="8" y="8" width="105" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<state key="normal" title="Movie">
-<color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnMovieTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="eZa-aZ-b4g"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lih-nw-XSV">
-<rect key="frame" x="121" y="8" width="145" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<state key="normal" title="Photofgraphy">
-<color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnPhotoTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="wqB-4s-9ZP"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-hC-2md">
-<rect key="frame" x="8" y="61" width="105" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<state key="normal" title="Music">
-<color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnMusicTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="eTo-OP-BTj"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oA-88-K4R">
-<rect key="frame" x="8" y="114" width="115" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<state key="normal" title="Business">
-<color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnBuisnessTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="Qi8-hF-z1J"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAe-ge-OOJ">
-<rect key="frame" x="128" y="114" width="131" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<state key="normal" title="Assignment">
-<color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnAssignmentTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="QKy-s5-ucR"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNd-jM-E5S">
-<rect key="frame" x="8" y="167" width="131" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<state key="normal" title="Just Chat">
-<color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnJustChatTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="VpO-kv-dtH"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ey-i1-hcj">
-<rect key="frame" x="121" y="61" width="105" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<state key="normal" title="Travel">
-<color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnTravelTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="fDk-w2-9u0"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RaK-W3-E98">
-<rect key="frame" x="233" y="61" width="105" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<state key="normal" title="Game">
-<color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnGameTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="M7C-45-Ckl"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnP-TK-OgS">
-<rect key="frame" x="8" y="220" width="185" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-<state key="normal" title="Build your own topic">
-<color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<action selector="btnBuildTopicShowAlert:" destination="Pbk-By-mpf" eventType="touchDown" id="lNF-K7-LM4"/>
-</connections>
-</button>
-</subviews>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</view>
-<textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Please enter your title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnB-zh-Krm">
-<rect key="frame" x="81" y="324" width="276" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<fontDescription key="fontDescription" type="system" pointSize="14"/>
-<textInputTraits key="textInputTraits"/>
-</textField>
-<textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Please enter time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhd-c7-t7a">
-<rect key="frame" x="81" y="380" width="276" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<fontDescription key="fontDescription" type="system" pointSize="14"/>
-<textInputTraits key="textInputTraits"/>
-</textField>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8H-Fm-kyR">
-<rect key="frame" x="14" y="336" width="34" height="21"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<fontDescription key="fontDescription" type="system" pointSize="17"/>
-<color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<nil key="highlightedColor"/>
-</label>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZi-im-KD7">
-<rect key="frame" x="14" y="392" width="38" height="21"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<fontDescription key="fontDescription" type="system" pointSize="17"/>
-<color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<nil key="highlightedColor"/>
-</label>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8z-OJ-yvw">
-<rect key="frame" x="14" y="448" width="63" height="21"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<fontDescription key="fontDescription" type="system" pointSize="17"/>
-<color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<nil key="highlightedColor"/>
-</label>
-<textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-cs-GgZ">
-<rect key="frame" x="81" y="436" width="155" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<fontDescription key="fontDescription" type="system" pointSize="14"/>
-<textInputTraits key="textInputTraits"/>
-</textField>
-<label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of people" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-mq-1Sh">
-<rect key="frame" x="26" y="515" width="138" height="21"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<fontDescription key="fontDescription" type="system" pointSize="17"/>
-<color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<nil key="highlightedColor"/>
-</label>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2u-1u-vSu">
-<rect key="frame" x="243" y="436" width="114" height="45"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<state key="normal" title="Select from map">
-<color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-<connections>
-<segue destination="WAh-1y-81R" kind="show" id="xUZ-Ib-pCZ"/>
-</connections>
-</button>
-<button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqa-Kd-HlD">
-<rect key="frame" x="217" y="555" width="97" height="30"/>
-<autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-<state key="normal" title="Let's Lunchat!">
-<color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</state>
-</button>
-</subviews>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-</view>
-</subviews>
-<constraints>
-<constraint firstItem="21r-Sb-Vj6" firstAttribute="centerY" secondItem="tXu-BR-MNV" secondAttribute="centerY" id="Ew9-7i-kz4"/>
-<constraint firstItem="21r-Sb-Vj6" firstAttribute="leading" secondItem="tXu-BR-MNV" secondAttribute="leading" id="F4n-yB-rC5"/>
-<constraint firstItem="21r-Sb-Vj6" firstAttribute="top" secondItem="tXu-BR-MNV" secondAttribute="top" id="HKD-gr-CQn"/>
-<constraint firstItem="21r-Sb-Vj6" firstAttribute="centerX" secondItem="tXu-BR-MNV" secondAttribute="centerX" id="mjk-hx-Wmd"/>
-<constraint firstAttribute="bottom" secondItem="21r-Sb-Vj6" secondAttribute="bottom" id="pMa-gV-CHU"/>
-<constraint firstAttribute="trailing" secondItem="21r-Sb-Vj6" secondAttribute="trailing" id="wz1-Rj-hJO"/>
-</constraints>
-</scrollView>
-</subviews>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstItem="aW0-HA-S8c" firstAttribute="bottom" secondItem="tXu-BR-MNV" secondAttribute="bottom" id="4fx-gC-gGk"/>
-<constraint firstItem="tXu-BR-MNV" firstAttribute="top" secondItem="aW0-HA-S8c" secondAttribute="top" id="CVt-Bt-hre"/>
-<constraint firstItem="tXu-BR-MNV" firstAttribute="leading" secondItem="aW0-HA-S8c" secondAttribute="leading" id="uTD-bk-KnH"/>
-<constraint firstItem="aW0-HA-S8c" firstAttribute="trailing" secondItem="tXu-BR-MNV" secondAttribute="trailing" id="x7a-Rq-jOL"/>
-</constraints>
-<viewLayoutGuide key="safeArea" id="aW0-HA-S8c"/>
-</view>
-<navigationItem key="navigationItem" title="Host a Lunchat" id="Mrc-pd-PwR" colorLabel="IBBuiltInLabel-Gray"/>
-<connections>
-<outlet property="btnAssignment" destination="CAe-ge-OOJ" id="0cw-Ki-5dv"/>
-<outlet property="btnBuildTopic" destination="NnP-TK-OgS" id="iVP-Hv-JbA"/>
-<outlet property="btnBusiness" destination="6oA-88-K4R" id="EJB-PY-bR8"/>
-<outlet property="btnGame" destination="RaK-W3-E98" id="zhS-il-WBq"/>
-<outlet property="btnJustChat" destination="JNd-jM-E5S" id="LX7-Fm-iqo"/>
-<outlet property="btnLunchat" destination="Yqa-Kd-HlD" id="ddi-Mp-UzR"/>
-<outlet property="btnMovie" destination="nel-dW-rdZ" id="M1D-XO-nZa"/>
-<outlet property="btnMusic" destination="BIz-hC-2md" id="RdL-7L-hDJ"/>
-<outlet property="btnPhotography" destination="lih-nw-XSV" id="RF6-b8-nwS"/>
-<outlet property="btnTravel" destination="9ey-i1-hcj" id="8SQ-iv-ayq"/>
-<outlet property="buttonViewGroup" destination="Nfm-4Y-Vis" id="XhP-04-keZ"/>
-<outlet property="textTime" destination="mhd-c7-t7a" id="la9-an-NFT"/>
-<outlet property="textTitle" destination="vnB-zh-Krm" id="ErQ-1r-dYk"/>
-<outlet property="txtLocation" destination="R1s-cs-GgZ" id="gWf-bc-l9k"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="hF2-Dd-JIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="4169.5652173913049" y="-308.03571428571428"/>
-</scene>
-<!--Title-->
-<scene sceneID="YQs-Sz-gZK">
-<objects>
-<viewController id="WAh-1y-81R" customClass="MapViewSelectionController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
-<view key="view" contentMode="scaleToFill" id="Rne-Uw-gsd">
-<rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-<autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<subviews>
-<mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sCb-el-cC5">
-<rect key="frame" x="0.0" y="88" width="414" height="774"/>
-</mapView>
-</subviews>
-<color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-<constraints>
-<constraint firstItem="sCb-el-cC5" firstAttribute="trailing" secondItem="fgN-Iy-ShE" secondAttribute="trailing" id="FZ3-x1-4ux"/>
-<constraint firstItem="sCb-el-cC5" firstAttribute="top" secondItem="fgN-Iy-ShE" secondAttribute="top" id="HnC-aM-Xjy"/>
-<constraint firstItem="sCb-el-cC5" firstAttribute="leading" secondItem="fgN-Iy-ShE" secondAttribute="leading" id="OHl-PD-aPD"/>
-<constraint firstItem="fgN-Iy-ShE" firstAttribute="bottom" secondItem="sCb-el-cC5" secondAttribute="bottom" id="XFN-Mc-z3I"/>
-</constraints>
-<viewLayoutGuide key="safeArea" id="fgN-Iy-ShE"/>
-</view>
-<navigationItem key="navigationItem" title="Title" id="45t-gy-Ilk">
-<barButtonItem key="rightBarButtonItem" width="50" systemItem="search" id="3nu-CQ-x1N">
-<connections>
-<action selector="btnSearch:" destination="WAh-1y-81R" id="Pvx-C1-5KJ"/>
-</connections>
-</barButtonItem>
-</navigationItem>
-<connections>
-<outlet property="myMap" destination="sCb-el-cC5" id="P6P-T8-Ym5"/>
-</connections>
-</viewController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="rAF-yd-jn3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="4884" y="-308"/>
-</scene>
-<!--Host-->
-<scene sceneID="3iX-8u-e2d">
-<objects>
-<navigationController storyboardIdentifier="NavigationHost" automaticallyAdjustsScrollViewInsets="NO" id="rFj-wZ-4AF" sceneMemberID="viewController">
-<tabBarItem key="tabBarItem" title="Host" image="dinner" selectedImage="dinnerSeleted" id="BPh-46-uiU"/>
-<toolbarItems/>
-<navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O60-Zx-k59">
-<rect key="frame" x="0.0" y="44" width="414" height="44"/>
-<autoresizingMask key="autoresizingMask"/>
-</navigationBar>
-<nil name="viewControllers"/>
-<connections>
-<segue destination="Pbk-By-mpf" kind="relationship" relationship="rootViewController" id="tCw-Ki-e64"/>
-</connections>
-</navigationController>
-<placeholder placeholderIdentifier="IBFirstResponder" id="TSQ-m1-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
-</objects>
-<point key="canvasLocation" x="4170" y="-1047"/>
-</scene>
-</scenes>
-<resources>
-<image name="dinner" width="29" height="29"/>
-<image name="dinnerSeleted" width="29" height="29"/>
-</resources>
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Host a Lunchat-->
+        <scene sceneID="Vka-vE-O0h">
+            <objects>
+                <viewController id="Pbk-By-mpf" customClass="HostViewController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y95-to-X0Y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXu-BR-MNV">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21r-Sb-Vj6">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose your topic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqu-za-tiU">
+                                                <rect key="frame" x="20" y="8" width="140" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nfm-4Y-Vis">
+                                                <rect key="frame" x="14" y="37" width="381" height="277"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nel-dW-rdZ">
+                                                        <rect key="frame" x="8" y="8" width="105" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Movie">
+                                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnMovieTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="eZa-aZ-b4g"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lih-nw-XSV">
+                                                        <rect key="frame" x="121" y="8" width="145" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" title="Photofgraphy">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnPhotoTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="wqB-4s-9ZP"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BIz-hC-2md">
+                                                        <rect key="frame" x="8" y="61" width="105" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Music">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnMusicTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="eTo-OP-BTj"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oA-88-K4R">
+                                                        <rect key="frame" x="8" y="114" width="115" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Business">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnBuisnessTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="Qi8-hF-z1J"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAe-ge-OOJ">
+                                                        <rect key="frame" x="128" y="114" width="131" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Assignment">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnAssignmentTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="QKy-s5-ucR"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNd-jM-E5S">
+                                                        <rect key="frame" x="8" y="167" width="131" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Just Chat">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnJustChatTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="VpO-kv-dtH"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ey-i1-hcj">
+                                                        <rect key="frame" x="121" y="61" width="105" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Travel">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnTravelTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="fDk-w2-9u0"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RaK-W3-E98">
+                                                        <rect key="frame" x="233" y="61" width="105" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Game">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnGameTouchDown:" destination="Pbk-By-mpf" eventType="touchDown" id="M7C-45-Ckl"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnP-TK-OgS">
+                                                        <rect key="frame" x="8" y="220" width="185" height="45"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Build your own topic">
+                                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="btnBuildTopicShowAlert:" destination="Pbk-By-mpf" eventType="touchDown" id="lNF-K7-LM4"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Please enter your title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vnB-zh-Krm">
+                                                <rect key="frame" x="81" y="324" width="276" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Please enter time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhd-c7-t7a">
+                                                <rect key="frame" x="81" y="380" width="276" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8H-Fm-kyR">
+                                                <rect key="frame" x="14" y="336" width="34" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZi-im-KD7">
+                                                <rect key="frame" x="14" y="392" width="38" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8z-OJ-yvw">
+                                                <rect key="frame" x="14" y="448" width="63" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R1s-cs-GgZ">
+                                                <rect key="frame" x="81" y="436" width="155" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Number of people" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-mq-1Sh">
+                                                <rect key="frame" x="26" y="515" width="138" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2u-1u-vSu">
+                                                <rect key="frame" x="243" y="436" width="114" height="45"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Select">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="WAh-1y-81R" kind="show" id="xUZ-Ib-pCZ"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yqa-Kd-HlD">
+                                                <rect key="frame" x="171" y="587" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Let's Lunchat!">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wjH-YU-75S">
+                                                <rect key="frame" x="198" y="515" width="97" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="21r-Sb-Vj6" firstAttribute="centerY" secondItem="tXu-BR-MNV" secondAttribute="centerY" id="Ew9-7i-kz4"/>
+                                    <constraint firstItem="21r-Sb-Vj6" firstAttribute="leading" secondItem="tXu-BR-MNV" secondAttribute="leading" id="F4n-yB-rC5"/>
+                                    <constraint firstItem="21r-Sb-Vj6" firstAttribute="top" secondItem="tXu-BR-MNV" secondAttribute="top" id="HKD-gr-CQn"/>
+                                    <constraint firstItem="21r-Sb-Vj6" firstAttribute="centerX" secondItem="tXu-BR-MNV" secondAttribute="centerX" id="mjk-hx-Wmd"/>
+                                    <constraint firstAttribute="bottom" secondItem="21r-Sb-Vj6" secondAttribute="bottom" id="pMa-gV-CHU"/>
+                                    <constraint firstAttribute="trailing" secondItem="21r-Sb-Vj6" secondAttribute="trailing" id="wz1-Rj-hJO"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aW0-HA-S8c" firstAttribute="bottom" secondItem="tXu-BR-MNV" secondAttribute="bottom" id="4fx-gC-gGk"/>
+                            <constraint firstItem="tXu-BR-MNV" firstAttribute="top" secondItem="aW0-HA-S8c" secondAttribute="top" id="CVt-Bt-hre"/>
+                            <constraint firstItem="tXu-BR-MNV" firstAttribute="leading" secondItem="aW0-HA-S8c" secondAttribute="leading" id="uTD-bk-KnH"/>
+                            <constraint firstItem="aW0-HA-S8c" firstAttribute="trailing" secondItem="tXu-BR-MNV" secondAttribute="trailing" id="x7a-Rq-jOL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aW0-HA-S8c"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Host a Lunchat" id="Mrc-pd-PwR" colorLabel="IBBuiltInLabel-Gray"/>
+                    <connections>
+                        <outlet property="btnAssignment" destination="CAe-ge-OOJ" id="0cw-Ki-5dv"/>
+                        <outlet property="btnBuildTopic" destination="NnP-TK-OgS" id="iVP-Hv-JbA"/>
+                        <outlet property="btnBusiness" destination="6oA-88-K4R" id="EJB-PY-bR8"/>
+                        <outlet property="btnGame" destination="RaK-W3-E98" id="zhS-il-WBq"/>
+                        <outlet property="btnJustChat" destination="JNd-jM-E5S" id="LX7-Fm-iqo"/>
+                        <outlet property="btnLunchat" destination="Yqa-Kd-HlD" id="ddi-Mp-UzR"/>
+                        <outlet property="btnMovie" destination="nel-dW-rdZ" id="M1D-XO-nZa"/>
+                        <outlet property="btnMusic" destination="BIz-hC-2md" id="RdL-7L-hDJ"/>
+                        <outlet property="btnPhotography" destination="lih-nw-XSV" id="RF6-b8-nwS"/>
+                        <outlet property="btnSelectLocation" destination="x2u-1u-vSu" id="2TE-Ah-jsv"/>
+                        <outlet property="btnTravel" destination="9ey-i1-hcj" id="8SQ-iv-ayq"/>
+                        <outlet property="buttonViewGroup" destination="Nfm-4Y-Vis" id="XhP-04-keZ"/>
+                        <outlet property="lbAddress" destination="r8z-OJ-yvw" id="BcR-sX-iqm"/>
+                        <outlet property="lbChooseTopic" destination="gqu-za-tiU" id="81k-lh-6cV"/>
+                        <outlet property="lbTime" destination="OZi-im-KD7" id="cZM-NK-WtY"/>
+                        <outlet property="lbTitle" destination="u8H-Fm-kyR" id="cuz-c5-AFW"/>
+                        <outlet property="textTime" destination="mhd-c7-t7a" id="la9-an-NFT"/>
+                        <outlet property="textTitle" destination="vnB-zh-Krm" id="ErQ-1r-dYk"/>
+                        <outlet property="txtLocation" destination="R1s-cs-GgZ" id="gWf-bc-l9k"/>
+                        <outlet property="txtNumPeople" destination="wjH-YU-75S" id="3uA-JD-9x8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hF2-Dd-JIb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4169.5652173913049" y="-308.03571428571428"/>
+        </scene>
+        <!--Map View Selection Controller-->
+        <scene sceneID="YQs-Sz-gZK">
+            <objects>
+                <viewController id="WAh-1y-81R" customClass="MapViewSelectionController" customModule="Lunchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rne-Uw-gsd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sCb-el-cC5">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin" translatesAutoresizingMaskIntoConstraints="NO" id="oze-10-FE0">
+                                <rect key="frame" x="187" y="408" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="4gx-yd-XoH"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="8F0-6x-Nux"/>
+                                    <constraint firstAttribute="height" constant="40" id="rZY-Jt-xaB"/>
+                                    <constraint firstAttribute="width" constant="40" id="uju-Mm-W80"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABY-sx-VMU">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wJp-S4-UTc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sCb-el-cC5" firstAttribute="trailing" secondItem="fgN-Iy-ShE" secondAttribute="trailing" id="3QZ-e8-G5Z"/>
+                            <constraint firstItem="fgN-Iy-ShE" firstAttribute="bottom" secondItem="ABY-sx-VMU" secondAttribute="bottom" id="4Xl-GE-jSZ"/>
+                            <constraint firstItem="fgN-Iy-ShE" firstAttribute="trailing" secondItem="ABY-sx-VMU" secondAttribute="trailing" id="Eva-v6-Cbp"/>
+                            <constraint firstItem="oze-10-FE0" firstAttribute="centerX" secondItem="Rne-Uw-gsd" secondAttribute="centerX" id="Gy0-So-ybe"/>
+                            <constraint firstItem="fgN-Iy-ShE" firstAttribute="bottom" secondItem="sCb-el-cC5" secondAttribute="bottom" id="Jbz-jf-jGW"/>
+                            <constraint firstItem="sCb-el-cC5" firstAttribute="top" secondItem="fgN-Iy-ShE" secondAttribute="top" id="Mzk-wL-F88"/>
+                            <constraint firstItem="sCb-el-cC5" firstAttribute="leading" secondItem="fgN-Iy-ShE" secondAttribute="leading" id="iG8-4N-IJF"/>
+                            <constraint firstItem="oze-10-FE0" firstAttribute="centerY" secondItem="Rne-Uw-gsd" secondAttribute="centerY" constant="-20" id="tge-Rq-cfG"/>
+                            <constraint firstItem="ABY-sx-VMU" firstAttribute="leading" secondItem="fgN-Iy-ShE" secondAttribute="leading" id="w54-5v-YEn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fgN-Iy-ShE"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="45t-gy-Ilk">
+                        <barButtonItem key="rightBarButtonItem" width="50" systemItem="search" id="3nu-CQ-x1N">
+                            <connections>
+                                <action selector="btnSearch:" destination="WAh-1y-81R" id="Pvx-C1-5KJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addressLabel" destination="ABY-sx-VMU" id="xw9-bx-mQp"/>
+                        <outlet property="myMap" destination="sCb-el-cC5" id="P6P-T8-Ym5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rAF-yd-jn3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4882.608695652174" y="-308.03571428571428"/>
+        </scene>
+        <!--Host-->
+        <scene sceneID="3iX-8u-e2d">
+            <objects>
+                <navigationController storyboardIdentifier="NavigationHost" automaticallyAdjustsScrollViewInsets="NO" id="rFj-wZ-4AF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Host" image="dinner" selectedImage="dinnerSeleted" id="BPh-46-uiU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O60-Zx-k59">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Pbk-By-mpf" kind="relationship" relationship="rootViewController" id="tCw-Ki-e64"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSQ-m1-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4170" y="-1047"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Pin" width="16" height="46"/>
+        <image name="dinner" width="29" height="29"/>
+        <image name="dinnerSeleted" width="29" height="29"/>
+    </resources>
 </document>

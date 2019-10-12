@@ -31,13 +31,15 @@ class HostViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var lbTime: UILabel!
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var lbChooseTopic: UILabel!
-    @IBOutlet weak var txtNumPeople: UITextField!
     @IBOutlet weak var btnSelectLocation: UIButton!
+    @IBOutlet weak var txtNumPeople: UILabel!
     
     
+   
+    //主色调
+    let gray = (UIColor(red: 255/255.0, green: 140/255.0, blue: 105/255.0, alpha: 0.9))
     let datePicker = UIDatePicker()
-    
-    
+//    var np = 0
     func createDatePicker()
     {
         datePicker.datePickerMode = .date
@@ -58,17 +60,45 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         dateFormatter.timeStyle = .none
         
         textTime.text = dateFormatter.string(from: datePicker.date)
+        textTime.textColor = gray
         self.view.endEditing(true)
     }
     
-    
-    //    let locationManager:CLLocationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
         self.buttonViewGroup.layer.borderWidth = 1
         self.buttonViewGroup.layer.borderColor = UIColor(red:222/255, green:225/255, blue:227/255, alpha: 1).cgColor
         
+        customizeElements()
+        setDeleges()
+        
+        buttonViewGroup.layer.cornerRadius = 10.0
+        buttonViewGroup.layer.borderColor = gray.cgColor
+        lbTitle.textColor = gray
+        lbTime.textColor = gray
+        lbAddress.textColor = gray
+        lbChooseTopic.textColor = gray
+        
+//        np = txtNumPeople.text as! Int
+    }
+    
+    func setDeleges()
+    {
+        textTitle.delegate = self
+    }
+    
+    @IBAction func btnUpClicked(_ sender: Any) {
+//        np += 1
+//        txtNumPeople.text = np as! String
+    }
+    
+    @IBAction func btnDownCliked(_ sender: Any) {
+//        np -= 1
+//        txtNumPeople.text = np as! String
+    }
+    func customizeElements()
+    {
         //话题选择
         customizeButtonG1(buttonName: btnMovie, colorName: "54335.png",textPosition: 0)
         customizeButtonG1(buttonName: btnPhotography, colorName: "btnPhoto.png",textPosition: 0)
@@ -81,23 +111,10 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         customizeButtonG1(buttonName: btnBuildTopic, colorName: "btnBuildTopic.png",textPosition: 0)
         customizeButtonG1(buttonName: btnLunchat, colorName: "",textPosition: 1)
         customizeButtonG1(buttonName: btnSelectLocation, colorName: "map.png",textPosition: 0)
-        
-        
-        //textfield keyboard
-        textTitle.delegate = self
-        txtNumPeople.delegate = self
-        //        password.delegate = self
-        //文本框设置 
+         //文本框设置
         customizeText(textField: textTitle)
         customizeText(textField: textTime)
         customizeText(textField: txtLocation)
-        
-        buttonViewGroup.layer.cornerRadius = 10.0
-        buttonViewGroup.layer.borderColor = gray.cgColor
-        lbTitle.textColor = gray
-        lbTime.textColor = gray
-        lbAddress.textColor = gray
-        lbChooseTopic.textColor = gray
     }
     
     func customizeText (textField: UITextField)
@@ -110,13 +127,12 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         textField.placeholderColor = gray
     }
     
+    //键盘消失设置
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    let gray = (UIColor(red: 255/255.0, green: 140/255.0, blue: 105/255.0, alpha: 0.9))
-    //话题选择
     func customizeButtonG1(buttonName:UIButton, colorName:String, textPosition: CGFloat) {
         // change UIbutton propertie
         
@@ -192,6 +208,8 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         }
     }
     
+    
+    
     @IBAction func btnBuildTopicShowAlert(_ sender: UIButton) {
         let alertController = UIAlertController(title:  "Enter the topic", message: nil, preferredStyle: .alert)
         // 在 alertController 中增加两个文本输入框
@@ -199,12 +217,6 @@ class HostViewController: UIViewController , UITextFieldDelegate{
             // 为文本输入框添加占位符，也即输入提示
             textField.placeholder = "Enter new topic"
         })
-        
-        //        alertController.addTextField(configurationHandler: {(textField: UITextField!) -> Void in
-        //            textField.placeholder = "密码"
-        //            // 改变文本输入框的属性为安全输入模式
-        //            textField.isSecureTextEntry = true
-        //        })
         
         let loginAction = UIAlertAction(title: "Done", style: .default, handler: {
             (action:UIAlertAction!) -> Void in
@@ -222,6 +234,9 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    
+    
 }
 
 extension UITextField{
@@ -255,8 +270,6 @@ extension UITextField{
             }
             return font as! UIFont;
         }
-        
-        
         set{
             self.setValue(newValue, forKeyPath: "_placeholderLabel.font")
         }

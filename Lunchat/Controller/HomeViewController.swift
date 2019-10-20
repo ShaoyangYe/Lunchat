@@ -94,8 +94,14 @@ class HomeViewController: UIViewController {
         self.delegate2 = pageContentView.childVcs[1] as? searchDelegate
         searchBar.delegate  = self
         pageContentView.backgroundColor = UIColor.purple
-    }
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
 
+    }
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 }
 // 遵守PageTitleviewDelegate协议
 extension HomeViewController : PageTitleViewDelegate {
@@ -124,14 +130,14 @@ extension HomeViewController : UISearchBarDelegate{
         }
         
     }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        self.searchBar.showsCancelButton = false
-    }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
-
-    }
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.resignFirstResponder()
+//        self.searchBar.showsCancelButton = false
+//    }
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        self.searchBar.showsCancelButton = true
+//
+//    }
 }
 
 extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{

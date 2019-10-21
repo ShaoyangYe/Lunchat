@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class UserApi {
     var REF_USERS = Database.database().reference().child("users")

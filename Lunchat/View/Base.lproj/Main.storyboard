@@ -169,7 +169,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-user-image-square" translatesAutoresizingMaskIntoConstraints="NO" id="gKA-ko-McJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-user-image-square" translatesAutoresizingMaskIntoConstraints="NO" id="gKA-ko-McJ">
                                 <rect key="frame" x="127.66666666666669" y="99" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Oyj-MN-Hak"/>
@@ -216,6 +216,6 @@
         <image name="no-user-image-square" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zWa-Sp-BFu"/>
+        <segue reference="IQr-lv-JCK"/>
     </inferredMetricsTieBreakers>
 </document>

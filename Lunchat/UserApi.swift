@@ -55,7 +55,10 @@ class UserApi {
             snapshot in
             if let dict = snapshot.value as? [String: Any] {
                 let user = UserModel.transformUser(dict: dict, key: snapshot.key)
-                completion(user)
+                // remove current user from all user VC.
+                if user.id! != Api.User.CURRENT_USER?.uid {
+                    completion(user)
+                }
             }
         })
     }

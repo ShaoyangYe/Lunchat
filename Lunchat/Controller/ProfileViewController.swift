@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ProfileViewControllerDelegate {
+    func updateFollowButton(forUser user: UserModel)
+}
+
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var lunchatView: UIView!

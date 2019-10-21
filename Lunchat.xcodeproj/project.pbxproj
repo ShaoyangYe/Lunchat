@@ -51,6 +51,9 @@
 		FC9F37A9234896BF001B19FF /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FC9F37A8234896BE001B19FF /* ProgressHUD.m */; };
 		FC9F37AB2348970A001B19FF /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F37AA23489709001B19FF /* AuthService.swift */; };
 		FC9F37AD23489737001B19FF /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F37AC23489736001B19FF /* Config.swift */; };
+		FCB3EC9E235DC404001FC0B4 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB3EC9D235DC404001FC0B4 /* PeopleViewController.swift */; };
+		FCB3ECA2235DCD35001FC0B4 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB3ECA1235DCD35001FC0B4 /* PeopleTableViewCell.swift */; };
+		FCB3ECA4235DCF41001FC0B4 /* FollowApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB3ECA3235DCF41001FC0B4 /* FollowApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +107,9 @@
 		FC9F37A8234896BE001B19FF /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		FC9F37AA23489709001B19FF /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		FC9F37AC23489736001B19FF /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		FCB3EC9D235DC404001FC0B4 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
+		FCB3ECA1235DCD35001FC0B4 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		FCB3ECA3235DCF41001FC0B4 /* FollowApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +148,8 @@
 				6E912FAB2350AA6900041288 /* LCTableViewCelll.swift */,
 				B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */,
 				B33781E0236129900089D817 /* MessagesCell.swift */,
+				B35B051E234D99F10083B8EB /* MessageCell.swift */,
+				FCB3ECA1235DCD35001FC0B4 /* PeopleTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -163,6 +171,7 @@
 				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
 				B35B0519234D99720083B8EB /* MessageDetailViewController.swift */,
 				6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */,
+				FCB3EC9D235DC404001FC0B4 /* PeopleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -229,6 +238,7 @@
 				FC9F37A42348958D001B19FF /* Api.swift */,
 				FC9F37AA23489709001B19FF /* AuthService.swift */,
 				FC9F37AC23489736001B19FF /* Config.swift */,
+				FCB3ECA3235DCF41001FC0B4 /* FollowApi.swift */,
 				FC9F37A6234896BB001B19FF /* Lunchat-Bridging-Header.h */,
 				6EC91597235CC7B2009CA7F4 /* HelperService.swift */,
 				6EC91599235CC93A009CA7F4 /* PostApi.swift */,
@@ -390,8 +400,10 @@
 				B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */,
 				6E526E01235D5FD700027E53 /* FeedApi.swift in Sources */,
 				6E912FAC2350AA6900041288 /* LCTableViewCelll.swift in Sources */,
+				FCB3EC9E235DC404001FC0B4 /* PeopleViewController.swift in Sources */,
 				FC9F37AD23489737001B19FF /* Config.swift in Sources */,
 				6E912FA22350A9D600041288 /* PageContentView.swift in Sources */,
+				FCB3ECA2235DCD35001FC0B4 /* PeopleTableViewCell.swift in Sources */,
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
 				B33781E3236129C60089D817 /* Message.swift in Sources */,
 				835E5F88235C5F69002D2DDE /* Event.swift in Sources */,
@@ -412,6 +424,7 @@
 				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,
 				6E912FAA2350AA3F00041288 /* RecommendViewController.swift in Sources */,
 				FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */,
+				FCB3ECA4235DCF41001FC0B4 /* FollowApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -397,12 +397,23 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="L4g-AO-5kL"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="companyLabel" destination="MfR-4N-Q3c" id="u1U-Ys-xjs"/>
+                        <outlet property="currentResidenceLabel" destination="Vtj-Z4-JTd" id="UKT-bR-3nV"/>
                         <outlet property="editButton" destination="nqQ-XL-yno" id="nCt-U4-Wpb"/>
+                        <outlet property="eduBackgroundLabel" destination="hxO-oc-3ig" id="G7e-Pb-exk"/>
                         <outlet property="likes" destination="VGF-i3-6ya" id="Bi6-XH-l8T"/>
+                        <outlet property="likesCount" destination="dZ5-KV-2IO" id="U9H-qe-W0W"/>
                         <outlet property="logoutButton" destination="0zP-4X-qzX" id="6n6-H8-0aj"/>
+                        <outlet property="lunchMateCount" destination="pem-5U-gRH" id="iPs-qo-FzN"/>
+                        <outlet property="lunchatCount" destination="DIP-kf-Jrm" id="855-va-2Xy"/>
                         <outlet property="lunchatMate" destination="FaI-d8-ljc" id="SdB-TU-Evk"/>
                         <outlet property="lunchatView" destination="gLz-cM-1QN" id="kMp-wh-hPG"/>
-                        <outlet property="profileimage" destination="aca-mP-z9g" id="jzo-rd-1nM"/>
+                        <outlet property="majorLabel" destination="Dwu-8e-TIA" id="GjS-Cf-ib2"/>
+                        <outlet property="nameLabel" destination="tyM-cE-lfe" id="16F-bx-l8s"/>
+                        <outlet property="originalResidenceLabel" destination="vkW-AU-6pZ" id="dWw-9e-ugq"/>
+                        <outlet property="positionLabel" destination="XsL-wC-5ST" id="l3f-u6-A9I"/>
+                        <outlet property="profileImage" destination="aca-mP-z9g" id="cze-Zq-E5V"/>
+                        <outlet property="schoolLabel" destination="YcD-aF-NGK" id="7Bc-14-Dkj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XcB-Mh-5n1" userLabel="First Responder" sceneMemberID="firstResponder"/>

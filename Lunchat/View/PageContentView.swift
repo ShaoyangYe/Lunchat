@@ -159,7 +159,6 @@ extension PageContentView{
     @objc func removeButtonClick(){
         self.collctionView.viewWithTag(99)?.removeFromSuperview()
         self.collctionView.viewWithTag(100)?.removeFromSuperview()
-
     }
 }
 

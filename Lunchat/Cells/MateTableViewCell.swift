@@ -12,7 +12,9 @@ class MateTableViewCell: UITableViewCell {
     var iconImv:UIImageView!  // 图片
     var userLabel:UILabel!       // 名称
     var departmentLabel:UILabel!    // 部门
-
+    var uid:String!
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         iconImv = UIImageView(frame: CGRect(x: 5, y: 5, width: 90, height: 90))

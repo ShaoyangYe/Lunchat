@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import FirebaseDatabase
+import FirebaseAuth
 
 class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 //    var dataSource = [
@@ -19,6 +20,7 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var tableView = UITableView()
     var dataSource = [[String:String]()]
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,12 +29,15 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        
-        
-        print("假装")
-        self.mate = self.dataSource
-        
-        tableView.reloadData()
+        getData(){ (mateResult:[[String:String]]) in
+            // this will only be called when findUniqueId trigger completion(sID)...
+//            print(mateResult)
+            self.dataSource = mateResult
+            self.mate = self.dataSource
+            self.tableView.reloadData()
+        }
+//        print("1")
+
     }
     
     //MARK: UITableViewDataSource
@@ -48,9 +53,22 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             cell = MateTableViewCell(style: .subtitle, reuseIdentifier: cellid)
         }
         let dict:Dictionary = self.mate[indexPath.row]
-        cell?.iconImv.image = UIImage(named: dict["icon"]!)
+        if dict["icon"] != nil{
+            let url : URL = URL.init(string: dict["icon"]!)!
+             let data : NSData! = NSData(contentsOf: url)
+             if data != nil {
+                cell?.iconImv.image = UIImage.init(data: data as Data, scale: 1) //赋值图片
+             }
+             else{
+                 cell?.iconImv.image = UIImage(named:"no-user-image-square")
+             }
+        }else{
+            cell?.iconImv.image = UIImage(named:"no-user-image-square")
+        }
+        cell?.uid = dict["uid"]
+//        cell?.iconImv.image = UIImage(named: dict["icon"]!)
         cell?.userLabel.text = dict["name"]
-//        cell?.sexLabel.text = dict["sex"]
+        //        cell?.sexLabel.text = dict["sex"]
         cell?.departmentLabel.text = dict["department"]
         return cell!
     }
@@ -92,32 +110,54 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
 extension MateViewController : searchDelegate{
     func transmitString(context: String){
-         if context == "" {
-                self.mate = self.dataSource
-           }
-         else {
-
-           // 匹配用户输入的前缀，不区分大小写
+        if context == "" {
+            self.mate = self.dataSource
+        }
+        else {
+            
+            // 匹配用户输入的前缀，不区分大小写
             self.mate = []
-            print(context)
-            print(self.dataSource)
-            print(self.mate)
             for arr in self.dataSource {
-
+                
                 if ((arr["name"]?.lowercased().contains(context.lowercased()))!) {
-                       self.mate.append(arr)
-                   }
-           }
+                    self.mate.append(arr)
+                }
+            }
             for arr in self.dataSource {
-
+                
                 if ((arr["department"]?.lowercased().contains(context.lowercased()))!) {
                     if !self.mate.contains(arr){
                         self.mate.append(arr)
                     }
                 }
             }
-           }
+        }
         self.tableView.reloadData()
-//        print(context)
+        //        print(context)
     }
+}
+extension MateViewController{
+    func getData(completion:@escaping(_ mateResult:[[String:String]])->()){
+        var result = [[String:String]]()
+        if Api.User.CURRENT_USER != nil {
+            Api.User.REF_CURRENT_USER?.child("friends").observeSingleEvent(of: .value, with: {(snapshot) in
+                // Get user value
+                let users = snapshot.value as? Dictionary<String,Any>
+                //                print(value)
+                for (key, value) in users!{
+                    let dict = value as! Dictionary<String,String>
+                    var mate = [String:String]()
+                    mate["name"] = dict["username"]
+                    mate["icon"] = dict["profileImageUrl"]
+                    mate["department"] = dict["email"]
+                    mate["uid"] = key
+                    result.append(mate)
+                }
+                completion(result)
+              }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
 }

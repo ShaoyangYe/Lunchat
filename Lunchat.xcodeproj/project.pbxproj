@@ -16,6 +16,7 @@
 		6E912FAC2350AA6900041288 /* LCTableViewCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FAB2350AA6900041288 /* LCTableViewCelll.swift */; };
 		6E912FAE2350AA7100041288 /* MateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FAD2350AA7100041288 /* MateTableViewCell.swift */; };
 		750033527232F0C87A4CAA1B /* Pods_Lunchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824CD3857F41965043A667DB /* Pods_Lunchat.framework */; };
+		835E5F88235C5F69002D2DDE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E5F87235C5F69002D2DDE /* Event.swift */; };
 		B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B0519234D99720083B8EB /* MessageDetailViewController.swift */; };
 		B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */; };
 		B35B051F234D99F10083B8EB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051E234D99F10083B8EB /* MessageCell.swift */; };
@@ -57,6 +58,7 @@
 		6E912FAB2350AA6900041288 /* LCTableViewCelll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCTableViewCelll.swift; sourceTree = "<group>"; };
 		6E912FAD2350AA7100041288 /* MateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MateTableViewCell.swift; sourceTree = "<group>"; };
 		824CD3857F41965043A667DB /* Pods_Lunchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lunchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		835E5F87235C5F69002D2DDE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Lunchat/Event.swift; sourceTree = SOURCE_ROOT; };
 		B35B0519234D99720083B8EB /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageMateTableViewCell.swift; sourceTree = "<group>"; };
 		B35B051E234D99F10083B8EB /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				FC9F37A023489517001B19FF /* User.swift */,
+				835E5F87235C5F69002D2DDE /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				FC9F37AD23489737001B19FF /* Config.swift in Sources */,
 				6E912FA22350A9D600041288 /* PageContentView.swift in Sources */,
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
+				835E5F88235C5F69002D2DDE /* Event.swift in Sources */,
 				FC56DE262327D2C10051B708 /* AppDelegate.swift in Sources */,
 				FC9F37A52348958D001B19FF /* Api.swift in Sources */,
 				FC9F37AB2348970A001B19FF /* AuthService.swift in Sources */,

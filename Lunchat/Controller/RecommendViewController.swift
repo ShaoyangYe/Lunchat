@@ -7,34 +7,35 @@
 //
 
 import UIKit
+import Foundation
+import FirebaseDatabase
+import FirebaseAuth
+
+
 
 class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var dataSource = [[String:String]()]
     var collectedFlag = Bool()
     var result = [[String:String]()]
     var tableView = UITableView()
-    
+    var ref: DatabaseReference!
+    var refreshAction = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
         tableView = UITableView(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: UIScreen.main.bounds.height-256), style: .plain)
         tableView.backgroundColor = UIColor.white;
-        view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.isScrollEnabled = true
         tableView.bounces = false
-//        dataSource = [
-//            ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true"],
-//            ["title":"What's your favorite movie?","theme":"Movie","location":"Union House","participant":"3","MaxParticipant":"4","time":"12:00","collected": "false"],
-//            ["title":"Do you like art?","theme":"Art","location":"Union House","participant":"3","MaxParticipant":"3","time":"16:40","collected": "false"],
-//            ["title":"Go to Gym?","theme":"Sport","location":"Union House","participant":"1","MaxParticipant":"2","time":"10:50","collected": "false"],
-//            ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true"],
-//            ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true"],
-//            ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true"]]
-        self.result  = dataSource
-        tableView.reloadData()
+         //创建刷新控件
+        getData()
+//        self.result = self.dataSource
+//        self.tableView.reloadData()
+//        self.view.addSubview(self.tableView)
     }
-    
+
     //MARK: UITableViewDataSource
     // cell的个数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,7 +49,6 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
             cell = LCTableViewCell(style: .subtitle, reuseIdentifier: cellid)
         }
 //        print(self.result)
-//        print(indexPath.row)
         let dict:Dictionary = self.result[indexPath.row]
         cell?.titleLabel.text = dict["title"]
         cell?.themeLabel.text = dict["theme"]
@@ -58,7 +58,7 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell?.participant.text = dict["participant"]!+"/"+maxNumber!
         cell?.timeLabel.text = dict["time"]
         cell?.locationLabel.text = dict["location"]!
-    
+        cell?.eventID = dict["eventID"]
         collectedFlag =  (dict["collected"]! as NSString).boolValue
         cell?.collecteButton.setImage(UIImage(named: "video_btn_collect40HL"), for: .normal)
 
@@ -117,7 +117,9 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
 
 extension RecommendViewController : searchDelegate{
     func transmitString(context: String){
+         print(context)
          if context == "" {
+                print(self.dataSource)
                 self.result = self.dataSource
            } else {
                
@@ -140,5 +142,45 @@ extension RecommendViewController : searchDelegate{
                 }
            }
         self.tableView.reloadData()
+    }
+}
+
+
+
+extension RecommendViewController{
+    
+    func getData()  {
+        ProgressHUD.show("Waiting...", interaction: false)
+        var appointmentData = [[String:String]]()
+        var dict = [Dictionary<String,Any>]()
+        let ref = Database.database().reference().child("events")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+              // Get user value
+              let events = snapshot.value as? Dictionary<String,Any>
+//                print(value)
+                for (key, value) in events!{
+                    var transformed_events = [String:String]()
+                    let dicValue = value as! Dictionary<String,Any>
+                    transformed_events["title"] = dicValue["title"] as! String
+                    transformed_events["theme"] = dicValue["theme"] as! String
+                    transformed_events["location"] = dicValue["location"] as! String
+                    var participants = Array<String>()
+                    participants = dicValue["participants"] as! Array<String>
+                    transformed_events["participant"] = String(participants.count)
+                    transformed_events["MaxParticipant"] = String(dicValue["maxParticipants"] as! Int)
+                    transformed_events["time"] = dicValue["time"] as! String
+                    transformed_events["latitude"] = dicValue["latitude"] as! String
+                    transformed_events["longitude"] = dicValue["longitude"] as! String
+                    transformed_events["collected"] = "true"
+                    transformed_events["eventID"] = key
+                    appointmentData.append(transformed_events)
+                }
+            self.result = appointmentData
+            self.dataSource = appointmentData
+            print("reload")
+            self.tableView.reloadData()
+            self.view.addSubview(self.tableView)
+            ProgressHUD.dismiss()
+            }
     }
 }

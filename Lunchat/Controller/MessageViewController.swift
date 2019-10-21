@@ -26,9 +26,7 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-    
-        print("假装")
-        self.mate = self.dataSource
+            self.mate = self.dataSource
         
         tableView.reloadData()
     }

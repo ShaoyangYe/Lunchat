@@ -19,6 +19,8 @@
 		B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B0519234D99720083B8EB /* MessageDetailViewController.swift */; };
 		B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */; };
 		B35B051F234D99F10083B8EB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051E234D99F10083B8EB /* MessageCell.swift */; };
+		B3C9FA26235C8A77005C82D6 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C9FA25235C8A77005C82D6 /* Message.swift */; };
+		B3C9FA28235C93F6005C82D6 /* MessageDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C9FA27235C93F6005C82D6 /* MessageDetail.swift */; };
 		FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1D232897E4006FBA6E /* SignUpViewController.swift */; };
 		FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1F2328D78A006FBA6E /* HomeViewController.swift */; };
 		FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A212328D909006FBA6E /* ManageViewController.swift */; };
@@ -60,6 +62,8 @@
 		B35B0519234D99720083B8EB /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageMateTableViewCell.swift; sourceTree = "<group>"; };
 		B35B051E234D99F10083B8EB /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		B3C9FA25235C8A77005C82D6 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Lunchat/Cells/Message.swift; sourceTree = SOURCE_ROOT; };
+		B3C9FA27235C93F6005C82D6 /* MessageDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MessageDetail.swift; path = Lunchat/Cells/MessageDetail.swift; sourceTree = SOURCE_ROOT; };
 		FC216A1D232897E4006FBA6E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC216A1F2328D78A006FBA6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FC216A212328D909006FBA6E /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				FC9F37A023489517001B19FF /* User.swift */,
+				B3C9FA25235C8A77005C82D6 /* Message.swift */,
+				B3C9FA27235C93F6005C82D6 /* MessageDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -364,6 +370,7 @@
 				6E912FA82350AA3600041288 /* MateViewController.swift in Sources */,
 				B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */,
 				6E912FAC2350AA6900041288 /* LCTableViewCelll.swift in Sources */,
+				B3C9FA26235C8A77005C82D6 /* Message.swift in Sources */,
 				FC9F37AD23489737001B19FF /* Config.swift in Sources */,
 				6E912FA22350A9D600041288 /* PageContentView.swift in Sources */,
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
@@ -379,6 +386,7 @@
 				FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */,
 				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,
 				6E912FAA2350AA3F00041288 /* RecommendViewController.swift in Sources */,
+				B3C9FA28235C93F6005C82D6 /* MessageDetail.swift in Sources */,
 				FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

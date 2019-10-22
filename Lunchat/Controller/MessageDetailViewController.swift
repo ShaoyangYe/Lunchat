@@ -7,22 +7,33 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
-class MessageDetailViewController: UIViewController {
+class MessageDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     //列表控件
    
     @IBOutlet weak var view1: UIView!
     
     @IBOutlet weak var testingLabel: UILabel!
 
-    @IBOutlet weak var messageBox: UITextField!
+    @IBOutlet weak var messageField: UITextField!
     
     @IBOutlet weak var sendButton: UIButton!
     
-    @IBOutlet weak var messageView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     //列表数据源
-    var messages:[String] = []
+    
+    var messageId: String!
+    
+    var messages = [Message]()
+    
+    var message: Message!
+    
+    var currentUser = Api.User.CURRENT_USER
+
+    var recipient: String!
     
     
     override func viewDidLoad() {
@@ -30,41 +41,226 @@ class MessageDetailViewController: UIViewController {
 
         
         //设置列表数据源和代理
-        messageView.dataSource = self
-        messageView.delegate = self
-        messageView.rowHeight = UITableView.automaticDimension
-        messageView.estimatedRowHeight = 300
+        tableView.dataSource = self
+        
+        tableView.delegate = self
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        tableView.estimatedRowHeight = 300
         print("假装")
         
         //增加模拟数据
         
-        for index in 0...19 {
-            messages.append("\(index)")
+        if messageId != "" && messageId != nil {
+            
+            loadData()
         }
+        
+//        for index in 0...19 {
+//            messages.append("\(index)")
+//        }
         //让列表重新加载数据
-        messageView.reloadData()
+        //messageView.reloadData()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+            
+            self.moveToBottom()
+        }
     }
     
-
-}
-//列表数据源和代理
-
-extension MessageDetailViewController:UITableViewDataSource,UITableViewDelegate {
+    func keyboardWillShow(notify: NSNotification) {
+        
+        if let keyboardSize = (notify.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            if self.view.frame.origin.y == 0 {
+                
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
     
-    //列表的行数
+    func keyboardWillHide(notify: NSNotification) {
+        
+        if let keyboardSize = (notify.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            if self.view.frame.origin.y != 0 {
+                
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+        
+        view.endEditing(true)
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return messages.count
     }
     
-    //返回当前位置Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //获取cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MessageCell
         
-        //返回Cell
-        return cell
+        let message = messages[indexPath.row]
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Message") as? MessagesCell {
+            
+            cell.configCell(message: message)
+            
+            return cell
+            
+        } else {
+            
+            return MessagesCell()
+        }
     }
     
+    func loadData() {
+        
+        Database.database().reference().child("messages").child(messageId).observe(.value, with: { (snapshot) in
+            
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
+                
+                self.messages.removeAll()
+                
+                for data in snapshot {
+                    
+                    if let postDict = data.value as? Dictionary<String, AnyObject> {
+                        
+                        let key = data.key
+                        
+                        let post = Message(messageKey: key, postData: postDict)
+                        
+                        self.messages.append(post)
+                    }
+                }
+            }
+            
+            self.tableView.reloadData()
+        })
+    }
     
+    func moveToBottom() {
+        
+        if messages.count > 0  {
+            
+            let indexPath = IndexPath(row: messages.count - 1, section: 0)
+            
+            tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+        }
+    }
     
+    @IBAction func sendPressed (_ sender: AnyObject) {
+        
+        dismissKeyboard()
+        
+        if (messageField.text != nil && messageField.text != "") {
+            
+            if messageId == nil {
+                
+                let post: Dictionary<String, AnyObject> = [
+                    "message": messageField.text as AnyObject,
+                    "sender": recipient as AnyObject
+                ]
+                
+                let message: Dictionary<String, AnyObject> = [
+                    "lastmessage": messageField.text as AnyObject,
+                    "recipient": recipient as AnyObject
+                ]
+                
+                let recipientMessage: Dictionary<String, AnyObject> = [
+                    "lastmessage": messageField.text as AnyObject,
+                    "recipient": currentUser as AnyObject
+                ]
+                
+                messageId = Database.database().reference().child("messages").childByAutoId().key
+                
+                let firebaseMessage = Database.database().reference().child("messages").child(messageId).childByAutoId()
+                
+                firebaseMessage.setValue(post)
+                
+                let recipentMessage = Database.database().reference().child("users").child(recipient).child("messages").child(messageId)
+                
+                recipentMessage.setValue(recipientMessage)
+                
+                let userMessage = Database.database().reference().child("users").child(currentUser!).child("messages").child(messageId)
+                
+                userMessage.setValue(message)
+                
+                loadData()
+            } else if messageId != "" {
+                
+                let post: Dictionary<String, AnyObject> = [
+                    "message": messageField.text as AnyObject,
+                    "sender": recipient as AnyObject
+                ]
+                
+                let message: Dictionary<String, AnyObject> = [
+                    "lastmessage": messageField.text as AnyObject,
+                    "recipient": recipient as AnyObject
+                ]
+                
+                let recipientMessage: Dictionary<String, AnyObject> = [
+                    "lastmessage": messageField.text as AnyObject,
+                    "recipient": currentUser as AnyObject
+                ]
+                
+                let firebaseMessage = Database.database().reference().child("messages").child(messageId).childByAutoId()
+                
+                firebaseMessage.setValue(post)
+                
+                let recipentMessage = Database.database().reference().child("users").child(recipient).child("messages").child(messageId)
+                
+                recipentMessage.setValue(recipientMessage)
+                
+                let userMessage = Database.database().reference().child("users").child(currentUser!).child("messages").child(messageId)
+                
+                userMessage.setValue(message)
+                
+                loadData()
+            }
+            
+            messageField.text = ""
+        }
+        
+        moveToBottom()
+    }
+    
+    @IBAction func backPressed (_ sender: AnyObject) {
+        
+        dismiss(animated: true, completion: nil)
+    }
+    
+
 }
+////列表数据源和代理
+//
+//extension MessageDetailViewController:UITableViewDataSource,UITableViewDelegate {
+//
+//    //列表的行数
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return messages.count
+//    }
+//
+//    //返回当前位置Cell
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        //获取cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! MessageCell
+//
+//        //返回Cell
+//        return cell
+//    }
+//
+//
+//
+//}

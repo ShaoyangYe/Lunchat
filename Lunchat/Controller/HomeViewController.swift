@@ -22,8 +22,9 @@ class HomeViewController: UIViewController {
     weak var delegate : searchDelegate?
     weak var delegate2 : searchDelegate?
     var locationManager: CLLocationManager?
+    var notification: UIBarButtonItem?
     
-//    var mapview: MKMapView!
+    var mapview: MKMapView!
     var apointmentData = [
         ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.791915927734375","longitude":"144.96056159442693"],
     ["title":"What's your favorite movie?","theme":"Movie","location":"Union House","participant":"3","MaxParticipant":"4","time":"12:00","collected": "false","latitude":"-37.793915927734375","longitude":"144.96056159442693"],
@@ -32,6 +33,8 @@ class HomeViewController: UIViewController {
     ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.796915927734375","longitude":"144.96056159442693"],
     ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.795815927734375","longitude":"144.96056159442693"],
     ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.795315927734375","longitude":"144.96056159442693"]]
+    var apointmentData2 = [[String:String]]()
+    
     
     var mateData = [
     ["name":"Tom Marshall","sex":"male","icon":"no-user-image-square","department":"Master of Bussiness"],
@@ -68,7 +71,8 @@ class HomeViewController: UIViewController {
 
         let vc = RecommendViewController()
         //        vc.view.backgroundColor = UIColor.red
-        vc.dataSource = apointmentData
+        
+        vc.dataSource = self.apointmentData
         childVcs.append(vc)
         
         let vc1 = MateViewController()
@@ -83,8 +87,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(self.tabBarController?.tabBar.frame.height)
         self.edgesForExtendedLayout = UIRectEdge.init()
+       self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "image_openNotice"), landscapeImagePhone: UIImage(named: "image_openNotice"), style: .plain, target: .none, action: .none)
+//
         
         view.addSubview(searchBar)
         view.addSubview(pageTitleView)
@@ -94,8 +99,15 @@ class HomeViewController: UIViewController {
         self.delegate2 = pageContentView.childVcs[1] as? searchDelegate
         searchBar.delegate  = self
         pageContentView.backgroundColor = UIColor.purple
-    }
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+//        var di = [Dictionary<String,Any>]()
 
+    }
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
 }
 // 遵守PageTitleviewDelegate协议
 extension HomeViewController : PageTitleViewDelegate {
@@ -124,14 +136,14 @@ extension HomeViewController : UISearchBarDelegate{
         }
         
     }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        self.searchBar.showsCancelButton = false
-    }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
-
-    }
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.resignFirstResponder()
+//        self.searchBar.showsCancelButton = false
+//    }
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        self.searchBar.showsCancelButton = true
+//
+//    }
 }
 
 extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
@@ -235,3 +247,4 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
 //    }
     
 }
+

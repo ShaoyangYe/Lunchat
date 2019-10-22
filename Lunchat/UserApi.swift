@@ -12,6 +12,9 @@ import FirebaseAuth
 
 class UserApi {
     var REF_USERS = Database.database().reference().child("users")
+    var ALL_EVENTS = Database.database().reference().child("events")
+    
+    
     
     func observeUserByUsername(username: String, completion: @escaping (UserModel) -> Void) {
         REF_USERS.queryOrdered(byChild: "username_lowercase").queryEqual(toValue: username).observeSingleEvent(of: .childAdded, with: {
@@ -83,4 +86,12 @@ class UserApi {
         
         return REF_USERS.child(currentUser.uid)
     }
+    
+    var CURRENT_EVENTS: DatabaseReference?{
+        guard Auth.auth().currentUser != nil else {
+            return nil
+        }
+        return ALL_EVENTS
+    }
+    
 }

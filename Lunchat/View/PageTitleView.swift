@@ -111,7 +111,7 @@ extension PageTitleView{
         // add first scrollLine
         guard let firstLabel = titleLabels.first else {return}
         firstLabel.textColor = UIColor.orange
-        
+//        firstLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         scrollView.addSubview(scrolllLine)
         scrolllLine.frame = CGRect(x: firstLabel.frame.origin.x, y: frame.height - kScrollLLineH, width: firstLabel.frame.width, height: kScrollLLineH)
     }
@@ -120,9 +120,7 @@ extension PageTitleView{
 //        let mapview:MKMapView=MKMapView.init(frame:CGRect.init(x: 0, y: 0, width: 300, height: 300))
         delegate?.mapview(titleView: self, ifmap: true)
         //3.切换文字的颜色
-        titleLabels[0].textColor = UIColor.darkGray
-        titleLabels[1].textColor = UIColor.darkGray
-        scrolllLine.backgroundColor = UIColor.white
+
         
     }
 }
@@ -136,6 +134,8 @@ extension PageTitleView{
         //3.切换文字的颜色
         oldLabel.textColor = UIColor.darkGray
         currentLabel.textColor = UIColor.orange
+//        currentLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+
         //4.保存最新label下标
         currentIndex = currentLabel.tag
         
@@ -168,7 +168,9 @@ extension PageTitleView{
         //3.颜色改变
         sourceLabel.textColor = UIColor.gray
         targetLabel.textColor = UIColor.orange
+//        targetLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         
         scrolllLine.backgroundColor = UIColor.orange
+//        scrolllLine.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
     }
 }

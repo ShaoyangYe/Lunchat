@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MapKit
 
-class LCTableViewCell: UITableViewCell {
+class LCTableViewCell: UITableViewCell,CLLocationManagerDelegate,MKMapViewDelegate{
     let width:CGFloat = UIScreen.main.bounds.width
     var titleLabel:UILabel!      // 名字
     var themeLabel:UILabel!  // 主题
@@ -24,10 +25,16 @@ class LCTableViewCell: UITableViewCell {
     var timeWithImage : UILabel!
     var collecteButton: UIButton!
     var participants : [Dictionary<String,String>]!
-
+    var longtitude: String!
+    var latitude: String!
+    var uid: String!
+    var expand: Bool = false
+    
+    var mapView: MKMapView!
+    
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         // 名字
         titleLabel = UILabel(frame: CGRect(x: 5, y: 12, width: 300, height: 20))
         titleLabel.textColor = UIColor.black
@@ -77,7 +84,15 @@ class LCTableViewCell: UITableViewCell {
         
         collecteButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.size.width-35, y: 70, width: 25, height: 25))
         
-        
+        if expand{
+            mapView=MKMapView.init(frame:CGRect.init(x: 150, y: 150, width:100 , height:100 ))
+            mapView.tag = 99
+            addSubview(mapView)
+            print("expand")
+        }else{
+            viewWithTag(99)?.removeFromSuperview()
+        }
+
         contentView.addSubview(titleLabel)
         contentView.addSubview(themeLabel)
         contentView.addSubview(locationWithImage)

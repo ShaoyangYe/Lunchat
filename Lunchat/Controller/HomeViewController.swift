@@ -208,7 +208,7 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
             objectAnnotation.subtitle = self.apointmentData[i-1]["location"]
             mapview.addAnnotation(objectAnnotation)
         }
-        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let center:CLLocation = CLLocation(latitude: -37.796915927734375, longitude: 144.96056159442693)
         let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,
         span: currentLocationSpan)

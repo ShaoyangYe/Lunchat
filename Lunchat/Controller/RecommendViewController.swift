@@ -10,16 +10,22 @@ import UIKit
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
-
+import MapKit
 
 
 class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+    
+    private var dateCellExpanded: Bool = false
+    var uid : String!
     var dataSource = [[String:String]()]
     var collectedFlag = Bool()
     var result = [[String:String]()]
     var tableView = UITableView()
     var ref: DatabaseReference!
     var refreshAction = UIRefreshControl()
+    var eventDetail:EventDetailViewController?
+    var expandCell: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
@@ -59,11 +65,13 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell?.timeLabel.text = dict["time"]
         cell?.locationLabel.text = dict["location"]!
         cell?.eventID = dict["eventID"]
+        cell?.latitude = dict["latitude"]
+        cell?.longtitude = dict["longtitude"]
         collectedFlag =  (dict["collected"]! as NSString).boolValue
         cell?.collecteButton.setImage(UIImage(named: "video_btn_collect40HL"), for: .normal)
-
+        cell?.uid = self.uid
         cell?.collecteButton.setImage(UIImage(named: "video_btn_collected40"), for: .selected)
-
+        cell?.selectionStyle = .none
         if collectedFlag{
             cell?.collecteButton.isSelected = true
         }
@@ -76,16 +84,72 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     //MARK: UITableViewDelegate
     // 设置cell高度
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100.0
+//    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
 
     // 选中cell后执行此方法
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        if indexPath.row != self.expandCell  {
+            self.expandCell = indexPath.row
+            if let ratableCell = tableView.cellForRow(at: indexPath) as? LCTableViewCell {
+                // set participant
+                let part_num:Int = Int(self.result[indexPath.row]["participant"]!)!
+                let participantLabel = UITextView(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
+                var names = "participants:\n"
+                for i in 0..<part_num{
+                    names = names + "lyyc"
+                    names =  names + "\n"
+                }
+                participantLabel.text = names
+                participantLabel.font = UIFont.boldSystemFont(ofSize: 25)
+                participantLabel.tag = 98
+                ratableCell.addSubview(participantLabel)
+                
+                
+                // set map
+                let mapView=MKMapView.init(frame:CGRect.init(x: view.bounds.width-210, y:110 , width:200 , height:200 ))
+                    mapView.tag = 99
+                let objectAnnotation = MKPointAnnotation()
+                let latitude = (self.result[indexPath.row]["latitude"]! as NSString).doubleValue
+                let longitude = (self.result[indexPath.row]["longitude"]! as NSString).doubleValue
+                objectAnnotation.coordinate = CLLocation(latitude: latitude,
+                longitude: longitude).coordinate
+                objectAnnotation.title = self.result[indexPath.row]["location"]
+                //设置点击大头针之后显示的描述
+                objectAnnotation.subtitle = self.result[indexPath.row]["title"]
+                mapView.addAnnotation(objectAnnotation)
+                let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+                let center:CLLocation = CLLocation(latitude: latitude, longitude: longitude)
+                let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,
+                span: currentLocationSpan)
+                mapView.setRegion(currentRegion, animated: true)
+                mapView.layer.cornerRadius = 15
+                ratableCell.addSubview(mapView)
+            }
+        } else {
+            self.expandCell = -1
+            if let ratableCell = tableView.cellForRow(at: indexPath) as? LCTableViewCell {
+                // instead of telling tableView to reload this cell, just configure here
+                // the changed data, e.g.:
+                ratableCell.viewWithTag(98)?.removeFromSuperview()
+                ratableCell.viewWithTag(99)?.removeFromSuperview()
+            }
+        }
+
+            tableView.beginUpdates()
+            tableView.endUpdates()
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            if indexPath.row == self.expandCell {
+                return 400
+            } else {
+                return 100
+            }
     }
     // 点击按钮
     @objc private func buttonAction(button : UIButton) {
@@ -150,6 +214,8 @@ extension RecommendViewController : searchDelegate{
 extension RecommendViewController{
     
     func getData()  {
+        self.uid = Auth.auth().currentUser?.uid
+        view.viewWithTag(100)?.removeFromSuperview()
         ProgressHUD.show("Waiting...", interaction: false)
         var appointmentData = [[String:String]]()
         var dict = [Dictionary<String,Any>]()
@@ -165,7 +231,12 @@ extension RecommendViewController{
                     transformed_events["theme"] = dicValue["theme"] as! String
                     transformed_events["location"] = dicValue["location"] as! String
                     var participants = Array<String>()
+                    var num:Int = 0
                     participants = dicValue["participants"] as! Array<String>
+                    for i in participants{
+                        transformed_events[String(num)] = i
+                        num = num + 1
+                    }
                     transformed_events["participant"] = String(participants.count)
                     transformed_events["MaxParticipant"] = String(dicValue["maxParticipants"] as! Int)
                     transformed_events["time"] = dicValue["time"] as! String
@@ -179,6 +250,7 @@ extension RecommendViewController{
             self.dataSource = appointmentData
             print("reload")
             self.tableView.reloadData()
+            self.tableView.tag = 100
             self.view.addSubview(self.tableView)
             ProgressHUD.dismiss()
             }

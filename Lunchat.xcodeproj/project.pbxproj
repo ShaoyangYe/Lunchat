@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1940CD235FE6EF00BD77B0 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */; };
 		6E153949234DA4EE007B1C7B /* MapViewSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */; };
 		6E912FA22350A9D600041288 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FA12350A9D600041288 /* PageContentView.swift */; };
 		6E912FA42350A9E400041288 /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FA32350A9E300041288 /* PageTitleView.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		640F8F413A805A274919D976 /* Pods-Lunchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.release.xcconfig"; sourceTree = "<group>"; };
 		69E5BF3B8706DD4FAEFCAB75 /* Pods-Lunchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.debug.xcconfig"; sourceTree = "<group>"; };
 		6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewSelectionController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				FC216A252328D928006FBA6E /* MessageViewController.swift */,
 				FC216A232328D915006FBA6E /* HostViewController.swift */,
 				FC216A212328D909006FBA6E /* ManageViewController.swift */,
+				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
 				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
 				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
 				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
@@ -379,6 +382,7 @@
 				FC9F37A9234896BF001B19FF /* ProgressHUD.m in Sources */,
 				FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */,
 				FC9F37A123489517001B19FF /* User.swift in Sources */,
+				0B1940CD235FE6EF00BD77B0 /* EventDetailViewController.swift in Sources */,
 				B35B051F234D99F10083B8EB /* MessageCell.swift in Sources */,
 				FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */,
 				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,

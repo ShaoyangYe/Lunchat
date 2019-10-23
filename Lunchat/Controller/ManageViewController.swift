@@ -9,8 +9,8 @@
 import UIKit
 import Firebase
 
-class ManageViewController: UIViewController {
-    
+class ManageViewController: UIViewController, EventDetailViewControllerProtocol {
+
     @IBOutlet var vwView: UIView!
     
     @IBOutlet weak var scSegment: UISegmentedControl!
@@ -25,14 +25,21 @@ class ManageViewController: UIViewController {
     // TEST
     
     var dbRef:DatabaseReference?
+    var eventDetail:EventDetailViewController?
     
     var segmentIndex = 0
+    var currentEventsIndex:Int?
     
     var events = [Event]()
     var type = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        eventDetail = storyboard?.instantiateViewController(withIdentifier: "EventDetailVC") as? EventDetailViewController
+        
+        eventDetail?.modalPresentationStyle = .overCurrentContext
+        eventDetail?.delegate = self
         
         // Set self as the delegata and datasource for the tableview
         tableView.delegate = self
@@ -116,6 +123,10 @@ class ManageViewController: UIViewController {
             
         })
         
+    }
+    
+    func dialogDismissed() {
+        //self.tableView.reloadData()
     }
     
 }
@@ -216,6 +227,34 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
         
         // Return the cell
         return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // identify the event that is tapped
+        currentEventsIndex = registered[indexPath.row]
+        
+        // Show the pop up
+        if eventDetail != nil && currentEventsIndex != nil{
+            
+            // Customize the popup text
+            eventDetail!.titleText = events[currentEventsIndex!].title!
+            eventDetail!.themeText = events[currentEventsIndex!].theme!
+            eventDetail!.timeText = events[currentEventsIndex!].time!
+            eventDetail!.locationText = events[currentEventsIndex!].location!
+            
+            let num = events[currentEventsIndex!].participants?.count
+            var content:String = ""
+            
+            if num != nil {
+                content = "\(num!) / \(events[currentEventsIndex!].maxParticipants ?? 10)"
+            }
+            eventDetail!.participantsText = content
+        }
+        
+        // Trigger view will appear
+        present(eventDetail!, animated: true, completion: nil)
         
     }
     

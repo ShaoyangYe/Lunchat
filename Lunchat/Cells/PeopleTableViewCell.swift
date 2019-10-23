@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 protocol PeopleTableViewCellDelegate {
     func goToProfileUserVC(userId: String)
 }
@@ -23,7 +24,7 @@ class PeopleTableViewCell: UITableViewCell {
             updateView()
         }
     }
-    
+    var peopleVC: PeopleViewController?
     func updateView() {
         nameLabel.text = user?.username
         if let photoUrlString = user?.profileImageUrl {
@@ -94,6 +95,7 @@ class PeopleTableViewCell: UITableViewCell {
     @objc func nameLabel_TouchUpInside() {
         if let id = user?.id {
             delegate?.goToProfileUserVC(userId: id)
+//            peopleVC?.performSegue(withIdentifier: "ProfileSegue", sender: id)
         }
     }
     

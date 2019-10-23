@@ -45,6 +45,7 @@
 		FC56DE2D2327D2C40051B708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC56DE2C2327D2C40051B708 /* Assets.xcassets */; };
 		FC56DE302327D2C40051B708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC56DE2E2327D2C40051B708 /* LaunchScreen.storyboard */; };
 		FC56DE382327E7AC0051B708 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC56DE372327E7AC0051B708 /* SigninViewController.swift */; };
+		FC596E1A235F33A2003491F4 /* ProfileUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC596E19235F33A2003491F4 /* ProfileUserViewController.swift */; };
 		FC9F37A123489517001B19FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F37A023489517001B19FF /* User.swift */; };
 		FC9F37A32348953F001B19FF /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F37A22348953F001B19FF /* UserApi.swift */; };
 		FC9F37A52348958D001B19FF /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC9F37A42348958D001B19FF /* Api.swift */; };
@@ -99,6 +100,7 @@
 		FC56DE2F2327D2C40051B708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC56DE312327D2C40051B708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FC56DE372327E7AC0051B708 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		FC596E19235F33A2003491F4 /* ProfileUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewController.swift; sourceTree = "<group>"; };
 		FC9F37A023489517001B19FF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = SOURCE_ROOT; };
 		FC9F37A22348953F001B19FF /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		FC9F37A42348958D001B19FF /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				FC216A212328D909006FBA6E /* ManageViewController.swift */,
 				6E912FA52350AA2B00041288 /* MapViewController.swift */,
 				FC216A272328D937006FBA6E /* ProfileViewController.swift */,
+				FC596E19235F33A2003491F4 /* ProfileUserViewController.swift */,
 				FC216A252328D928006FBA6E /* MessageViewController.swift */,
 				FC216A232328D915006FBA6E /* HostViewController.swift */,
 				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
@@ -407,6 +410,7 @@
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
 				B33781E3236129C60089D817 /* Message.swift in Sources */,
 				835E5F88235C5F69002D2DDE /* Event.swift in Sources */,
+				FC596E1A235F33A2003491F4 /* ProfileUserViewController.swift in Sources */,
 				FC56DE262327D2C10051B708 /* AppDelegate.swift in Sources */,
 				FC9F37A52348958D001B19FF /* Api.swift in Sources */,
 				6EC915A0235CD311009CA7F4 /* HashTagApi.swift in Sources */,

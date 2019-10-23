@@ -17,13 +17,18 @@ class PeopleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         searchBar.delegate = self
-        searchBar.searchBarStyle = .default
+        searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "Search"
         searchBar.frame.size.width = view.frame.size.width - 60
         
         let searchItem = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = searchItem
+        
+//        self.navigationController?.navigationBar.setValue(false, forKey: "hidesShadow")
+//        self.navigationController?.navigationBar.isTranslucent = true
+//        self.navigationController?.navigationBar.barTintColor = UIColor.white
         loadUsers()
     }
     
@@ -41,14 +46,14 @@ class PeopleViewController: UIViewController {
         Api.Follow.isFollowing(userId: userId, completed: completed)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "ProfileSegue" {
-//            let profileVC = segue.destination as! ProfileUserViewController
-//            let userId = sender  as! String
-//            profileVC.userId = userId
-//            profileVC.delegate = self
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ProfileSegue" {
+            let profileVC = segue.destination as! ProfileUserViewController
+            let userId = sender  as! String
+            profileVC.userId = userId
+            profileVC.delegate = self
+        }
+    }
     
     func doSearch() {
         if let searchText = searchBar.text?.lowercased() {

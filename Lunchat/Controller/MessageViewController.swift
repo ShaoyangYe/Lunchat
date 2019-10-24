@@ -28,6 +28,8 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var recipient: String!
     
     var messageId: String!
+    
+    var havefriend = false
 
     // Messages' info
     
@@ -88,6 +90,7 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 cell?.userLabel.text = dict["name"]
                 //        cell?.sexLabel.text = dict["sex"]
                 cell?.departmentLabel.text = dict["department"]
+        
                 return cell!
     }
     
@@ -104,25 +107,61 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     // 选中cell后执行此方法
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("getindexpath.rowinginging")
         print(indexPath.row)
         let dict:Dictionary = self.mate[indexPath.row]
         recipient = dict["uid"]
-        
-//        messageId = messageDetail[indexPath.row].messageRef.key
-        
-        performSegue(withIdentifier: "toMessages", sender: nil)
-    }
+        let userID = Auth.auth().currentUser?.uid
 
+        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with:{
+            (snapshot) in
+            if snapshot.hasChild("messages"){
+                self.getMessageId()
+        }else{
+                self.performSegue(withIdentifier: "toMessages", sender: nil)}
+        })
+            
+        
+    }
+    
+    
+    func getMessageId(){
+        let userID = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(userID!).child("messages").observeSingleEvent(of: .value, with: { (snapshot) in
+          // Get user value
+          let msgs = snapshot.value as? Dictionary<String, AnyObject>
+          //                print(value)
+          for (key, value) in msgs!{
+            let dictionary = value as! Dictionary<String,String>
+            let reci = dictionary["recipient"]!
+            if reci == self.recipient{
+                print("find,and")
+                print(key)
+                self.messageId = key
+            }
+            }
+            self.performSegue(withIdentifier: "toMessages", sender: nil)
+            }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let destinationViewController = segue.destination as? MessageDetailViewController {
             
-            destinationViewController.recipient = recipient
+            destinationViewController.recipient = self.recipient
             
-            destinationViewController.messageId = messageId
+            print("preparing.....")
+            print(self.recipient)
+            
+            
+            
+            print(self.messageId)
+            destinationViewController.messageId = self.messageId
         }
     }
-
+    
                    
     func currentTime() -> String {
         
@@ -135,6 +174,18 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return dateformatter.string(from: Date())
         
     }
+//    func dohavefriend(){
+//        let userID = Auth.auth().currentUser?.uid
+//        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with:{
+//        (snapshot) in
+//        if snapshot.hasChild("friends")
+//        {
+//            havefrind = true
+//        }
+//    })
+//    }
+
+
 }
 
 
@@ -146,6 +197,7 @@ extension MessageViewController{
                 // Get user value
                 let users = snapshot.value as? Dictionary<String,Any>
                 //                print(value)
+                if users != nil {
                 for (key, value) in users!{
                     let dict = value as! Dictionary<String,String>
                     var mate = [String:String]()
@@ -155,11 +207,12 @@ extension MessageViewController{
                     mate["uid"] = key
                     result.append(mate)
                 }
+                }
                 completion(result)
               }) { (error) in
                 print(error.localizedDescription)
             }
-        }
+    }
     }
 }
 

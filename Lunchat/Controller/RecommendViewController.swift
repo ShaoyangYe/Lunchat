@@ -12,11 +12,11 @@ import FirebaseDatabase
 import FirebaseAuth
 import MapKit
 
-
 class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     private var dateCellExpanded: Bool = false
     var uid : String!
+    var username: String!
     var dataSource = [[String:String]()]
     var collectedFlag = Bool()
     var result = [[String:String]()]
@@ -25,6 +25,12 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
     var refreshAction = UIRefreshControl()
     var eventDetail:EventDetailViewController?
     var expandCell: Int?
+    var eventID: String!
+    override func viewDidAppear(_ animated: Bool) {
+        // Read data from firebase
+        getData()
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +84,7 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
         else{
             cell?.collecteButton.isSelected = false
         }
-        cell?.collecteButton.addTarget(self, action: #selector(buttonAction(button:)),for:.touchUpInside)      
+//        cell?.collecteButton.addTarget(self, action: #selector(buttonAction(button:)),for:.touchUpInside)
         return cell!
     }
     
@@ -102,15 +108,32 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
             if let ratableCell = tableView.cellForRow(at: indexPath) as? LCTableViewCell {
                 // set participant
                 let part_num:Int = Int(self.result[indexPath.row]["participant"]!)!
-                let participantLabel = UITextView(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
-                var names = "participants:\n"
+//                let participantLabel = UITextView(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
+                let participantLabel = UILabel(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
+ 
+                let markattch = NSTextAttachment()
+                markattch.image = UIImage(named: "face")//初始化图片
+                markattch.bounds = CGRect(x: 0, y: -2, width: 17, height: 17) //初始化图片的 bounds
+                let markattchStr = NSAttributedString(attachment: markattch)
+
+                let paraph = NSMutableParagraphStyle()
+                //将行间距设置为5
+                paraph.lineSpacing = 15
+                let attrs1 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.black,NSAttributedString.Key.paragraphStyle: paraph]
+                let attrs2 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.black,NSAttributedString.Key.paragraphStyle: paraph]
+                var names = ""
+                let attributedString1 = NSMutableAttributedString(string:names, attributes:attrs1)
                 for i in 0..<part_num{
-                    names = names + "lyyc"
-                    names =  names + "\n"
+                    names = self.result[indexPath.row]["participant"+String(i)]!
+                    names = " "+names + "\n"
+                    let attributedString2 = NSMutableAttributedString(string:names, attributes:attrs2)
+                    attributedString2.insert(markattchStr, at: 0)
+                    attributedString1.append(attributedString2)
                 }
-                participantLabel.text = names
-                participantLabel.font = UIFont.boldSystemFont(ofSize: 25)
+                participantLabel.attributedText = attributedString1
                 participantLabel.tag = 98
+                participantLabel.numberOfLines = 0
+                participantLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
                 ratableCell.addSubview(participantLabel)
                 // set map
                 let mapView=MKMapView.init(frame:CGRect.init(x: view.bounds.width-210, y:110 , width:200 , height:200 ))
@@ -133,13 +156,17 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
                 ratableCell.addSubview(mapView)
                 // add button
                 let button = UIButton(frame: CGRect.init(x: 20, y:320 , width:view.bounds.width-40 , height:40 ))
-                if self.result[indexPath.row].values .contains(self.uid){
+                if self.result[indexPath.row].values.contains(self.uid){
                     button.backgroundColor = UIColor.blue
                     button.setTitle("Cancel", for: .normal)
+                    self.eventID = self.result[indexPath.row]["eventID"]
+                    button.addTarget(self, action: #selector(self.cancel(tapGes:)), for: .touchDown)
                 }
                 else{
                     button.backgroundColor = UIColor.red
                     button.setTitle("Join", for: .normal)
+                    self.eventID = self.result[indexPath.row]["eventID"]
+                    button.addTarget(self, action: #selector(self.join(tapGes:)), for: .touchDown)
                 }
                 button.tag = 97
                 button.layer.cornerRadius = 10
@@ -197,9 +224,7 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
 
 extension RecommendViewController : searchDelegate{
     func transmitString(context: String){
-         print(context)
          if context == "" {
-                print(self.dataSource)
                 self.result = self.dataSource
            } else {
                
@@ -231,10 +256,21 @@ extension RecommendViewController{
     
     func getData()  {
         self.uid = Auth.auth().currentUser?.uid
+        self.tableView.viewWithTag(97)?.removeFromSuperview()
+        self.tableView.viewWithTag(98)?.removeFromSuperview()
+        self.tableView.viewWithTag(99)?.removeFromSuperview()
+        self.expandCell = -1
         view.viewWithTag(100)?.removeFromSuperview()
         ProgressHUD.show("Waiting...", interaction: false)
         var appointmentData = [[String:String]]()
         var dict = [Dictionary<String,Any>]()
+        
+        let ref0 =  Database.database().reference().child("users").child(self.uid).child("username")
+        ref0.observeSingleEvent(of: .value) { (snapshot) in
+          // Get user value
+              self.username = snapshot.value as? String
+          }
+        
         let ref = Database.database().reference().child("events")
         ref.observeSingleEvent(of: .value) { (snapshot) in
               // Get user value
@@ -251,6 +287,8 @@ extension RecommendViewController{
                     participants = dicValue["participants"] as! [String:String]
                     for i in participants{
                         transformed_events[String(num)] = i.key
+                        let user:String = "participant"+String(num)
+                        transformed_events[user] = i.value
                         num = num + 1
                     }
                     transformed_events["participant"] = String(participants.count)
@@ -258,21 +296,89 @@ extension RecommendViewController{
                     transformed_events["time"] = dicValue["time"] as! String
                     transformed_events["latitude"] = dicValue["latitude"] as! String
                     transformed_events["longitude"] = dicValue["longitude"] as! String
-                    transformed_events["collected"] = "true"
+                    if participants.keys.contains(self.uid){
+                        transformed_events["collected"] = "true"
+                    }
+                    else{
+                        transformed_events["collected"] = "false"
+                    }
                     transformed_events["eventID"] = key
                     appointmentData.append(transformed_events)
                 }
+            appointmentData = appointmentData.sorted(by: { (Obj1, Obj2) -> Bool in
+               let Obj1_time = Obj1["time"] ?? ""
+               let Obj2_time = Obj2["time"] ?? ""
+               return (Obj1_time.localizedCaseInsensitiveCompare(Obj2_time) == .orderedAscending)
+            })
             self.result = appointmentData
             self.dataSource = appointmentData
             print("reload")
             self.tableView.reloadData()
             self.tableView.tag = 100
             self.view.addSubview(self.tableView)
+            
             ProgressHUD.dismiss()
             }
     }
-    func join(eventID:String){
-        let ref = Database.database().reference().child("events").child(eventID).child("participants")
-        
+    @objc private func join(tapGes : UITapGestureRecognizer){
+         Database.database().reference().child("events").child(self.eventID).observeSingleEvent(of: .value) { (snapshot) in
+        // Get user value
+            let dicValue = snapshot.value as! Dictionary<String,Any>
+            var participants = [String:String]()
+            var num:Int = 0
+            participants = dicValue["participants"] as! [String:String]
+            let currentNum = participants.count
+            let MaxNum = dicValue["maxParticipants"] as! Int
+            if currentNum < MaxNum{
+                Database.database().reference().child("events").child(self.eventID).child("participants/\(self.uid!)").setValue(self.username)
+                let alert = UIAlertController(title: "Success", message: "You have been added to this chat", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: {
+                    ACTION in
+                    print("你点击了OK")
+                })
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                self.getData()
+            }
+            else{
+                let alert = UIAlertController(title: "Full Members", message: "Sorry there's no enogh space", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: {
+                    ACTION in
+                    print("你点击了OK")
+                })
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                self.getData()
+            }
+        }
+    }
+    @objc private func cancel(tapGes : UITapGestureRecognizer){
+        Database.database().reference().child("events").child(self.eventID).observeSingleEvent(of: .value) { (snapshot) in
+              // Get user value
+            let dicValue = snapshot.value as! Dictionary<String,Any>
+            var participants = [String:String]()
+            var num:Int = 0
+            participants = dicValue["participants"] as! [String:String]
+            let currentNum = participants.count
+            if (currentNum == 1){
+                let ref = Database.database().reference().child("events").child(self.eventID)
+                ref.removeValue { error, _ in
+                    print(error)
+                }
+                self.getData()
+            }
+            else{
+                let ref = Database.database().reference().child("events").child(self.eventID).child("participants").child(self.uid)
+                ref.removeValue { error, _ in
+                    print(error)
+                }
+                self.getData()
+            }
+                
+        }
+
     }
 }
+
+
+// 对外暴露的方法

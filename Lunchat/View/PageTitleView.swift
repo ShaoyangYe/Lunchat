@@ -42,7 +42,7 @@ class PageTitleView: UIView {
     }()
     private lazy var scrolllLine : UIView = {
         let scrollLine = UIView()
-        scrollLine.backgroundColor = UIColor.orange
+        scrollLine.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         return scrollLine
     }()
     init(frame: CGRect, titles:[String]) {
@@ -110,7 +110,7 @@ extension PageTitleView{
         //2 添加scrollLine
         // add first scrollLine
         guard let firstLabel = titleLabels.first else {return}
-        firstLabel.textColor = UIColor.orange
+        firstLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
 //        firstLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         scrollView.addSubview(scrolllLine)
         scrolllLine.frame = CGRect(x: firstLabel.frame.origin.x, y: frame.height - kScrollLLineH, width: firstLabel.frame.width, height: kScrollLLineH)
@@ -133,7 +133,7 @@ extension PageTitleView{
         let oldLabel = titleLabels[currentIndex]
         //3.切换文字的颜色
         oldLabel.textColor = UIColor.darkGray
-        currentLabel.textColor = UIColor.orange
+        currentLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
 //        currentLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
 
         //4.保存最新label下标
@@ -167,10 +167,10 @@ extension PageTitleView{
         
         //3.颜色改变
         sourceLabel.textColor = UIColor.gray
-        targetLabel.textColor = UIColor.orange
+        targetLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
 //        targetLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         
-        scrolllLine.backgroundColor = UIColor.orange
+        scrolllLine.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
 //        scrolllLine.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
     }
 }

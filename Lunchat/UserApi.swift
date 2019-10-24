@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class UserApi {
     var REF_USERS = Database.database().reference().child("users")
@@ -54,7 +55,10 @@ class UserApi {
             snapshot in
             if let dict = snapshot.value as? [String: Any] {
                 let user = UserModel.transformUser(dict: dict, key: snapshot.key)
-                completion(user)
+                // remove current user from all user VC.
+                if user.id! != Api.User.CURRENT_USER?.uid {
+                    completion(user)
+                }
             }
         })
     }
@@ -71,6 +75,7 @@ class UserApi {
             })
         })
     }
+    
     var CURRENT_USER: User? {
         if let currentUser = Auth.auth().currentUser {
             return currentUser

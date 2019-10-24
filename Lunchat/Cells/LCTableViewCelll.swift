@@ -48,7 +48,7 @@ class LCTableViewCell: UITableViewCell,CLLocationManagerDelegate,MKMapViewDelega
         themeLabel.layer.cornerRadius = 4
 //        themeLabel.layer.borderColor = UIColor.orange.cgColor
 //        themeLabel.layer.borderWidth = 1
-        themeLabel.layer.backgroundColor = UIColor.orange.cgColor
+        themeLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
 //        themeLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         locationLabel = UILabel(frame: CGRect(x: 15, y: 0, width: 130, height: 15))
 //        locationLabel.setImage(UIImage(named: "video_ico_location"), for: .normal)

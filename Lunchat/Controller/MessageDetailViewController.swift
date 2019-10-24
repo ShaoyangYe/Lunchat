@@ -54,9 +54,10 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
 //        for index in 0...19 {
 //            messages.append("\(index)")
 //        }
-        
+        print("messageId=====")
+        print(messageId)
         if messageId != "" && messageId != nil {
-            
+            print("righthere!!???????why nothing happened ")
             loadData()
         }
         
@@ -110,11 +111,8 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
-        print("hi tableView place")
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as? MessagesCell {
-            print("what's wrong?")
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "Message") as? MessagesCell {
             cell.configCell(message: message)
-            print("here am I !")
             return cell
             
         } else {
@@ -137,7 +135,6 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
         Database.database().reference().child("messages").child(messageId).observe(.value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                print(self.messages)
                 self.messages.removeAll()
                 
                 for data in snapshot {
@@ -213,7 +210,7 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 loadData()
                         
                     } else if messageId != "" {
-                        
+                        loadData()
                         let post: Dictionary<String, AnyObject> = [
                             "message": messageField.text as AnyObject,
                             "sender": userID as AnyObject

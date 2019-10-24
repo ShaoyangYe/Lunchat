@@ -11,6 +11,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
+protocol MapViewSelectionControllerDelegate : NSObjectProtocol{
+    func doSomethingWith(data: String, latitude: CLLocationDegrees, longtitude: CLLocationDegrees)
+}
+
 class MapViewSelectionController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var myMap: MKMapView!
     @IBOutlet weak var addressLabel: UILabel!
@@ -18,6 +22,11 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
+    
+    var latitudeall: CLLocationDegrees = 0.0
+    var longtitudeall: CLLocationDegrees = 0.0
+    
+    weak var delegate : MapViewSelectionControllerDelegate?
     
     
     override func viewDidLoad() {
@@ -28,6 +37,11 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
         myMap.delegate = self
         super.viewDidLoad()
         checkLocationServices()
+        
+        self.navigationItem.hidesBackButton = true
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(onClickingReturn))
+        self.navigationItem.leftBarButtonItem = newBackButton
+        
     }
     
     func setupLocationManager() {
@@ -35,11 +49,21 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
+    
     func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            myMap.setRegion(region, animated: true)
-        }
+//        if let location = locationManager.location?.coordinate {
+//            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+//            myMap.setRegion(region, animated: true)
+//        }
+        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let center:CLLocation = CLLocation(latitude: -37.796915927734375, longitude: 144.96056159442693)
+        let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,
+                                                                  span: currentLocationSpan)
+        
+        
+        myMap.setRegion(currentRegion, animated: true)
+        myMap.userTrackingMode = .follow
+        myMap.userLocation.title  = "My position"
     }
     
     func checkLocationServices() {
@@ -55,9 +79,8 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             startTackingUserLocation()
-            break
         case .denied:
-            // Show alert instructing them  how to turn on permissions
+            // Show alert instructing them how to turn on permissions
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -65,6 +88,8 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
             // Show an alert letting them know what's up
             break
         case .authorizedAlways:
+            break
+        @unknown default:
             break
         }
     }
@@ -77,87 +102,24 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
     }
     
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
-        let latitude = mapView.centerCoordinate.latitude
-        let longitude = mapView.centerCoordinate.longitude
+        let latitude = myMap.centerCoordinate.latitude
+        let longitude = myMap.centerCoordinate.longitude
+        
+        latitudeall = latitude
+        longtitudeall = longitude
+        
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-    
-    
-    
-    //搜索按钮
-    @IBAction func btnSearch(_ sender: Any) {
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchBar.delegate = self
-        present(searchController, animated: true, completion: nil)
-    }
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //Ignoring user
-        UIApplication.shared.beginIgnoringInteractionEvents()
-        
-        //Activity Indicator
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.style = UIActivityIndicatorView.Style.gray
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.startAnimating()
-        
-        self.view.addSubview(activityIndicator)
-        
-        //Hide search bar
-        searchBar.resignFirstResponder()
-        dismiss(animated: true, completion: nil)
-        
-        //Create the search request
-        let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = searchBar.text
-        
-        let activeSearch = MKLocalSearch(request: searchRequest)
-        
-        activeSearch.start { (response, error) in
-            
-            activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
-            
-            if response == nil
-            {
-                print("ERROR")
-            }
-            else
-            {
-                //Remove annotations
-                let annotations = self.myMap.annotations
-                self.myMap.removeAnnotations(annotations)
-                
-                //Getting data
-                let latitude = response?.boundingRegion.center.latitude
-                let longitude = response?.boundingRegion.center.longitude
-                
-                //Create annotation
-                let annotation = MKPointAnnotation()
-                annotation.title = searchBar.text
-                annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
-                self.myMap.addAnnotation(annotation)
-                
-                //Zooming in on annotation
-                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
-                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                let region = MKCoordinateRegion(center: coordinate, span: span)
-                self.myMap.setRegion(region, animated: true)
-            }
-            
+    @objc func onClickingReturn() {
+        if let delegate = delegate{
+            delegate.doSomethingWith(data: addressLabel.text ?? "nil", latitude: latitudeall, longtitude: longtitudeall)
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
 }
 
 extension MapViewSelectionController: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        let region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-        myMap.setRegion(region, animated: true)
-    }
-    
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
@@ -167,7 +129,7 @@ extension MapViewSelectionController: CLLocationManagerDelegate {
 extension MapViewSelectionController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let center = getCenterLocation(for: myMap)
+        let center = getCenterLocation(for: mapView)
         let geoCoder = CLGeocoder()
         
         guard let previousLocation = self.previousLocation else { return }

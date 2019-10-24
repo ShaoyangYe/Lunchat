@@ -1,0 +1,22 @@
+################################################################################                     
+                    COMP90018 Programming Project Submission
+################################################################################
+
+Group No: #27
+
+Group Members:
+
+1: [Username, Email] 
+2: [Username, Email] 
+3: [Username, Email] 
+4: [Username, Email] 
+5: [douk, douk@student.unimelb.edu.au]
+
+YouTube Link:
+
+README: https://github.com/ShaoyangYe/Lunchat/blob/master/README.md
+
+Please include details on how to compile and run your APP.
+
+Contribution of each Group Members: https://github.com/ShaoyangYe/Lunchat/blob/master/README.md
+

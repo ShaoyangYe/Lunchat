@@ -94,6 +94,10 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
     // 选中cell后执行此方法
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != self.expandCell  {
+            // remove last view
+            self.tableView.viewWithTag(97)?.removeFromSuperview()
+            self.tableView.viewWithTag(98)?.removeFromSuperview()
+            self.tableView.viewWithTag(99)?.removeFromSuperview()
             self.expandCell = indexPath.row
             if let ratableCell = tableView.cellForRow(at: indexPath) as? LCTableViewCell {
                 // set participant
@@ -108,8 +112,6 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
                 participantLabel.font = UIFont.boldSystemFont(ofSize: 25)
                 participantLabel.tag = 98
                 ratableCell.addSubview(participantLabel)
-                
-                
                 // set map
                 let mapView=MKMapView.init(frame:CGRect.init(x: view.bounds.width-210, y:110 , width:200 , height:200 ))
                     mapView.tag = 99
@@ -129,12 +131,26 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
                 mapView.setRegion(currentRegion, animated: true)
                 mapView.layer.cornerRadius = 15
                 ratableCell.addSubview(mapView)
+                // add button
+                let button = UIButton(frame: CGRect.init(x: 20, y:320 , width:view.bounds.width-40 , height:40 ))
+                if self.result[indexPath.row].values .contains(self.uid){
+                    button.backgroundColor = UIColor.blue
+                    button.setTitle("Cancel", for: .normal)
+                }
+                else{
+                    button.backgroundColor = UIColor.red
+                    button.setTitle("Join", for: .normal)
+                }
+                button.tag = 97
+                button.layer.cornerRadius = 10
+                ratableCell.addSubview(button)
             }
         } else {
             self.expandCell = -1
             if let ratableCell = tableView.cellForRow(at: indexPath) as? LCTableViewCell {
                 // instead of telling tableView to reload this cell, just configure here
                 // the changed data, e.g.:
+                ratableCell.viewWithTag(97)?.removeFromSuperview()
                 ratableCell.viewWithTag(98)?.removeFromSuperview()
                 ratableCell.viewWithTag(99)?.removeFromSuperview()
             }
@@ -146,7 +162,7 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             if indexPath.row == self.expandCell {
-                return 400
+                return 370
             } else {
                 return 100
             }
@@ -230,11 +246,11 @@ extension RecommendViewController{
                     transformed_events["title"] = dicValue["title"] as! String
                     transformed_events["theme"] = dicValue["theme"] as! String
                     transformed_events["location"] = dicValue["location"] as! String
-                    var participants = Array<String>()
+                    var participants = [String:String]()
                     var num:Int = 0
-                    participants = dicValue["participants"] as! Array<String>
+                    participants = dicValue["participants"] as! [String:String]
                     for i in participants{
-                        transformed_events[String(num)] = i
+                        transformed_events[String(num)] = i.key
                         num = num + 1
                     }
                     transformed_events["participant"] = String(participants.count)
@@ -254,5 +270,9 @@ extension RecommendViewController{
             self.view.addSubview(self.tableView)
             ProgressHUD.dismiss()
             }
+    }
+    func join(eventID:String){
+        let ref = Database.database().reference().child("events").child(eventID).child("participants")
+        
     }
 }

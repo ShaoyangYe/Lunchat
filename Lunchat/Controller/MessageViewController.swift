@@ -108,7 +108,21 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         print(indexPath.row)
         let dict:Dictionary = self.mate[indexPath.row]
         recipient = dict["uid"]
+        let userID = Auth.auth().currentUser?.uid
 
+        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with:{
+            (snapshot) in
+            if snapshot.hasChild("messages"){
+                self.getMessageId()
+        }else{
+                self.performSegue(withIdentifier: "toMessages", sender: nil)}
+        })
+            
+        
+    }
+    
+    
+    func getMessageId(){
         let userID = Auth.auth().currentUser?.uid
         Database.database().reference().child("users").child(userID!).child("messages").observeSingleEvent(of: .value, with: { (snapshot) in
           // Get user value
@@ -121,17 +135,13 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 print("find,and")
                 print(key)
                 self.messageId = key
-                print(self.messageId)
             }
-          // ...
             }
             self.performSegue(withIdentifier: "toMessages", sender: nil)
             }){ (error) in
             print(error.localizedDescription)
-        };
-        
+        }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

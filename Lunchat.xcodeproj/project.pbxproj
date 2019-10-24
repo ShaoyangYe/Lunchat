@@ -152,7 +152,6 @@
 				6E912FAB2350AA6900041288 /* LCTableViewCelll.swift */,
 				B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */,
 				B33781E0236129900089D817 /* MessagesCell.swift */,
-				B35B051E234D99F10083B8EB /* MessageCell.swift */,
 				FCB3ECA1235DCD35001FC0B4 /* PeopleTableViewCell.swift */,
 			);
 			path = Cells;
@@ -166,9 +165,6 @@
 				6E912FA72350AA3600041288 /* MateViewController.swift */,
 				FC216A212328D909006FBA6E /* ManageViewController.swift */,
 				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
-				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
-				6E912FA72350AA3600041288 /* MateViewController.swift */,
-				FC216A212328D909006FBA6E /* ManageViewController.swift */,
 				6E912FA52350AA2B00041288 /* MapViewController.swift */,
 				FC216A272328D937006FBA6E /* ProfileViewController.swift */,
 				FC596E19235F33A2003491F4 /* ProfileUserViewController.swift */,

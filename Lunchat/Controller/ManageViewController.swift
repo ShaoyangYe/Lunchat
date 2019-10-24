@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 
+@IBDesignable
+
 class ManageViewController: UIViewController, EventDetailViewControllerProtocol {
 
     @IBOutlet var vwView: UIView!
@@ -174,7 +176,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
         
         // Round the corner of the cell
         cell.viewWithTag(6)?.layer.cornerRadius = 10
-        cell.viewWithTag(7)?.layer.cornerRadius = 10
+        cell.viewWithTag(2)?.layer.cornerRadius = 10
         
         // Customize it
         let titleLabel = cell.viewWithTag(1) as? UILabel
@@ -204,11 +206,12 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
                 
         }
             
-            // Give the value to the element inside the cells
+        // Give the value to the element inside the cells
         if  indexPath.row < count {
                 
             titleLabel!.text = registeredEvents[indexPath.row].title
-            themeLabel!.text = registeredEvents[indexPath.row].theme
+            let themeText:String? = " " + registeredEvents[indexPath.row].theme! + " "
+            themeLabel!.text = themeText
             locationLabel!.text = registeredEvents[indexPath.row].location
             timeLabel!.text = registeredEvents[indexPath.row].time
                 
@@ -250,12 +253,20 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             if num != nil {
                 content = "\(num!) / \(events[currentEventsIndex!].maxParticipants ?? 10)"
             }
+            
             eventDetail!.participantsText = content
+        
         }
         
         // Trigger view will appear
         present(eventDetail!, animated: true, completion: nil)
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 110.0
+    
     }
     
 }

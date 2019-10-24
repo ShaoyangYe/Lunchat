@@ -29,7 +29,7 @@ class EventDetailViewController: UIViewController {
     var timeText = ""
     var locationText = ""
     var participantsText = ""
-    var buttonText = ""
+    var buttonText = "OK"
     
     var delegate:EventDetailViewControllerProtocol?
     
@@ -50,7 +50,7 @@ class EventDetailViewController: UIViewController {
         timeLabel.text = timeText
         locationLabel.text = locationText
         participantsLabel.text = participantsText
-        
+        cancelButton.setTitle(buttonText, for: .normal)
     }
     
     @IBAction func dismissTapped(_ sender: Any) {

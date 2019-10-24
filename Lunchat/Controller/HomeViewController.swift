@@ -161,7 +161,7 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
     
     func setMap(){
         let mapview:MKMapView=MKMapView.init(frame:CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 120))
-        mapview.tag = 99
+        mapview.tag = 199
 //        view.addSubview(mapview)
         
 //        let mapview = MKMapView(frame:self.view.frame)
@@ -220,7 +220,7 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
         
         
         let btn = UIButton()
-        btn.tag = 100
+        btn.tag = 1000
         btn.setImage(UIImage(named: "ic_backspace_white_18dp"), for: .normal)
         btn.setImage(UIImage(named: "ic_backspace_white_18dp"), for: .highlighted)
         btn.frame = CGRect(x:0, y: 0, width: 50, height: 50)
@@ -228,8 +228,8 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
         view.addSubview(btn)
     }
     @objc func removeButtonClick(){
-        view.viewWithTag(99)?.removeFromSuperview()
-        view.viewWithTag(100)?.removeFromSuperview()
+        view.viewWithTag(199)?.removeFromSuperview()
+        view.viewWithTag(1000)?.removeFromSuperview()
 
     }
 //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation)

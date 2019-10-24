@@ -3,6 +3,7 @@
 This is an app that let people make more freinds and make society more connected just by having lunch together.
 
 ### Main Features
+-----
 1, Host a new Lunchat
 
 2, Join a existing Lunchat

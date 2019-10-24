@@ -329,6 +329,7 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
                 self.tabBarController?.selectedIndex = 0
             })
         }
+//        self.dataDelegate?.getData()
     }
     
     func clean() {

@@ -7,27 +7,34 @@
 //
 
 import UIKit
+import MapKit
 
-class LCTableViewCell: UITableViewCell {
+class LCTableViewCell: UITableViewCell,CLLocationManagerDelegate,MKMapViewDelegate{
     let width:CGFloat = UIScreen.main.bounds.width
     var titleLabel:UILabel!      // 名字
     var themeLabel:UILabel!  // 主题
     var locationLabel:UILabel!       // 地点
     var participant:UILabel!    // 参加人数
     var timeLabel:UILabel!    //约定时间
-    // ViewController
+    var eventID: String! // 事件ID
     var people : UIImageView!
     var peopleWithImage: UILabel!
     var locationImage : UIImageView!
     var locationWithImage : UILabel!
     var timeImage : UIImageView!
     var timeWithImage : UILabel!
-    // 收藏按钮
     var collecteButton: UIButton!
+    var participants : [Dictionary<String,String>]!
+    var longtitude: String!
+    var latitude: String!
+    var uid: String!
+    var expand: Bool = false
+    
+    var mapView: MKMapView!
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         // 名字
         titleLabel = UILabel(frame: CGRect(x: 5, y: 12, width: 300, height: 20))
         titleLabel.textColor = UIColor.black
@@ -42,7 +49,7 @@ class LCTableViewCell: UITableViewCell {
 //        themeLabel.layer.borderColor = UIColor.orange.cgColor
 //        themeLabel.layer.borderWidth = 1
         themeLabel.layer.backgroundColor = UIColor.orange.cgColor
-        
+//        themeLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         locationLabel = UILabel(frame: CGRect(x: 15, y: 0, width: 130, height: 15))
 //        locationLabel.setImage(UIImage(named: "video_ico_location"), for: .normal)
         locationLabel.font = UIFont.boldSystemFont(ofSize: 10)
@@ -70,13 +77,22 @@ class LCTableViewCell: UITableViewCell {
         timeLabel.textAlignment = .left
         timeImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         timeImage.image = UIImage(named: "cmic_time_icon")
+//        timeImage.tintColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         timeWithImage = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width-102, y: 35, width: 100, height: 30))
         timeWithImage.addSubview(timeImage)
         timeWithImage.addSubview(timeLabel)
         
         collecteButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.size.width-35, y: 70, width: 25, height: 25))
         
-        
+        if expand{
+            mapView=MKMapView.init(frame:CGRect.init(x: 150, y: 150, width:100 , height:100 ))
+            mapView.tag = 99
+            addSubview(mapView)
+            print("expand")
+        }else{
+            viewWithTag(99)?.removeFromSuperview()
+        }
+
         contentView.addSubview(titleLabel)
         contentView.addSubview(themeLabel)
         contentView.addSubview(locationWithImage)

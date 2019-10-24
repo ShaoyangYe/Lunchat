@@ -22,8 +22,9 @@ class HomeViewController: UIViewController {
     weak var delegate : searchDelegate?
     weak var delegate2 : searchDelegate?
     var locationManager: CLLocationManager?
+    var notification: UIBarButtonItem?
     
-//    var mapview: MKMapView!
+    var mapview: MKMapView!
     var apointmentData = [
         ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.791915927734375","longitude":"144.96056159442693"],
     ["title":"What's your favorite movie?","theme":"Movie","location":"Union House","participant":"3","MaxParticipant":"4","time":"12:00","collected": "false","latitude":"-37.793915927734375","longitude":"144.96056159442693"],
@@ -32,6 +33,8 @@ class HomeViewController: UIViewController {
     ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.796915927734375","longitude":"144.96056159442693"],
     ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.795815927734375","longitude":"144.96056159442693"],
     ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.795315927734375","longitude":"144.96056159442693"]]
+    var apointmentData2 = [[String:String]]()
+    
     
     var mateData = [
     ["name":"Tom Marshall","sex":"male","icon":"no-user-image-square","department":"Master of Bussiness"],
@@ -68,7 +71,8 @@ class HomeViewController: UIViewController {
 
         let vc = RecommendViewController()
         //        vc.view.backgroundColor = UIColor.red
-        vc.dataSource = apointmentData
+        
+        vc.dataSource = self.apointmentData
         childVcs.append(vc)
         
         let vc1 = MateViewController()
@@ -83,8 +87,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(self.tabBarController?.tabBar.frame.height)
         self.edgesForExtendedLayout = UIRectEdge.init()
+       self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "image_openNotice"), landscapeImagePhone: UIImage(named: "image_openNotice"), style: .plain, target: .none, action: .none)
+//
         
         view.addSubview(searchBar)
         view.addSubview(pageTitleView)
@@ -94,8 +99,26 @@ class HomeViewController: UIViewController {
         self.delegate2 = pageContentView.childVcs[1] as? searchDelegate
         searchBar.delegate  = self
         pageContentView.backgroundColor = UIColor.purple
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
+//        var di = [Dictionary<String,Any>]()
+        self.hideKeyboardWhenTappedAround()
+    }
+//    @objc func dismissKeyboard() {
+//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+//        view.endEditing(true)
+//    }
+}
+extension HomeViewController{
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
     }
 
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 // 遵守PageTitleviewDelegate协议
 extension HomeViewController : PageTitleViewDelegate {
@@ -124,21 +147,21 @@ extension HomeViewController : UISearchBarDelegate{
         }
         
     }
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        self.searchBar.showsCancelButton = false
-    }
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
-
-    }
+//    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        searchBar.resignFirstResponder()
+//        self.searchBar.showsCancelButton = false
+//    }
+//    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+//        self.searchBar.showsCancelButton = true
+//
+//    }
 }
 
 extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
     
     func setMap(){
         let mapview:MKMapView=MKMapView.init(frame:CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 120))
-        mapview.tag = 99
+        mapview.tag = 199
 //        view.addSubview(mapview)
         
 //        let mapview = MKMapView(frame:self.view.frame)
@@ -185,7 +208,7 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
             objectAnnotation.subtitle = self.apointmentData[i-1]["location"]
             mapview.addAnnotation(objectAnnotation)
         }
-        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let center:CLLocation = CLLocation(latitude: -37.796915927734375, longitude: 144.96056159442693)
         let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,
         span: currentLocationSpan)
@@ -197,7 +220,7 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
         
         
         let btn = UIButton()
-        btn.tag = 100
+        btn.tag = 1000
         btn.setImage(UIImage(named: "ic_backspace_white_18dp"), for: .normal)
         btn.setImage(UIImage(named: "ic_backspace_white_18dp"), for: .highlighted)
         btn.frame = CGRect(x:0, y: 0, width: 50, height: 50)
@@ -205,8 +228,8 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
         view.addSubview(btn)
     }
     @objc func removeButtonClick(){
-        view.viewWithTag(99)?.removeFromSuperview()
-        view.viewWithTag(100)?.removeFromSuperview()
+        view.viewWithTag(199)?.removeFromSuperview()
+        view.viewWithTag(1000)?.removeFromSuperview()
 
     }
 //    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation)
@@ -235,3 +258,4 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
 //    }
     
 }
+

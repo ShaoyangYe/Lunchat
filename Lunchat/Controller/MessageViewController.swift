@@ -8,15 +8,28 @@
 
 
 import UIKit
-
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    var dataSource = [
-        ["name":"Tom Marshall","sex":"male","icon":"no-user-image-square","department":"Master of Bussiness"],
-        ["name":"Pena Valdez","sex":"female","icon":"no-user-image-square","department":"Master of Computer Science"],["name":"Jessica","sex":"female","icon":"no-user-image-square","department":"Master of teaching"],    ["name":"JIM","sex":"male","icon":"no-user-image-square","department":"Master of Information system"]]
+//    var dataSource = [
+//        ["name":"Tom Marshall","sex":"male","icon":"no-user-image-square","department":"Master of Bussiness"],
+//        ["name":"Pena Valdez","sex":"female","icon":"no-user-image-square","department":"Master of Computer Science"],["name":"Jessica","sex":"female","icon":"no-user-image-square","department":"Master of teaching"],    ["name":"JIM","sex":"male","icon":"no-user-image-square","department":"Master of Information system"]]
     var mate = [[String:String]()]
     var tableView = UITableView()
-    //var dataSource = [[String:String]()]
+    var dataSource = [[String:String]()]
+    
+    // Messages' info
+    //var messageDetail = [MessageDetail]()
+    
+    //var detail: MessageDetail!
+    
+    var recipient: String!
+    
+    var messageId: String!
+
+    // Messages' info
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,36 +39,56 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-    
-        print("假装")
-        self.mate = self.dataSource
         
-        tableView.reloadData()
-    }
+        
+        
+//            self.mate = self.dataSource
+        
+//        tableView.reloadData()
+        getData(){ (mateResult:[[String:String]]) in
+                    // this will only be called when findUniqueId trigger completion(sID)...
+        //            print(mateResult)
+                    self.dataSource = mateResult
+                    self.mate = self.dataSource
+                    self.tableView.reloadData()
+        }
+        //        print("1")
+
+}
     
     //MARK: UITableViewDataSource
     // cell的个数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.mate.count
     }
+
+
     // UITableViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cellid = "testCellID"
-//        var cell: MateTableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellid) as? MateTableViewCell
-//        if cell==nil {
-//            cell = MateTableViewCell(style: .subtitle, reuseIdentifier: cellid)
-//        }
         let cellid = "mateCellID"
         var cell: MassageMateTableViewCell? = tableView.dequeueReusableCell(withIdentifier:cellid) as? MassageMateTableViewCell
         if cell == nil {
             cell = MassageMateTableViewCell(style: .subtitle, reuseIdentifier:cellid)
         }
         let dict:Dictionary = self.mate[indexPath.row]
-        cell?.iconImv.image = UIImage(named: dict["icon"]!)
-        cell?.userLabel.text = dict["name"]
-        //cell?.sexLabel.text = dict["sex"]
-        cell?.departmentLabel.text = dict["department"]
-        return cell!
+       if dict["icon"] != nil{
+                    let url : URL = URL.init(string: dict["icon"]!)!
+                     let data : NSData! = NSData(contentsOf: url)
+                     if data != nil {
+                        cell?.iconImv.image = UIImage.init(data: data as Data, scale: 1) //赋值图片
+                     }
+                     else{
+                         cell?.iconImv.image = UIImage(named:"no-user-image-square")
+                     }
+                }else{
+                    cell?.iconImv.image = UIImage(named:"no-user-image-square")
+                }
+                cell?.uid = dict["uid"]
+        //        cell?.iconImv.image = UIImage(named: dict["icon"]!)
+                cell?.userLabel.text = dict["name"]
+                //        cell?.sexLabel.text = dict["sex"]
+                cell?.departmentLabel.text = dict["department"]
+                return cell!
     }
     
     //MARK: UITableViewDelegate
@@ -72,9 +105,23 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
+        let dict:Dictionary = self.mate[indexPath.row]
+        recipient = dict["uid"]
+        
+//        messageId = messageDetail[indexPath.row].messageRef.key
+        
         performSegue(withIdentifier: "toMessages", sender: nil)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destinationViewController = segue.destination as? MessageDetailViewController {
+            
+            destinationViewController.recipient = recipient
+            
+            destinationViewController.messageId = messageId
+        }
+    }
 
                    
     func currentTime() -> String {
@@ -87,6 +134,32 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         return dateformatter.string(from: Date())
         
+    }
+}
+
+
+extension MessageViewController{
+    func getData(completion:@escaping(_ mateResult:[[String:String]])->()){
+        var result = [[String:String]]()
+        if Api.User.CURRENT_USER != nil {
+            Api.User.REF_CURRENT_USER?.child("friends").observeSingleEvent(of: .value, with: {(snapshot) in
+                // Get user value
+                let users = snapshot.value as? Dictionary<String,Any>
+                //                print(value)
+                for (key, value) in users!{
+                    let dict = value as! Dictionary<String,String>
+                    var mate = [String:String]()
+                    mate["name"] = dict["username"]
+                    mate["icon"] = dict["profileImageUrl"]
+                    mate["department"] = dict["email"]
+                    mate["uid"] = key
+                    result.append(mate)
+                }
+                completion(result)
+              }) { (error) in
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

@@ -12,6 +12,7 @@ class MassageMateTableViewCell: UITableViewCell {
     var iconImv:UIImageView!  // 图片
     var userLabel:UILabel!       // 名称
     var departmentLabel:UILabel!    // 部门
+    var uid:String!
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)

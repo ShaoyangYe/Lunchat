@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     override func viewDidLoad() {

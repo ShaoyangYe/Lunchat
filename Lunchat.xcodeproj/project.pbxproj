@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B1940CD235FE6EF00BD77B0 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */; };
 		6E153949234DA4EE007B1C7B /* MapViewSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */; };
 		6E526E01235D5FD700027E53 /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E526E00235D5FD700027E53 /* FeedApi.swift */; };
 		6E912FA22350A9D600041288 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FA12350A9D600041288 /* PageContentView.swift */; };
@@ -21,9 +22,11 @@
 		6EC9159C235CC980009CA7F4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC9159B235CC980009CA7F4 /* Post.swift */; };
 		6EC915A0235CD311009CA7F4 /* HashTagApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC9159F235CD311009CA7F4 /* HashTagApi.swift */; };
 		750033527232F0C87A4CAA1B /* Pods_Lunchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824CD3857F41965043A667DB /* Pods_Lunchat.framework */; };
+		835E5F88235C5F69002D2DDE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E5F87235C5F69002D2DDE /* Event.swift */; };
+		B33781E1236129900089D817 /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33781E0236129900089D817 /* MessagesCell.swift */; };
+		B33781E3236129C60089D817 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33781E2236129C60089D817 /* Message.swift */; };
 		B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B0519234D99720083B8EB /* MessageDetailViewController.swift */; };
 		B35B051D234D99C50083B8EB /* MassageMateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */; };
-		B35B051F234D99F10083B8EB /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B051E234D99F10083B8EB /* MessageCell.swift */; };
 		FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1D232897E4006FBA6E /* SignUpViewController.swift */; };
 		FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A1F2328D78A006FBA6E /* HomeViewController.swift */; };
 		FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A212328D909006FBA6E /* ManageViewController.swift */; };
@@ -51,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		640F8F413A805A274919D976 /* Pods-Lunchat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.release.xcconfig"; sourceTree = "<group>"; };
 		69E5BF3B8706DD4FAEFCAB75 /* Pods-Lunchat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lunchat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lunchat/Pods-Lunchat.debug.xcconfig"; sourceTree = "<group>"; };
 		6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewSelectionController.swift; sourceTree = "<group>"; };
@@ -67,9 +71,11 @@
 		6EC9159B235CC980009CA7F4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Lunchat/Post.swift; sourceTree = SOURCE_ROOT; };
 		6EC9159F235CD311009CA7F4 /* HashTagApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagApi.swift; sourceTree = "<group>"; };
 		824CD3857F41965043A667DB /* Pods_Lunchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lunchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		835E5F87235C5F69002D2DDE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Lunchat/Event.swift; sourceTree = SOURCE_ROOT; };
+		B33781E0236129900089D817 /* MessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
+		B33781E2236129C60089D817 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Lunchat/Cells/Message.swift; sourceTree = SOURCE_ROOT; };
 		B35B0519234D99720083B8EB /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
 		B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassageMateTableViewCell.swift; sourceTree = "<group>"; };
-		B35B051E234D99F10083B8EB /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		FC216A1D232897E4006FBA6E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		FC216A1F2328D78A006FBA6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		FC216A212328D909006FBA6E /* ManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageViewController.swift; sourceTree = "<group>"; };
@@ -135,7 +141,7 @@
 				6E912FAD2350AA7100041288 /* MateTableViewCell.swift */,
 				6E912FAB2350AA6900041288 /* LCTableViewCelll.swift */,
 				B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */,
-				B35B051E234D99F10083B8EB /* MessageCell.swift */,
+				B33781E0236129900089D817 /* MessagesCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -143,14 +149,16 @@
 		FC50E1B7232BE1AB00FDC25F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6E912FA92350AA3E00041288 /* RecommendViewController.swift */,
-				6E912FA72350AA3600041288 /* MateViewController.swift */,
-				6E912FA52350AA2B00041288 /* MapViewController.swift */,
 				FC56DE252327D2C10051B708 /* AppDelegate.swift */,
+				6E912FA92350AA3E00041288 /* RecommendViewController.swift */,
+				FC216A212328D909006FBA6E /* ManageViewController.swift */,
+				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
+				6E912FA72350AA3600041288 /* MateViewController.swift */,
+				FC216A212328D909006FBA6E /* ManageViewController.swift */,
+				6E912FA52350AA2B00041288 /* MapViewController.swift */,
 				FC216A272328D937006FBA6E /* ProfileViewController.swift */,
 				FC216A252328D928006FBA6E /* MessageViewController.swift */,
 				FC216A232328D915006FBA6E /* HostViewController.swift */,
-				FC216A212328D909006FBA6E /* ManageViewController.swift */,
 				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
 				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
 				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
@@ -182,6 +190,8 @@
 			children = (
 				FC9F37A023489517001B19FF /* User.swift */,
 				6EC9159B235CC980009CA7F4 /* Post.swift */,
+				835E5F87235C5F69002D2DDE /* Event.swift */,
+				B33781E2236129C60089D817 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC216A1E232897E4006FBA6E /* SignUpViewController.swift in Sources */,
+				B33781E1236129900089D817 /* MessagesCell.swift in Sources */,
 				FC9F37A32348953F001B19FF /* UserApi.swift in Sources */,
 				6E912FAE2350AA7100041288 /* MateTableViewCell.swift in Sources */,
 				B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */,
@@ -383,6 +394,8 @@
 				FC9F37AD23489737001B19FF /* Config.swift in Sources */,
 				6E912FA22350A9D600041288 /* PageContentView.swift in Sources */,
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
+				B33781E3236129C60089D817 /* Message.swift in Sources */,
+				835E5F88235C5F69002D2DDE /* Event.swift in Sources */,
 				FC56DE262327D2C10051B708 /* AppDelegate.swift in Sources */,
 				FC9F37A52348958D001B19FF /* Api.swift in Sources */,
 				6EC915A0235CD311009CA7F4 /* HashTagApi.swift in Sources */,
@@ -395,7 +408,7 @@
 				FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */,
 				6EC91598235CC7B2009CA7F4 /* HelperService.swift in Sources */,
 				FC9F37A123489517001B19FF /* User.swift in Sources */,
-				B35B051F234D99F10083B8EB /* MessageCell.swift in Sources */,
+				0B1940CD235FE6EF00BD77B0 /* EventDetailViewController.swift in Sources */,
 				FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */,
 				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,
 				6E912FAA2350AA3F00041288 /* RecommendViewController.swift in Sources */,
@@ -548,13 +561,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HG5YWSYDWQ;
+				DEVELOPMENT_TEAM = 6W2D2CSKB6;
 				INFOPLIST_FILE = Lunchat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.JamesCullen.Lunchat;
+				PRODUCT_BUNDLE_IDENTIFIER = lyyc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lunchat/Lunchat-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -570,13 +583,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HG5YWSYDWQ;
+				DEVELOPMENT_TEAM = 6W2D2CSKB6;
 				INFOPLIST_FILE = Lunchat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.JamesCullen.Lunchat;
+				PRODUCT_BUNDLE_IDENTIFIER = lyyc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Lunchat/Lunchat-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

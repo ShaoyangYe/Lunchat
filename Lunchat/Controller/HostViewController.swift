@@ -144,7 +144,7 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
         textField.layer.borderWidth = 1.0
         textField.borderStyle = UITextField.BorderStyle.none;
         textField.layer.borderColor = gray.cgColor;
-        textField.placeholderColor = gray
+        textField.placeholderColor(UIColor.gray)
     }
     
     //键盘消失设置
@@ -351,25 +351,39 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
 extension UITextField{
     
     //MARK:-设置暂位文字的颜色
-    var placeholderColor:UIColor {
-        
-        get{
-            let color =   self.value(forKeyPath: "_placeholderLabel.textColor")
-            if(color == nil){
-                return UIColor.white;
-            }
-            return color as! UIColor;
-            
+//    var placeholderColor:UIColor {
+//
+//        get{
+//            let color =   self.value(forKeyPath: "_placeholderLabel.textColor")
+//            if(color == nil){
+//                return UIColor.white;
+//            }
+//            return color as! UIColor;
+//
+//        }
+//
+//        set{
+//
+//            self.setValue(newValue, forKeyPath: "_placeholderLabel.textColor")
+//        }
+//
+//
+//    }
+//
+    func placeholderColor(_ color: UIColor) {
+        // Color
+        var attributes: [NSAttributedString.Key: Any] = [.foregroundColor: color]
+        var range = NSRange(location: 0, length: 1)
+
+        // Font
+        if let text = attributedText, text.length > 0, let attrs = attributedText?.attributes(at: 0, effectiveRange: &range), let font = attrs[.font] {
+            attributes[.font] = font
         }
-        
-        set{
-            
-            self.setValue(newValue, forKeyPath: "_placeholderLabel.textColor")
+        else if let font = font {
+            attributes[.font] = font
         }
-        
-        
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "", attributes: attributes)
     }
-    
     //MARK:-设置暂位文字的字体
     var placeholderFont:UIFont{
         get{

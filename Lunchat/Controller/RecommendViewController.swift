@@ -13,7 +13,6 @@ import FirebaseAuth
 import MapKit
 
 class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
-    
     private var dateCellExpanded: Bool = false
     var uid : String!
     var username: String!
@@ -47,7 +46,6 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
 //        self.tableView.reloadData()
 //        self.view.addSubview(self.tableView)
     }
-
     //MARK: UITableViewDataSource
     // cell的个数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -252,7 +250,7 @@ extension RecommendViewController : searchDelegate{
 
 
 
-extension RecommendViewController{
+extension RecommendViewController:getDataDelegate{
     
     func getData()  {
         self.uid = Auth.auth().currentUser?.uid
@@ -382,3 +380,16 @@ extension RecommendViewController{
 
 
 // 对外暴露的方法
+//extension RecommendViewController {
+//
+//    override open var canBecomeFirstResponder: Bool {
+//        return true
+//    }
+//
+//    override open func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+//        if motion == .motionShake {
+//            print("开始摇动")
+//        }
+//
+//    }
+//}

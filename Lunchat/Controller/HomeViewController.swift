@@ -9,21 +9,27 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AVFoundation
 
 private  let  kTitleViewH : CGFloat = 40
 private  let insets = UIApplication.shared.delegate?.window??.safeAreaInsets ?? UIEdgeInsets.zero
 protocol searchDelegate: class {
     func transmitString(context: String)
 }
+@objc protocol  getDataDelegate{
+    func getData()
+}
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController,AVAudioPlayerDelegate {
+    var player: AVAudioPlayer?
 
 //    @IBOutlet weak var searchBar: UISearchBar!
     weak var delegate : searchDelegate?
     weak var delegate2 : searchDelegate?
+    weak var delegate3 : getDataDelegate?
+    
     var locationManager: CLLocationManager?
     var notification: UIBarButtonItem?
-    
     var mapview: MKMapView!
     var apointmentData = [
         ["title":"Do you like music?","theme":"Architecture","location":"Union House Ground 1","participant":"3","MaxParticipant":"5","time":"11:00","collected": "true","latitude":"-37.791915927734375","longitude":"144.96056159442693"],
@@ -85,18 +91,21 @@ class HomeViewController: UIViewController {
         return contentView
     }()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.init()
        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "image_openNotice"), landscapeImagePhone: UIImage(named: "image_openNotice"), style: .plain, target: .none, action: .none)
 //
-        
+        UIApplication.shared.applicationSupportsShakeToEdit = true
         view.addSubview(searchBar)
         view.addSubview(pageTitleView)
         view.addSubview(pageContentView)
         print(view.safeAreaLayoutGuide.layoutFrame)
         self.delegate = pageContentView.childVcs[0] as? searchDelegate
         self.delegate2 = pageContentView.childVcs[1] as? searchDelegate
+        self.delegate3 = pageContentView.childVcs[0] as? getDataDelegate
         searchBar.delegate  = self
         pageContentView.backgroundColor = UIColor.purple
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
@@ -104,6 +113,34 @@ class HomeViewController: UIViewController {
 //        var di = [Dictionary<String,Any>]()
         self.hideKeyboardWhenTappedAround()
     }
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+           print("开始摇动")
+           //开始动画
+           /// 设置音效
+        let path1 = Bundle.main.path(forResource: "rock", ofType:"mp3")
+        let data1 = NSData(contentsOfFile: path1!)
+        self.player = try? AVAudioPlayer(data: data1! as Data)
+        self.player?.delegate = self
+        self.player?.updateMeters()//更新数据
+        self.player?.prepareToPlay()//准备数据
+        self.player?.play()
+        self.delegate3?.getData()
+    }
+       override func motionCancelled(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+           print("取消摇动")
+       }
+       override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+           print("摇动结束")
+
+           /// 设置音效
+           let path = Bundle.main.path(forResource: "rock_end", ofType:"mp3")
+           let data = NSData(contentsOfFile: path!)
+           self.player = try? AVAudioPlayer(data: data! as Data)
+           self.player?.delegate = self
+           self.player?.updateMeters()//更新数据
+           self.player?.prepareToPlay()//准备数据
+           self.player?.play()
+       }
 //    @objc func dismissKeyboard() {
 //        //Causes the view (or one of its embedded text fields) to resign the first responder status.
 //        view.endEditing(true)

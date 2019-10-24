@@ -22,6 +22,8 @@
 		6EC9159C235CC980009CA7F4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC9159B235CC980009CA7F4 /* Post.swift */; };
 		6EC915A0235CD311009CA7F4 /* HashTagApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EC9159F235CD311009CA7F4 /* HashTagApi.swift */; };
 		750033527232F0C87A4CAA1B /* Pods_Lunchat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824CD3857F41965043A667DB /* Pods_Lunchat.framework */; };
+		8339B8C42361E03800F1F578 /* rock_end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8339B8C22361E03800F1F578 /* rock_end.mp3 */; };
+		8339B8C52361E03800F1F578 /* rock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8339B8C32361E03800F1F578 /* rock.mp3 */; };
 		835E5F88235C5F69002D2DDE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E5F87235C5F69002D2DDE /* Event.swift */; };
 		B33781E1236129900089D817 /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33781E0236129900089D817 /* MessagesCell.swift */; };
 		B33781E3236129C60089D817 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33781E2236129C60089D817 /* Message.swift */; };
@@ -76,6 +78,8 @@
 		6EC9159B235CC980009CA7F4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Lunchat/Post.swift; sourceTree = SOURCE_ROOT; };
 		6EC9159F235CD311009CA7F4 /* HashTagApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagApi.swift; sourceTree = "<group>"; };
 		824CD3857F41965043A667DB /* Pods_Lunchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lunchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8339B8C22361E03800F1F578 /* rock_end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rock_end.mp3; sourceTree = "<group>"; };
+		8339B8C32361E03800F1F578 /* rock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rock.mp3; sourceTree = "<group>"; };
 		835E5F87235C5F69002D2DDE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Lunchat/Event.swift; sourceTree = SOURCE_ROOT; };
 		B33781E0236129900089D817 /* MessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 		B33781E2236129C60089D817 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Lunchat/Cells/Message.swift; sourceTree = SOURCE_ROOT; };
@@ -128,6 +132,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8339B8C12361E03800F1F578 /* MP3 */ = {
+			isa = PBXGroup;
+			children = (
+				8339B8C22361E03800F1F578 /* rock_end.mp3 */,
+				8339B8C32361E03800F1F578 /* rock.mp3 */,
+			);
+			path = MP3;
+			sourceTree = "<group>";
+		};
 		88F582EDB0DDF2536B5A98D4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +165,6 @@
 				6E912FAB2350AA6900041288 /* LCTableViewCelll.swift */,
 				B35B051C234D99C50083B8EB /* MassageMateTableViewCell.swift */,
 				B33781E0236129900089D817 /* MessagesCell.swift */,
-				B35B051E234D99F10083B8EB /* MessageCell.swift */,
 				FCB3ECA1235DCD35001FC0B4 /* PeopleTableViewCell.swift */,
 			);
 			path = Cells;
@@ -231,6 +243,7 @@
 		FC56DE242327D2C10051B708 /* Lunchat */ = {
 			isa = PBXGroup;
 			children = (
+				8339B8C12361E03800F1F578 /* MP3 */,
 				FC56DE2C2327D2C40051B708 /* Assets.xcassets */,
 				B35B051B234D99A60083B8EB /* Cells */,
 				FC50E1BC232BE3C700FDC25F /* GoogleService-Info.plist */,
@@ -321,6 +334,8 @@
 				FC56DE302327D2C40051B708 /* LaunchScreen.storyboard in Resources */,
 				FC56DE2D2327D2C40051B708 /* Assets.xcassets in Resources */,
 				FC56DE2B2327D2C10051B708 /* Main.storyboard in Resources */,
+				8339B8C52361E03800F1F578 /* rock.mp3 in Resources */,
+				8339B8C42361E03800F1F578 /* rock_end.mp3 in Resources */,
 				FC40809B2328F94300EFF9B4 /* Host.storyboard in Resources */,
 				FC40809F2328F9EF00EFF9B4 /* Profile.storyboard in Resources */,
 				FC50E1BD232BE3C800FDC25F /* GoogleService-Info.plist in Resources */,

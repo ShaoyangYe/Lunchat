@@ -12,7 +12,6 @@ import FirebaseDatabase
 import FirebaseAuth
 import MapKit
 
-
 class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     private var dateCellExpanded: Bool = false
@@ -27,6 +26,11 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
     var eventDetail:EventDetailViewController?
     var expandCell: Int?
     var eventID: String!
+    override func viewDidAppear(_ animated: Bool) {
+        // Read data from firebase
+        getData()
+        tableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -375,3 +379,6 @@ extension RecommendViewController{
 
     }
 }
+
+
+// 对外暴露的方法

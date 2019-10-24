@@ -53,7 +53,7 @@ class AuthService {
         onSuccess()
     }
     
-    static func updateUserInfor(username: String, email: String, imageData: Data, onSuccess: @escaping () -> Void, onError:  @escaping (_ errorMessage: String?) -> Void) {
+    static func updateUserInfor(username: String, email: String, imageData: Data, eduBackground: String, school: String, major: String, company: String, position: String, currentResidence: String, originalResidence: String, onSuccess: @escaping () -> Void, onError:  @escaping (_ errorMessage: String?) -> Void) {
                 
         Api.User.CURRENT_USER?.updateEmail(to: email, completion: { (error) in
             if error != nil {
@@ -67,7 +67,7 @@ class AuthService {
                     }
                     storageRef.downloadURL(completion: { (url: URL?, error: Error?) in
                         if let profileImageUrl = url?.absoluteString {
-                            self.updateDatabase(profileImageUrl: profileImageUrl, username: username, email: email, onSuccess: onSuccess, onError: onError)
+                            self.updateDatabase(profileImageUrl: profileImageUrl, username: username, email: email, eduBackground: eduBackground, school: school, major: major, company: company, position: position, currentResidence: currentResidence, originalResidence: originalResidence, onSuccess: onSuccess, onError: onError)
                         }
                         
                     })
@@ -77,8 +77,8 @@ class AuthService {
         
     }
     
-    static func updateDatabase(profileImageUrl: String, username: String, email: String, onSuccess: @escaping () -> Void, onError:  @escaping (_ errorMessage: String?) -> Void) {
-        let dict = ["username": username, "username_lowercase": username.lowercased(), "email": email, "profileImageUrl": profileImageUrl]
+    static func updateDatabase(profileImageUrl: String, username: String, email: String, eduBackground: String, school: String, major: String, company: String, position: String, currentResidence: String, originalResidence: String, onSuccess: @escaping () -> Void, onError:  @escaping (_ errorMessage: String?) -> Void) {
+        let dict = ["username": username, "username_lowercase": username.lowercased(), "email": email, "profileImageUrl": profileImageUrl, "eduBackground": eduBackground, "school": school, "major": major, "company": company, "position": position, "currentResidence": currentResidence, "originalResidence": originalResidence]
         Api.User.REF_CURRENT_USER?.updateChildValues(dict, withCompletionBlock: { (error, ref) in
             if error != nil {
                 onError(error!.localizedDescription)

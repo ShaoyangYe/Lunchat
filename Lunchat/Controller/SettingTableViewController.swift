@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol SettingTableViewControllerDelegate {
+    func updateUserInfor()
+}
+
 class SettingTableViewController: UITableViewController {
 
+    var delegate: SettingTableViewControllerDelegate?
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var changeProfileImageButton: UIButton!
@@ -32,6 +37,19 @@ class SettingTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameText.delegate = self
+        emailText.delegate = self
+        eduBackgroundText.delegate = self
+        
+        schoolText.delegate = self
+        majorText.delegate = self
+        
+        companyText.delegate = self
+        positionText.delegate = self
+        
+        currentResidenceText.delegate = self
+        originalResidenceText.delegate = self
         
         profileImage.layer.cornerRadius = 60
         profileImage.layer.borderWidth = 5
@@ -67,24 +85,48 @@ class SettingTableViewController: UITableViewController {
     }
     
     @IBAction func saveBtn_TouchUpInside(_ sender: Any) {
-//        if let profileImg = self.profileImage.image, let imageData = profileImg.jpegData(compressionQuality: 0.1){
-//            ProgressHUD.show("Waiting...")
-//            AuthService.updateUserInfor(username: nameText.text!, email: emailText.text!, imageData: imageData, onSuccess: {
-//                ProgressHUD.showSuccess("Success")
-//                self.delegate?.updateUserInfor()
-//            }, onError: { (errorMessage) in
-//                ProgressHUD.showError(errorMessage)
-//            })
-//        }
+        if let profileImg = self.profileImage.image, let imageData = profileImg.jpegData(compressionQuality: 0.1){
+            ProgressHUD.show("Waiting...")
+            AuthService.updateUserInfor(username: nameText.text!, email: emailText.text!, imageData: imageData, eduBackground: eduBackgroundText.text!, school: schoolText.text!, major: majorText.text!, company: companyText.text!, position: positionText.text!, currentResidence: currentResidenceText.text!, originalResidence: originalResidenceText.text!, onSuccess: {
+                ProgressHUD.showSuccess("Success")
+                self.delegate?.updateUserInfor()
+            }, onError: { (errorMessage) in
+                ProgressHUD.showError(errorMessage)
+            })
+        }
     }
     
     @IBAction func logoutBtn_TouchUpInside(_ sender: Any) {
-//        AuthService.logout(onSuccess: {
-//            let storyboard = UIStoryboard(name: "Start", bundle: nil)
-//            let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-//            self.present(signInVC, animated: true, completion: nil)
-//        }) { (errorMessage) in
-//            ProgressHUD.showError(errorMessage)
-//        }
+        AuthService.logout(onSuccess: {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
+            self.present(signInVC, animated: true, completion: nil)
+        }) { (errorMessage) in
+            ProgressHUD.showError(errorMessage)
+        }
+    }
+    
+    @IBAction func changeProfileBtn_TouchUpInside(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
+    }
+}
+
+extension SettingTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage {
+            profileImage.image = image
+        }
+        dismiss(animated: true, completion: nil)
+        
+    }
+}
+
+extension SettingTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("return")
+        textField.resignFirstResponder()
+        return true
     }
 }

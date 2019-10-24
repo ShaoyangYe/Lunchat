@@ -538,6 +538,9 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                     <state key="normal" title="Change Profile Image"/>
+                                    <connections>
+                                        <action selector="changeProfileBtn_TouchUpInside:" destination="ctm-JC-znc" eventType="touchUpInside" id="ZTd-6V-dQ4"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -935,6 +938,9 @@
                                                     <rect key="frame" x="188" y="5.5" width="38" height="33"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <state key="normal" title="Save"/>
+                                                    <connections>
+                                                        <action selector="saveBtn_TouchUpInside:" destination="ctm-JC-znc" eventType="touchUpInside" id="wJl-fT-2SV"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -960,6 +966,9 @@
                                                     <state key="normal" title="Logout">
                                                         <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="logoutBtn_TouchUpInside:" destination="ctm-JC-znc" eventType="touchUpInside" id="oUb-k8-km9"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

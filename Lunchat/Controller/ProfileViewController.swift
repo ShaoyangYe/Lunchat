@@ -208,8 +208,22 @@ class ProfileViewController: UIViewController {
 //    @objc func goToSettingVC() {
 //        delegate2?.goToSettingVC()
 //    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Profile_SettingSegue" {
+            let settingVC = segue.destination as! SettingTableViewController
+            settingVC.delegate = self
+        }
+        
+    }
+    
     
     @objc func goToSettingVC() {
         performSegue(withIdentifier: "Profile_SettingSegue", sender: nil)
+    }
+}
+
+extension ProfileViewController: SettingTableViewControllerDelegate {
+    func updateUserInfor() {
+        self.updateView()
     }
 }

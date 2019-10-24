@@ -2,6 +2,22 @@
 ----
 This is an app that let people make more freinds and make society more connected just by having lunch together.
 
+### Instruction
+----
+Firebase is all set-up, and it's currently running.
+
+Just use the simulartor to run and enjoy!
+
+### Team Members Contribution
+----
+| Name        | Contribution           | StudentNum  |
+| ------------- |:-------------:| -----:|
+| Shaoyang Ye | Profile Page | 864716 |
+| Yi Li | Host Page | 990073 |
+| Yucheng Yang | Home Page | 981433 |
+| Jiaqing Chen | Manage Page | 868199 |
+| Kangyun Dou | Message Page | 740145 |
+
 ### Main Features
 ----
 1, Host a new Lunchat
@@ -28,18 +44,3 @@ This is an app that let people make more freinds and make society more connected
 ----
 Firebase (Real-time database) is used colloboratively for this project
 
-### Instruction
-----
-Firebase is all set-up, and it's currently running.
-
-Just use the simulartor to run and enjoy!
-
-### Team Members Contribution
-----
-| Name        | Contribution           | StudentNum  |
-| ------------- |:-------------:| -----:|
-| Shaoyang Ye | Profile Page | 864716 |
-| Yi Li | Host Page | 990073 |
-| Yucheng Yang | Home Page | 981433 |
-| Jiaqing Chen | Manage Page | 868199 |
-| Kangyun Dou | Message Page | 740145 |

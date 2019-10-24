@@ -1,9 +1,9 @@
 # Lunchat
-
+----
 This is an app that let people make more freinds and make society more connected just by having lunch together.
 
 ### Main Features
-
+----
 1, Host a new Lunchat
 
 2, Join a existing Lunchat
@@ -15,7 +15,7 @@ This is an app that let people make more freinds and make society more connected
 5, Message and communication
 
 ### Sensors invovled
-
+----
 1, Photos/Camera: used as User Image
 
 2, Keyboard: typing
@@ -25,11 +25,28 @@ This is an app that let people make more freinds and make society more connected
 4, Digital Shake Sensor: refresh the page 
 
 ### Cloud Database
-
+----
 Firebase (Real-time database) is used colloboratively for this project
 
 ### Instruction
-
+----
 Firebase is all set-up, and it's currently running.
 
 Just use the simulartor to run and enjoy!
+
+# Team Members
+----
+
+Kangyun Dou - 740145
+
+# Team Members
+----
+Shaoyang Ye - Profile Page - 864716
+
+Yi Li - Host Page - 990073
+
+Yucheng Yang - Home Page - 981433
+
+Jiaqing Chen - Manage Page - 868199
+
+Kangyun Dou - Message Page - 740145

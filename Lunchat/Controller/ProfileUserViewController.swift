@@ -12,25 +12,25 @@ protocol ProfileUserViewControllerDelegate {
     func updateFollowButton(forUser user: UserModel)
 }
 
-protocol ProfileUserViewControllerDelegateSwitchSettingVC {
-    func goToSettingVC()
-}
+//protocol ProfileUserViewControllerDelegateSwitchSettingVC {
+//    func goToSettingVC()
+//}
 class ProfileUserViewController: UIViewController {
     
     var user: UserModel!
     var userId = ""
     var delegate: ProfileViewControllerDelegate?
-    var delegate2: ProfileUserViewControllerDelegateSwitchSettingVC?
+//    var delegate2: ProfileUserViewControllerDelegateSwitchSettingVC?
     @IBOutlet weak var lunchatView: UIView!
-    @IBOutlet weak var lunchatMate: UIView!
-    @IBOutlet weak var likes: UIView!
+    @IBOutlet weak var followingCountView: UIView!
+    @IBOutlet weak var followersCountView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var followButton: UIButton!
     
     @IBOutlet weak var lunchatCount: UILabel!
-    @IBOutlet weak var lunchMateCount: UILabel!
-    @IBOutlet weak var likesCount: UILabel!
+    @IBOutlet weak var followingCount: UILabel!
+    @IBOutlet weak var followersCount: UILabel!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var eduBackgroundLabel: UILabel!
@@ -46,8 +46,8 @@ class ProfileUserViewController: UIViewController {
         super.viewDidLoad()
         self.updateView()
         lunchatView.layer.cornerRadius = 5
-        lunchatMate.layer.cornerRadius = 5
-        likes.layer.cornerRadius = 5
+        followingCountView.layer.cornerRadius = 5
+        followersCountView.layer.cornerRadius = 5
         
         followButton.layer.cornerRadius = 5
         
@@ -74,6 +74,14 @@ class ProfileUserViewController: UIViewController {
                 
             }
             
+                Api.Follow.fetchCountFollowing(userId: user.id!) { (count) in
+                    self.followingCount.text = "\(count)"
+                }
+                
+                Api.Follow.fetchCountFollowers(userId: user.id!) { (count) in
+                    self.followersCount.text = "\(count)"
+                }
+                
             if user.id == Api.User.CURRENT_USER?.uid {
                 self.followButton.setTitle("Edit Profile", for: UIControl.State.normal)
                 self.followButton.addTarget(self, action: #selector(self.goToSettingVC), for: UIControl.Event.touchUpInside)
@@ -141,8 +149,11 @@ class ProfileUserViewController: UIViewController {
         }
     }
    
+//    @objc func goToSettingVC() {
+//        delegate2?.goToSettingVC()
+//    }
     @objc func goToSettingVC() {
-        delegate2?.goToSettingVC()
+        performSegue(withIdentifier: "ProfileUser_SettingSegue", sender: nil)
     }
     
     func updateStateFollowButton() {

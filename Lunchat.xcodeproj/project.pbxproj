@@ -33,6 +33,7 @@
 		FC216A242328D915006FBA6E /* HostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A232328D915006FBA6E /* HostViewController.swift */; };
 		FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A252328D928006FBA6E /* MessageViewController.swift */; };
 		FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC216A272328D937006FBA6E /* ProfileViewController.swift */; };
+		FC2BBDCC2361565D00CFA678 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2BBDCB2361565D00CFA678 /* SettingTableViewController.swift */; };
 		FC4080952328F36000EFF9B4 /* HomePage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4080942328F36000EFF9B4 /* HomePage.storyboard */; };
 		FC4080972328F81600EFF9B4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4080962328F81600EFF9B4 /* Home.storyboard */; };
 		FC4080992328F8D300EFF9B4 /* Manage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC4080982328F8D300EFF9B4 /* Manage.storyboard */; };
@@ -86,6 +87,7 @@
 		FC216A232328D915006FBA6E /* HostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostViewController.swift; sourceTree = "<group>"; };
 		FC216A252328D928006FBA6E /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		FC216A272328D937006FBA6E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FC2BBDCB2361565D00CFA678 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		FC4080942328F36000EFF9B4 /* HomePage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomePage.storyboard; sourceTree = "<group>"; };
 		FC4080962328F81600EFF9B4 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		FC4080982328F8D300EFF9B4 /* Manage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manage.storyboard; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				FC216A232328D915006FBA6E /* HostViewController.swift */,
 				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
 				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
+				FC2BBDCB2361565D00CFA678 /* SettingTableViewController.swift */,
 				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
 				B35B0519234D99720083B8EB /* MessageDetailViewController.swift */,
 				6E153948234DA4ED007B1C7B /* MapViewSelectionController.swift */,
@@ -425,6 +428,7 @@
 				FC9F37A123489517001B19FF /* User.swift in Sources */,
 				0B1940CD235FE6EF00BD77B0 /* EventDetailViewController.swift in Sources */,
 				FC216A202328D78A006FBA6E /* HomeViewController.swift in Sources */,
+				FC2BBDCC2361565D00CFA678 /* SettingTableViewController.swift in Sources */,
 				FC216A282328D937006FBA6E /* ProfileViewController.swift in Sources */,
 				6E912FAA2350AA3F00041288 /* RecommendViewController.swift in Sources */,
 				FC216A262328D928006FBA6E /* MessageViewController.swift in Sources */,

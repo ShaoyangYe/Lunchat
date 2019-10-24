@@ -39,7 +39,6 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
         super.viewDidLoad()
         
         eventDetail = storyboard?.instantiateViewController(withIdentifier: "EventDetailVC") as? EventDetailViewController
-        
         eventDetail?.modalPresentationStyle = .overCurrentContext
         eventDetail?.delegate = self
         

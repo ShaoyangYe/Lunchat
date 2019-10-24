@@ -99,13 +99,24 @@ class HomeViewController: UIViewController {
         self.delegate2 = pageContentView.childVcs[1] as? searchDelegate
         searchBar.delegate  = self
         pageContentView.backgroundColor = UIColor.purple
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+//        view.addGestureRecognizer(tap)
 //        var di = [Dictionary<String,Any>]()
-
+        self.hideKeyboardWhenTappedAround()
     }
+//    @objc func dismissKeyboard() {
+//        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+//        view.endEditing(true)
+//    }
+}
+extension HomeViewController{
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(HomeViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+    }
+
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
 }
@@ -197,7 +208,7 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
             objectAnnotation.subtitle = self.apointmentData[i-1]["location"]
             mapview.addAnnotation(objectAnnotation)
         }
-        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: longDelta)
+        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let center:CLLocation = CLLocation(latitude: -37.796915927734375, longitude: 144.96056159442693)
         let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,
         span: currentLocationSpan)

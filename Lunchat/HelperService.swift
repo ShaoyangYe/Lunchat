@@ -38,24 +38,25 @@ class HelperService {
         ref0.observeSingleEvent(of: .value) { (snapshot) in
             // Get user value
             currentUsername = (snapshot.value as? String)!
+            var participantsDic = [userID: currentUsername]
+            let timestamp = Int(Date().timeIntervalSince1970)
+            
+            var dict = ["eventID": MyVariables.yourVariable, "host": userID ,"theme": topic, "title": title, "date": date, "time": time, "location": address, "timestamp": timestamp,"latitude": latitude,"longitude": longtitude,"maxParticipants":numberpeople,"past": 0] as [String : Any]
+            
+            dict["participants"] = participantsDic
+            
+            newPostReference.setValue(dict, withCompletionBlock: {
+                (error, ref) in
+                if error != nil {
+                    ProgressHUD.showError(error!.localizedDescription)
+                    return
+                }
+                ProgressHUD.showSuccess("Success")
+                onSuccess()
+            })
+            print(dict)
         }
         
-        var participantsDic = [userID: currentUsername]
-        let timestamp = Int(Date().timeIntervalSince1970)
         
-        var dict = ["eventID": MyVariables.yourVariable, "host": userID ,"theme": topic, "title": title, "date": date, "time": time, "location": address, "timestamp": timestamp,"latitude": latitude,"longitude": longtitude,"maxParticipants":numberpeople,"past": 0] as [String : Any]
-        
-        dict["participants"] = participantsDic
-        
-        newPostReference.setValue(dict, withCompletionBlock: {
-            (error, ref) in
-            if error != nil {
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            ProgressHUD.showSuccess("Success")
-            onSuccess()
-        })
-        print(dict)
     }
 }

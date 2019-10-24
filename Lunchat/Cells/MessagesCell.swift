@@ -13,9 +13,11 @@ import FirebaseDatabase
 
 class MessagesCell: UITableViewCell {
     
+    
     @IBOutlet weak var recievedMessageLbl: UILabel!
-
+    
     @IBOutlet weak var recievedMessageView: UIView!
+    
 
     @IBOutlet weak var sentMessageLbl: UILabel!
 

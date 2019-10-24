@@ -54,9 +54,10 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
 //        for index in 0...19 {
 //            messages.append("\(index)")
 //        }
-        
+        print("messageId=====")
+        print(messageId)
         if messageId != "" && messageId != nil {
-            
+            print("righthere!!???????why nothing happened ")
             loadData()
         }
         
@@ -213,7 +214,7 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
                 loadData()
                         
                     } else if messageId != "" {
-                        
+                        loadData()
                         let post: Dictionary<String, AnyObject> = [
                             "message": messageField.text as AnyObject,
                             "sender": userID as AnyObject

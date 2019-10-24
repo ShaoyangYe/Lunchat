@@ -66,6 +66,7 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             cell?.iconImv.image = UIImage(named:"no-user-image-square")
         }
         cell?.uid = dict["uid"]
+        cell?.iconImv.contentMode = .scaleAspectFill
 //        cell?.iconImv.image = UIImage(named: dict["icon"]!)
         cell?.userLabel.text = dict["name"]
         //        cell?.sexLabel.text = dict["sex"]
@@ -144,6 +145,8 @@ extension MateViewController{
                 // Get user value
                 let users = snapshot.value as? Dictionary<String,Any>
                 //                print(value)
+                if users != nil {
+
                 for (key, value) in users!{
                     let dict = value as! Dictionary<String,String>
                     var mate = [String:String]()
@@ -152,7 +155,7 @@ extension MateViewController{
                     mate["department"] = dict["email"]
                     mate["uid"] = key
                     result.append(mate)
-                }
+                    }}
                 completion(result)
               }) { (error) in
                 print(error.localizedDescription)

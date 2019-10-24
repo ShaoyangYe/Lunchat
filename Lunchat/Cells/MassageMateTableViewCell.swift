@@ -17,9 +17,9 @@ class MassageMateTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         iconImv = UIImageView(frame: CGRect(x: 5, y: 5, width: 90, height: 90))
-        iconImv.layer.cornerRadius = 5.0
+        iconImv.layer.cornerRadius = 45.0
         iconImv.layer.masksToBounds = true
-        
+        iconImv.contentMode = .scaleAspectFill
         userLabel = UILabel(frame: CGRect(x: 110, y: 20, width: 200, height: 20))
         userLabel.textColor = UIColor.black
         userLabel.font = UIFont.boldSystemFont(ofSize: 17)

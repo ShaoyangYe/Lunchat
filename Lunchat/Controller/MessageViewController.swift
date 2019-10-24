@@ -28,6 +28,8 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var recipient: String!
     
     var messageId: String!
+    
+    var havefriend = false
 
     // Messages' info
     
@@ -172,6 +174,18 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return dateformatter.string(from: Date())
         
     }
+//    func dohavefriend(){
+//        let userID = Auth.auth().currentUser?.uid
+//        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with:{
+//        (snapshot) in
+//        if snapshot.hasChild("friends")
+//        {
+//            havefrind = true
+//        }
+//    })
+//    }
+
+
 }
 
 
@@ -183,6 +197,7 @@ extension MessageViewController{
                 // Get user value
                 let users = snapshot.value as? Dictionary<String,Any>
                 //                print(value)
+                if users != nil {
                 for (key, value) in users!{
                     let dict = value as! Dictionary<String,String>
                     var mate = [String:String]()
@@ -192,11 +207,12 @@ extension MessageViewController{
                     mate["uid"] = key
                     result.append(mate)
                 }
+                }
                 completion(result)
               }) { (error) in
                 print(error.localizedDescription)
             }
-        }
+    }
     }
 }
 

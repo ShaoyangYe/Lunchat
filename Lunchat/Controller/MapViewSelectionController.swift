@@ -51,10 +51,19 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
     
     
     func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            myMap.setRegion(region, animated: true)
-        }
+//        if let location = locationManager.location?.coordinate {
+//            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+//            myMap.setRegion(region, animated: true)
+//        }
+        let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let center:CLLocation = CLLocation(latitude: -37.796915927734375, longitude: 144.96056159442693)
+        let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,
+                                                                  span: currentLocationSpan)
+        
+        
+        myMap.setRegion(currentRegion, animated: true)
+        myMap.userTrackingMode = .follow
+        myMap.userLocation.title  = "My position"
     }
     
     func checkLocationServices() {
@@ -101,77 +110,6 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
         
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-    
-    //搜索按钮
-//    @IBAction func btnSearch(_ sender: Any) {
-//        let searchController = UISearchController(searchResultsController: nil)
-//        searchController.searchBar.delegate = self
-//        present(searchController, animated: true, completion: nil)
-//    }
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        //Ignoring user
-//        UIApplication.shared.beginIgnoringInteractionEvents()
-//
-//        //Activity Indicator
-//        let activityIndicator = UIActivityIndicatorView()
-//        activityIndicator.style = UIActivityIndicatorView.Style.gray
-//        activityIndicator.center = self.view.center
-//        activityIndicator.hidesWhenStopped = true
-//        activityIndicator.startAnimating()
-//
-//        self.view.addSubview(activityIndicator)
-//
-//        //Hide search bar
-//        searchBar.resignFirstResponder()
-//        dismiss(animated: true, completion: nil)
-//
-//        //Create the search request
-//        let searchRequest = MKLocalSearch.Request()
-//        searchRequest.naturalLanguageQuery = searchBar.text
-//
-//        let activeSearch = MKLocalSearch(request: searchRequest)
-//
-//        activeSearch.start { (response, error) in
-//
-//            activityIndicator.stopAnimating()
-//            UIApplication.shared.endIgnoringInteractionEvents()
-//
-//            if response == nil
-//            {
-//                print("ERROR")
-//            }
-//            else
-//            {
-//                //Remove annotations
-//                let annotations = self.myMap.annotations
-//                self.myMap.removeAnnotations(annotations)
-//
-//                //Getting data
-//                let latitude = response?.boundingRegion.center.latitude
-//                var longitude = response?.boundingRegion.center.longitude
-//
-//                self.latitudeall = latitude!
-//                self.longtitudeall = longitude!
-//
-//                print(self.latitudeall)
-//                print(self.longtitudeall)
-//
-//                //Create annotation
-//                let annotation = MKPointAnnotation()
-//                annotation.title = searchBar.text
-//                annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
-//                self.myMap.addAnnotation(annotation)
-//
-//                //Zooming in on annotation
-//                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
-//                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-//                let region = MKCoordinateRegion(center: coordinate, span: span)
-//                self.myMap.setRegion(region, animated: true)
-//            }
-//
-//        }
-//    }
-//
     @objc func onClickingReturn() {
         if let delegate = delegate{
             delegate.doSomethingWith(data: addressLabel.text ?? "nil", latitude: latitudeall, longtitude: longtitudeall)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -64,7 +64,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="716"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Message" rowHeight="60" id="AeG-nQ-cil" customClass="MessagesCell" customModule="MessageApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Message" rowHeight="60" id="AeG-nQ-cil" customClass="MessagesCell" customModule="Lunchat" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AeG-nQ-cil" id="Z2B-qY-Dcc">
@@ -103,12 +103,13 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="4E5-Mm-tRw" secondAttribute="bottom" constant="8" id="Ix6-tO-Vk4"/>
                                                         <constraint firstItem="4E5-Mm-tRw" firstAttribute="top" secondItem="lFl-pW-Ujf" secondAttribute="top" constant="8" id="LXz-qF-922"/>
-                                                        <constraint firstItem="4E5-Mm-tRw" firstAttribute="leading" secondItem="lFl-pW-Ujf" secondAttribute="leading" constant="8" id="gYd-W6-4i8"/>
+                                                        <constraint firstAttribute="leading" relation="lessThanOrEqual" secondItem="4E5-Mm-tRw" secondAttribute="leading" constant="150" id="gYd-W6-4i8"/>
                                                         <constraint firstAttribute="trailing" secondItem="4E5-Mm-tRw" secondAttribute="trailing" constant="8" id="qDr-e6-Tk8"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="lFl-pW-Ujf" firstAttribute="leading" secondItem="Z2B-qY-Dcc" secondAttribute="leading" constant="390" id="0NW-cH-Hmb"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JaL-Uf-Cwc" secondAttribute="trailing" constant="150" id="4ec-d8-mQX"/>
                                                 <constraint firstAttribute="bottom" secondItem="lFl-pW-Ujf" secondAttribute="bottom" constant="4" id="AHu-31-vyn"/>
                                                 <constraint firstItem="JaL-Uf-Cwc" firstAttribute="top" secondItem="Z2B-qY-Dcc" secondAttribute="top" constant="4" id="Njm-2o-8gy"/>
@@ -130,7 +131,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDh-zF-3Sr" userLabel="View1">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter your meesages" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxd-8A-Jc3">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxd-8A-Jc3">
                                         <rect key="frame" x="4" y="9" width="288" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

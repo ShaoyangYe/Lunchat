@@ -105,6 +105,7 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     // 选中cell后执行此方法
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("getindexpath.rowinginging")
         print(indexPath.row)
         let dict:Dictionary = self.mate[indexPath.row]
         recipient = dict["uid"]

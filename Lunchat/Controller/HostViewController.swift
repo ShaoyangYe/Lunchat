@@ -11,7 +11,7 @@ import MapKit
 import CoreLocation
 import Foundation
 
-class HostViewController: UIViewController , UITextFieldDelegate{
+class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectionControllerDelegate {
     //控件定义
     @IBOutlet weak var textTitle: UITextField!
     @IBOutlet weak var btnLunchat: UIButton!
@@ -32,17 +32,17 @@ class HostViewController: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var lbAddress: UILabel!
     @IBOutlet weak var lbChooseTopic: UILabel!
     @IBOutlet weak var btnSelectLocation: UIButton!
-    @IBOutlet weak var txtNumPeople: UILabel!
+    @IBOutlet weak var lbNumPeople: UILabel!
     
     
    
     //主色调
     let gray = (UIColor(red: 255/255.0, green: 140/255.0, blue: 105/255.0, alpha: 0.9))
     let datePicker = UIDatePicker()
-//    var np = 0
+    var np = 0
     func createDatePicker()
     {
-        datePicker.datePickerMode = .date
+        datePicker.datePickerMode = .dateAndTime
         textTime.inputView = datePicker
         
         let toolBar = UIToolbar()
@@ -56,8 +56,9 @@ class HostViewController: UIViewController , UITextFieldDelegate{
     @objc func doneClicked()
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd/MM/YYYY HH:mm"
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .none
         
         textTime.text = dateFormatter.string(from: datePicker.date)
         textTime.textColor = gray
@@ -79,8 +80,11 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         lbTime.textColor = gray
         lbAddress.textColor = gray
         lbChooseTopic.textColor = gray
+        self.tabBarController?.tabBar.isHidden = false
+        textTitle.textColor = gray
+        textTime.textColor = gray
+        txtLocation.textColor = gray
         
-//        np = txtNumPeople.text as! Int
     }
     
     func setDeleges()
@@ -89,13 +93,28 @@ class HostViewController: UIViewController , UITextFieldDelegate{
     }
     
     @IBAction func btnUpClicked(_ sender: Any) {
-//        np += 1
-//        txtNumPeople.text = np as! String
+        np += 1
+        lbNumPeople.text = String(np)
     }
     
     @IBAction func btnDownCliked(_ sender: Any) {
-//        np -= 1
-//        txtNumPeople.text = np as! String
+        if np <= 0
+        {
+            let alertController = UIAlertController(title: "System notice",
+                                                    message: "Minimum number of people is 0", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+                action in
+                print("点击了确定")
+            })
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+        else
+        {
+            np -= 1
+            lbNumPeople.text = String(np)
+        }
+        
     }
     func customizeElements()
     {
@@ -115,6 +134,7 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         customizeText(textField: textTitle)
         customizeText(textField: textTime)
         customizeText(textField: txtLocation)
+        
     }
     
     func customizeText (textField: UITextField)
@@ -179,7 +199,7 @@ class HostViewController: UIViewController , UITextFieldDelegate{
     
     func changeBtnColor(button: UIButton)
     {
-        if button.backgroundColor == UIColor.white && numtopics <= 3 {
+        if button.backgroundColor == UIColor.white && numtopics <= 1 {
             numtopics += 1
             button.backgroundColor = gray
             button.setTitleColor(UIColor.white, for: .normal)
@@ -196,16 +216,21 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         else
         {
             let alertController = UIAlertController(title: "Alert",
-                                                    message: "Maximum three topics", preferredStyle: .alert)
+                                                    message: "Maximum one topics", preferredStyle: .alert)
 //            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            let okAction = UIAlertAction(title: "Ok", style: .default, handler: {
-                action in
-                print("点击了确定")
-            })
+            let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
 //            alertController.addAction(cancelAction)
-            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func initBtnTopic(button: UIButton)
+    {
+        numtopics = 0
+        button.backgroundColor = UIColor.white
+        button.setTitleColor(gray, for: .normal)
+        button.tintColor = gray
     }
     
     
@@ -235,7 +260,91 @@ class HostViewController: UIViewController , UITextFieldDelegate{
         self.present(alertController, animated: true, completion: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "hostToMapSelection"){
+            let displayVC = segue.destination as! MapViewSelectionController
+            displayVC.delegate = self
+        }
+    }
     
+    var latitudeall: CLLocationDegrees = 0.0
+    var longtitudeall: CLLocationDegrees = 0.0
+    
+    func doSomethingWith(data: String, latitude: CLLocationDegrees, longtitude: CLLocationDegrees) {
+        self.txtLocation.text = data
+        self.latitudeall = latitude
+        self.longtitudeall = longtitude
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func BtnPostUp_Inside(_ sender: Any) {
+        view.endEditing(true)
+        ProgressHUD.show("Waiting...", interaction: false)
+        var topicText = ""
+        if btnPhotography.backgroundColor != UIColor.white{
+            topicText = btnPhotography.currentTitle!
+        }
+        else if btnAssignment.backgroundColor != UIColor.white{
+            topicText = btnAssignment.currentTitle!
+        }
+        else if btnJustChat.backgroundColor != UIColor.white{
+            topicText = btnJustChat.currentTitle!
+        }
+        else if btnBusiness.backgroundColor != UIColor.white{
+            topicText = btnBusiness.currentTitle!
+        }
+        else if btnTravel.backgroundColor != UIColor.white{
+            topicText = btnTravel.currentTitle!
+        }
+        else if btnMusic.backgroundColor != UIColor.white{
+            topicText = btnMusic.currentTitle!
+        }
+        else if btnMovie.backgroundColor != UIColor.white{
+            topicText = btnMovie.currentTitle!
+        }
+        else if btnGame.backgroundColor != UIColor.white{
+            topicText = btnGame.currentTitle!
+        }
+        
+        if self.textTitle.text?.count == 0{
+            ProgressHUD.showError("Title can't be empty")
+        }
+        else if self.textTime.text?.count == 0{
+            ProgressHUD.showError("Time can't be empty")
+        }
+        else if self.txtLocation.text?.count == 0{
+            ProgressHUD.showError("Address can't be empty")
+        }
+        else if self.lbNumPeople.text == "0"{
+            ProgressHUD.showError("The number of participants can't be empty")
+        }
+        else{
+            var datetime = NSString(string: textTime.text!)
+            var arrayDatetime = datetime.components(separatedBy: " ")
+            HelperService.sendDataToDatabase(topic: topicText, title: textTitle.text!, date: arrayDatetime[0], time: arrayDatetime[1], address: txtLocation.text!, numberpeople: Int(lbNumPeople.text!)!, latitude: String(self.latitudeall), longtitude: String(self.longtitudeall), onSuccess: {
+                self.clean()
+                self.tabBarController?.selectedIndex = 0
+            })
+        }
+    }
+    
+    func clean() {
+        self.textTitle.text = ""
+        self.textTime.text = ""
+        self.txtLocation.text = ""
+        self.lbNumPeople.text = "0"
+        initBtnTopic(button: btnGame)
+        initBtnTopic(button: btnMovie)
+        initBtnTopic(button: btnMusic)
+        initBtnTopic(button: btnTravel)
+        initBtnTopic(button: btnBusiness)
+        initBtnTopic(button: btnJustChat)
+        initBtnTopic(button: btnAssignment)
+        initBtnTopic(button: btnPhotography)
+    }
     
 }
 
@@ -275,6 +384,4 @@ extension UITextField{
         }
         
     }
-    
-    
 }

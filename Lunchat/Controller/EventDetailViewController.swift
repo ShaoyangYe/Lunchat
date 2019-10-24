@@ -161,15 +161,25 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         
         if indexPath.row < registeredParticipants.count {
             
-            let url = registeredParticipants[indexPath.row].profileImageUrl
-            image!.image = UIImage.init(named: url!)
+    //        let url = registeredParticipants[indexPath.row].profileImageUrl
+            
+            let url =   URL(string: registeredParticipants[indexPath.row].profileImageUrl!)
+            if let data = try? Data(contentsOf: url!)
+            {
+                image?.image = UIImage(data: data)
+            }
+            
             usernameLabel!.text = registeredParticipants[indexPath.row].username
             
         }
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 100.0
+        
+    }
     
 }
 

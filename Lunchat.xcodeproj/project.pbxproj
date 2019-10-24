@@ -175,6 +175,9 @@
 			children = (
 				FC56DE252327D2C10051B708 /* AppDelegate.swift */,
 				6E912FA92350AA3E00041288 /* RecommendViewController.swift */,
+				6E912FA72350AA3600041288 /* MateViewController.swift */,
+				FC216A212328D909006FBA6E /* ManageViewController.swift */,
+				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
 				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
 				6E912FA72350AA3600041288 /* MateViewController.swift */,
 				FC216A212328D909006FBA6E /* ManageViewController.swift */,

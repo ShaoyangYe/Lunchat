@@ -104,15 +104,32 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
             if let ratableCell = tableView.cellForRow(at: indexPath) as? LCTableViewCell {
                 // set participant
                 let part_num:Int = Int(self.result[indexPath.row]["participant"]!)!
-                let participantLabel = UITextView(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
-                var names = "participants:\n"
+//                let participantLabel = UITextView(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
+                let participantLabel = UILabel(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
+ 
+                let markattch = NSTextAttachment()
+                markattch.image = UIImage(named: "no-user-image-square")//初始化图片
+                markattch.bounds = CGRect(x: 0, y: -2, width: 17, height: 17) //初始化图片的 bounds
+                let markattchStr = NSAttributedString(attachment: markattch)
+
+                let paraph = NSMutableParagraphStyle()
+                //将行间距设置为5
+                paraph.lineSpacing = 15
+                let attrs1 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.black,NSAttributedString.Key.paragraphStyle: paraph]
+                let attrs2 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.black,NSAttributedString.Key.paragraphStyle: paraph]
+                var names = ""
+                let attributedString1 = NSMutableAttributedString(string:names, attributes:attrs1)
                 for i in 0..<part_num{
-                    names = names + self.result[indexPath.row]["participant"+String(i)]!
-                    names =  names + "\n"
+                    names = self.result[indexPath.row]["participant"+String(i)]!
+                    names = " "+names + "\n"
+                    let attributedString2 = NSMutableAttributedString(string:names, attributes:attrs2)
+                    attributedString2.insert(markattchStr, at: 0)
+                    attributedString1.append(attributedString2)
                 }
-                participantLabel.text = names
-                participantLabel.font = UIFont.boldSystemFont(ofSize: 25)
+                participantLabel.attributedText = attributedString1
                 participantLabel.tag = 98
+                participantLabel.numberOfLines = 0
+                participantLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
                 ratableCell.addSubview(participantLabel)
                 // set map
                 let mapView=MKMapView.init(frame:CGRect.init(x: view.bounds.width-210, y:110 , width:200 , height:200 ))
@@ -300,8 +317,36 @@ extension RecommendViewController{
             }
     }
     @objc private func join(tapGes : UITapGestureRecognizer){
-        Database.database().reference().child("events").child(self.eventID).child("participants/\(self.uid!)").setValue(self.username)
-        getData()
+         Database.database().reference().child("events").child(self.eventID).observeSingleEvent(of: .value) { (snapshot) in
+        // Get user value
+            let dicValue = snapshot.value as! Dictionary<String,Any>
+            var participants = [String:String]()
+            var num:Int = 0
+            participants = dicValue["participants"] as! [String:String]
+            let currentNum = participants.count
+            let MaxNum = dicValue["maxParticipants"] as! Int
+            if currentNum < MaxNum{
+                Database.database().reference().child("events").child(self.eventID).child("participants/\(self.uid!)").setValue(self.username)
+                let alert = UIAlertController(title: "Success", message: "You have been added to this chat", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: {
+                    ACTION in
+                    print("你点击了OK")
+                })
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                self.getData()
+            }
+            else{
+                let alert = UIAlertController(title: "Full Members", message: "Sorry there's no enogh space", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: {
+                    ACTION in
+                    print("你点击了OK")
+                })
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
+                self.getData()
+            }
+        }
     }
     @objc private func cancel(tapGes : UITapGestureRecognizer){
         let ref = Database.database().reference().child("events").child(self.eventID).child("participants").child(self.uid)

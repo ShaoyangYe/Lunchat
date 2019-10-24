@@ -45,11 +45,12 @@ class MessagesCell: UITableViewCell {
         self.message = message
 
         if message.sender == userID {
-
+            
+            
             sentMessageView.isHidden = false
-
+            sentMessageView.layer.cornerRadius = 10
             sentMessageLbl.text = message.message
-
+            recievedMessageView.layer.cornerRadius = 10
             recievedMessageLbl.text = ""
 
             recievedMessageView.isHidden = true
@@ -57,9 +58,9 @@ class MessagesCell: UITableViewCell {
         } else {
 
             sentMessageView.isHidden = true
-            
+            sentMessageView.layer.cornerRadius = 10
             sentMessageLbl.text = ""
-
+            recievedMessageView.layer.cornerRadius = 10
             recievedMessageLbl.text = message.message
 
             recievedMessageView.isHidden = false

@@ -34,12 +34,7 @@ Firebase is all set-up, and it's currently running.
 
 Just use the simulartor to run and enjoy!
 
-# Team Members
-----
-
-Kangyun Dou - 740145
-
-# Team Members
+### Team Members Contribution
 ----
 Shaoyang Ye - Profile Page - 864716
 

@@ -111,11 +111,8 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let message = messages[indexPath.row]
-        print("hi tableView place")
         if let cell = tableView.dequeueReusableCell(withIdentifier: "Message") as? MessagesCell {
-            print("what's wrong?")
             cell.configCell(message: message)
-            print("here am I !")
             return cell
             
         } else {
@@ -138,7 +135,6 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
         Database.database().reference().child("messages").child(messageId).observe(.value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
-                print(self.messages)
                 self.messages.removeAll()
                 
                 for data in snapshot {

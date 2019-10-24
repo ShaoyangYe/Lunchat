@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Foundation
+import Firebase
 
 class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectionControllerDelegate {
     //控件定义
@@ -322,6 +323,7 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
             ProgressHUD.showError("The number of participants can't be empty")
         }
         else{
+            let userID:String! = Auth.auth().currentUser!.uid
             var datetime = NSString(string: textTime.text!)
             var arrayDatetime = datetime.components(separatedBy: " ")
             HelperService.sendDataToDatabase(topic: topicText, title: textTitle.text!, date: arrayDatetime[0], time: arrayDatetime[1], address: txtLocation.text!, numberpeople: Int(lbNumPeople.text!)!, latitude: String(self.latitudeall), longtitude: String(self.longtitudeall), onSuccess: {

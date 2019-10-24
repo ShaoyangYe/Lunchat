@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseStorage
 import FirebaseDatabase
+import FirebaseAuth
 import CoreLocation
 
 struct MyVariables {
@@ -26,46 +28,35 @@ class HelperService {
         let newPostId = Api.Post.REF_POSTS.childByAutoId().key
         let newPostReference = Api.Post.REF_POSTS.child(newPostId!)
         
-        guard let currentUser = Api.User.CURRENT_USER else {
-            return
-        }
-        
-        var currentUserId = currentUser.uid
-        var currentUsername = currentUser.displayName
-        
-//        let words = caption.components(separatedBy: CharacterSet.whitespacesAndNewlines)
-//
-//        for var word in words {
-//            if word.hasPrefix("#") {
-//                word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
-//                let newHashTagRef = Api.HashTag.REF_HASHTAG.child(word.lowercased())
-//                newHashTagRef.updateChildValues([newPostId: true])
-//            }
+//        guard let currentUser = Api.User.CURRENT_USER else {
+//            return
 //        }
         
-        
-        
-        if currentUsername == nil
-        {
-            currentUsername = "nothing"
+        let userID:String! = Auth.auth().currentUser!.uid
+        var currentUsername :String!
+        let ref0 = Database.database().reference().child("users").child(userID).child("username")
+        ref0.observeSingleEvent(of: .value) { (snapshot) in
+            // Get user value
+            currentUsername = (snapshot.value as? String)!
+            var participantsDic = [userID: currentUsername]
+            let timestamp = Int(Date().timeIntervalSince1970)
+            
+            var dict = ["eventID": MyVariables.yourVariable, "host": userID ,"theme": topic, "title": title, "date": date, "time": time, "location": address, "timestamp": timestamp,"latitude": latitude,"longitude": longtitude,"maxParticipants":numberpeople,"past": 0] as [String : Any]
+            
+            dict["participants"] = participantsDic
+            
+            newPostReference.setValue(dict, withCompletionBlock: {
+                (error, ref) in
+                if error != nil {
+                    ProgressHUD.showError(error!.localizedDescription)
+                    return
+                }
+                ProgressHUD.showSuccess("Success")
+                onSuccess()
+            })
+            print(dict)
         }
         
-        var participantsDic = [currentUserId: currentUsername]
         
-        let timestamp = Int(Date().timeIntervalSince1970)
-        
-        var dict = ["eventID": MyVariables.yourVariable, "host": currentUserId ,"theme": topic, "title": title, "date": date, "time": time, "location": address, "timestamp": timestamp,"latitude": latitude,"longitude": longtitude,"maxParticipants":numberpeople,"past": 0] as [String : Any]
-        
-        dict["participants"] = participantsDic
-        
-        newPostReference.setValue(dict, withCompletionBlock: {
-            (error, ref) in
-            if error != nil {
-                ProgressHUD.showError(error!.localizedDescription)
-                return
-            }
-            ProgressHUD.showSuccess("Success")
-            onSuccess()
-        })
     }
 }

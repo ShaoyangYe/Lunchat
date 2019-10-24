@@ -112,7 +112,7 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
                 let participantLabel = UILabel(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
  
                 let markattch = NSTextAttachment()
-                markattch.image = UIImage(named: "no-user-image-square")//初始化图片
+                markattch.image = UIImage(named: "face")//初始化图片
                 markattch.bounds = CGRect(x: 0, y: -2, width: 17, height: 17) //初始化图片的 bounds
                 let markattchStr = NSAttributedString(attachment: markattch)
 

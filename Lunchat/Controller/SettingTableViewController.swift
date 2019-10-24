@@ -71,16 +71,48 @@ class SettingTableViewController: UITableViewController {
                 let data = try? Data(contentsOf: photoUrl!)
                 self.profileImage.image = UIImage(data: data!)
             }
-            self.eduBackgroundText.text = user.eduBackground!
             
-            self.schoolText.text = user.school!
-            self.majorText.text = user.major!
+            if user.eduBackground != nil {
+                self.eduBackgroundText.text = user.eduBackground!
+            } else {
+                self.eduBackgroundText.text = ""
+            }
             
-            self.companyText.text = user.company!
-            self.positionText.text = user.position!
+            if user.school != nil {
+                self.schoolText.text = user.school!
+            } else {
+                self.schoolText.text = ""
+            }
             
-            self.currentResidenceText.text = user.currentResidence!
-            self.originalResidenceText.text = user.originalResidence!
+            if user.major != nil {
+                self.majorText.text = user.major!
+            } else {
+                self.majorText.text = ""
+            }
+            
+            if user.company != nil {
+                self.companyText.text = user.company!
+            } else {
+                self.companyText.text = ""
+            }
+            
+            if user.position != nil {
+                self.positionText.text = user.position!
+            } else {
+                self.positionText.text = ""
+            }
+            
+            if user.currentResidence != nil {
+                self.currentResidenceText.text = user.currentResidence!
+            } else {
+                self.currentResidenceText.text = ""
+            }
+        
+            if user.originalResidence != nil {
+                self.originalResidenceText.text = user.originalResidence!
+            } else {
+                self.originalResidenceText.text = ""
+            }
         }
     }
     

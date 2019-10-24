@@ -331,13 +331,13 @@ extension RecommendViewController{
             let MaxNum = dicValue["maxParticipants"] as! Int
             if currentNum < MaxNum{
                 Database.database().reference().child("events").child(self.eventID).child("participants/\(self.uid!)").setValue(self.username)
-//                let alert = UIAlertController(title: "Success", message: "You have been added to this chat", preferredStyle: .alert)
-//                let ok = UIAlertAction(title: "OK", style: .default, handler: {
-//                    ACTION in
-//                    print("你点击了OK")
-//                })
-//                alert.addAction(ok)
-//                self.present(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Success", message: "You have been added to this chat", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: {
+                    ACTION in
+                    print("你点击了OK")
+                })
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
                 self.getData()
             }
             else{

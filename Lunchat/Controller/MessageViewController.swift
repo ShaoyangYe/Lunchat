@@ -21,9 +21,9 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var dataSource = [[String:String]()]
     
     // Messages' info
-    var messageDetail = [MessageDetail]()
+    //var messageDetail = [MessageDetail]()
     
-    var detail: MessageDetail!
+    //var detail: MessageDetail!
     
     var recipient: String!
     

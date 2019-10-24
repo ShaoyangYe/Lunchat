@@ -19,7 +19,6 @@ class SigninViewController: UIViewController {
         super.viewDidLoad()
         signInButton.isEnabled = false
         handleTextField()
-        
         // Do any additional setup after loading the view.
     }
     

@@ -1,28 +1,32 @@
 //
-//  ProfileViewController.swift
+//  ProfileUserViewController.swift
 //  Lunchat
 //
-//  Created by JamesCullen on 2019/9/11.
+//  Created by JamesCullen on 2019/10/22.
 //  Copyright © 2019 MobileTeam. All rights reserved.
 //
 
 import UIKit
 
-protocol ProfileViewControllerDelegate {
+protocol ProfileUserViewControllerDelegate {
     func updateFollowButton(forUser user: UserModel)
 }
-//protocol ProfileViewControllerDelegateSwitchSettingVC {
+
+//protocol ProfileUserViewControllerDelegateSwitchSettingVC {
 //    func goToSettingVC()
 //}
-
-class ProfileViewController: UIViewController {
-
+class ProfileUserViewController: UIViewController {
+    
+    var user: UserModel!
+    var userId = ""
+    var delegate: ProfileViewControllerDelegate?
+//    var delegate2: ProfileUserViewControllerDelegateSwitchSettingVC?
     @IBOutlet weak var lunchatView: UIView!
     @IBOutlet weak var followingCountView: UIView!
     @IBOutlet weak var followersCountView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
     
-    @IBOutlet weak var editButton: UIButton!
+    @IBOutlet weak var followButton: UIButton!
     
     @IBOutlet weak var lunchatCount: UILabel!
     @IBOutlet weak var followingCount: UILabel!
@@ -38,11 +42,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var currentResidenceLabel: UILabel!
     @IBOutlet weak var originalResidenceLabel: UILabel!
     
-    @IBOutlet weak var logoutButton: UIBarButtonItem!
-    
-    var user: UserModel!
-    var delegate: ProfileViewControllerDelegate?
-//    var delegate2: ProfileViewControllerDelegateSwitchSettingVC?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateView()
@@ -50,30 +49,22 @@ class ProfileViewController: UIViewController {
         followingCountView.layer.cornerRadius = 5
         followersCountView.layer.cornerRadius = 5
         
-        editButton.layer.cornerRadius = 5
-   
+        followButton.layer.cornerRadius = 5
+        
         profileImage.layer.cornerRadius = 60
         profileImage.layer.borderWidth = 5
         profileImage.layer.borderColor = UIColor.white.cgColor
-
+        
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
     }
-
-    @IBAction func logoutBtn_TouchUpInside(_ sender: Any) {
-        AuthService.logout(onSuccess: {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
-            self.present(signInVC, animated: true, completion: nil)
-        }) { (errorMessage) in
-            ProgressHUD.showError(errorMessage)
-        }
-    }
-
     
     func updateView() {
-        Api.User.observeCurrentUser{ (user) in
+        Api.User.observeUser (withId: userId){ (user) in
+            self.isFollowing(userId: user.id!, completed: { (value) in
+            user.isFollowing = value
+            self.user = user
             self.nameLabel.text = user.username
             
             if let photoUrlString = user.profileImageUrl {
@@ -83,17 +74,18 @@ class ProfileViewController: UIViewController {
                 
             }
             
-            Api.Follow.fetchCountFollowing(userId: user.id!) { (count) in
-                self.followingCount.text = "\(count)"
-            }
-            
-            Api.Follow.fetchCountFollowers(userId: user.id!) { (count) in
-                self.followersCount.text = "\(count)"
-            }
-            
+                Api.Follow.fetchCountFollowing(userId: user.id!) { (count) in
+                    self.followingCount.text = "\(count)"
+                }
+                
+                Api.Follow.fetchCountFollowers(userId: user.id!) { (count) in
+                    self.followersCount.text = "\(count)"
+                }
+                
             if user.id == Api.User.CURRENT_USER?.uid {
-                self.editButton.setTitle("Edit Profile", for: UIControl.State.normal)
-                self.editButton.addTarget(self, action: #selector(self.goToSettingVC), for: UIControl.Event.touchUpInside)
+                self.followButton.setTitle("Edit Profile", for: UIControl.State.normal)
+                self.followButton.addTarget(self, action: #selector(self.goToSettingVC), for: UIControl.Event.touchUpInside)
+                
             } else {
                 self.updateStateFollowButton()
             }
@@ -102,14 +94,14 @@ class ProfileViewController: UIViewController {
             if user.eduBackground != nil {
                 self.eduBackgroundLabel.text =  user.eduBackground!
             } else {
-                self.eduBackgroundLabel.text = "Add Education Background Now!"
+                self.eduBackgroundLabel.text = "No Education Background Added (｡•́︿•̀｡)"
             }
             
             // School Label
             if user.school != nil {
                 self.schoolLabel.text = "Study at: " + user.school!
             } else {
-                self.schoolLabel.text = "Add School Information Now!"
+                self.schoolLabel.text = "No School Information Added (｡•́︿•̀｡)"
                 self.schoolLabel.textColor = UIColor.gray
             }
             
@@ -117,7 +109,7 @@ class ProfileViewController: UIViewController {
             if user.major != nil {
                 self.majorLabel.text = "Major: " + user.major!
             } else {
-                self.majorLabel.text = "Add Major Information Now!"
+                self.majorLabel.text = "No Major Information Added (｡•́︿•̀｡)"
                 self.majorLabel.textColor = UIColor.gray
             }
             
@@ -125,7 +117,7 @@ class ProfileViewController: UIViewController {
             if user.company != nil {
                 self.companyLabel.text = "Work at: " + user.company!
             } else {
-                self.companyLabel.text = "Add Company Information Now!"
+                self.companyLabel.text = "No Company Information Added (｡•́︿•̀｡)"
                 self.companyLabel.textColor = UIColor.gray
             }
             
@@ -133,7 +125,7 @@ class ProfileViewController: UIViewController {
             if user.position != nil {
                 self.positionLabel.text = "Position: " + user.position!
             } else {
-                self.positionLabel.text = "Add Position Information Now!"
+                self.positionLabel.text = "No Position Information Added (｡•́︿•̀｡)"
                 self.positionLabel.textColor = UIColor.gray
             }
             
@@ -141,7 +133,7 @@ class ProfileViewController: UIViewController {
             if user.currentResidence != nil {
                 self.currentResidenceLabel.text = "Lives in: " + user.currentResidence!
             } else {
-                self.currentResidenceLabel.text = "Add Current Residence Information Now!"
+                self.currentResidenceLabel.text = "No Current Residence Information Added (｡•́︿•̀｡)"
                 self.currentResidenceLabel.textColor = UIColor.gray
             }
             
@@ -149,42 +141,55 @@ class ProfileViewController: UIViewController {
             if user.originalResidence != nil {
                 self.originalResidenceLabel.text = "OriginalResidence: " + user.originalResidence!
             } else {
-                self.originalResidenceLabel.text = "Add Original Residence Information Now!"
+                self.originalResidenceLabel.text = "No Original Residence Information Added (｡•́︿•̀｡)"
                 self.originalResidenceLabel.textColor = UIColor.gray
             }
+            
+        })
         }
+    }
+   
+//    @objc func goToSettingVC() {
+//        delegate2?.goToSettingVC()
+//    }
+    @objc func goToSettingVC() {
+        performSegue(withIdentifier: "ProfileUser_SettingSegue", sender: nil)
     }
     
     func updateStateFollowButton() {
-        if user!.isFollowing! {
+        if user.isFollowing! {
             configureUnFollowButton()
         } else {
             configureFollowButton()
         }
     }
     
+    func isFollowing(userId: String, completed: @escaping (Bool) -> Void) {
+        Api.Follow.isFollowing(userId: userId, completed: completed)
+    }
+    
     func configureFollowButton() {
-        editButton.layer.borderWidth = 1
-        editButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232.255, alpha: 1).cgColor
-        editButton.layer.cornerRadius = 5
-        editButton.clipsToBounds = true
+        followButton.layer.borderWidth = 1
+        followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232.255, alpha: 1).cgColor
+        followButton.layer.cornerRadius = 5
+        followButton.clipsToBounds = true
         
-        editButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        editButton.backgroundColor = UIColor(red: 69/255, green: 142/255, blue: 255/255, alpha: 1)
-        editButton.setTitle("Follow", for: UIControl.State.normal)
-        editButton.addTarget(self, action: #selector(self.followAction), for: UIControl.Event.touchUpInside)
+        followButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        followButton.backgroundColor = UIColor(red: 69/255, green: 142/255, blue: 255/255, alpha: 1)
+        followButton.setTitle("Follow", for: UIControl.State.normal)
+        followButton.addTarget(self, action: #selector(self.followAction), for: UIControl.Event.touchUpInside)
     }
     
     func configureUnFollowButton() {
-        editButton.layer.borderWidth = 1
-        editButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232.255, alpha: 1).cgColor
-        editButton.layer.cornerRadius = 5
-        editButton.clipsToBounds = true
+        followButton.layer.borderWidth = 1
+        followButton.layer.borderColor = UIColor(red: 226/255, green: 228/255, blue: 232.255, alpha: 1).cgColor
+        followButton.layer.cornerRadius = 5
+        followButton.clipsToBounds = true
         
-        editButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        editButton.backgroundColor = UIColor.clear
-        editButton.setTitle("Following", for: UIControl.State.normal)
-        editButton.addTarget(self, action: #selector(self.unFollowAction), for: UIControl.Event.touchUpInside)
+        followButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        followButton.backgroundColor = UIColor.clear
+        followButton.setTitle("Following", for: UIControl.State.normal)
+        followButton.addTarget(self, action: #selector(self.unFollowAction), for: UIControl.Event.touchUpInside)
     }
     
     @objc func followAction() {
@@ -203,27 +208,5 @@ class ProfileViewController: UIViewController {
             user!.isFollowing! = false
             delegate?.updateFollowButton(forUser: user!)
         }
-    }
-    
-//    @objc func goToSettingVC() {
-//        delegate2?.goToSettingVC()
-//    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Profile_SettingSegue" {
-            let settingVC = segue.destination as! SettingTableViewController
-            settingVC.delegate = self
-        }
-        
-    }
-    
-    
-    @objc func goToSettingVC() {
-        performSegue(withIdentifier: "Profile_SettingSegue", sender: nil)
-    }
-}
-
-extension ProfileViewController: SettingTableViewControllerDelegate {
-    func updateUserInfor() {
-        self.updateView()
     }
 }

@@ -327,13 +327,13 @@ extension RecommendViewController{
             let MaxNum = dicValue["maxParticipants"] as! Int
             if currentNum < MaxNum{
                 Database.database().reference().child("events").child(self.eventID).child("participants/\(self.uid!)").setValue(self.username)
-                let alert = UIAlertController(title: "Success", message: "You have been added to this chat", preferredStyle: .alert)
-                let ok = UIAlertAction(title: "OK", style: .default, handler: {
-                    ACTION in
-                    print("你点击了OK")
-                })
-                alert.addAction(ok)
-                self.present(alert, animated: true, completion: nil)
+//                let alert = UIAlertController(title: "Success", message: "You have been added to this chat", preferredStyle: .alert)
+//                let ok = UIAlertAction(title: "OK", style: .default, handler: {
+//                    ACTION in
+//                    print("你点击了OK")
+//                })
+//                alert.addAction(ok)
+//                self.present(alert, animated: true, completion: nil)
                 self.getData()
             }
             else{
@@ -349,10 +349,29 @@ extension RecommendViewController{
         }
     }
     @objc private func cancel(tapGes : UITapGestureRecognizer){
-        let ref = Database.database().reference().child("events").child(self.eventID).child("participants").child(self.uid)
-        ref.removeValue { error, _ in
-            print(error)
+        Database.database().reference().child("events").child(self.eventID).observeSingleEvent(of: .value) { (snapshot) in
+              // Get user value
+            let dicValue = snapshot.value as! Dictionary<String,Any>
+            var participants = [String:String]()
+            var num:Int = 0
+            participants = dicValue["participants"] as! [String:String]
+            let currentNum = participants.count
+            if (currentNum == 1){
+                let ref = Database.database().reference().child("events").child(self.eventID)
+                ref.removeValue { error, _ in
+                    print(error)
+                }
+                self.getData()
+            }
+            else{
+                let ref = Database.database().reference().child("events").child(self.eventID).child("participants").child(self.uid)
+                ref.removeValue { error, _ in
+                    print(error)
+                }
+                self.getData()
+            }
+                
         }
-        getData()
+
     }
 }

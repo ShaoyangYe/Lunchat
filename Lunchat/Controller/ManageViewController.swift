@@ -107,7 +107,7 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
                 let host = eventDict["host"] as! String
                 let location = eventDict["location"] as! String
                 let maxParticipants = eventDict["maxParticipants"] as! Int
-                let participants = eventDict["participants"] as! [String]
+                let participants = eventDict["participants"] as! [String:String]
                 let past = eventDict["past"] as! Int
                 let theme = eventDict["theme"] as! String
                 let time = eventDict["time"] as! String

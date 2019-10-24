@@ -14,7 +14,7 @@ struct Event {
     var host: String?
     var location: String?
     var maxParticipants: Int?
-    var participants: [String]?
+    var participants: [String:String]?
     var past: Int?
     var theme: String?
     var time: String?

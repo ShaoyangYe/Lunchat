@@ -36,12 +36,10 @@ Just use the simulartor to run and enjoy!
 
 ### Team Members Contribution
 ----
-Shaoyang Ye - Profile Page - 864716
-
-Yi Li - Host Page - 990073
-
-Yucheng Yang - Home Page - 981433
-
-Jiaqing Chen - Manage Page - 868199
-
-Kangyun Dou - Message Page - 740145
+| Name        | Contribution           | StudentNum  |
+| ------------- |:-------------:| -----:|
+| Shaoyang Ye | Profile Page | 864716 |
+| Yi Li | Host Page | 990073 |
+| Yucheng Yang | Home Page | 981433 |
+| Jiaqing Chen | Manage Page | 868199 |
+| Kangyun Dou | Message Page | 740145 |

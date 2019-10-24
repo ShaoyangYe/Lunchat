@@ -88,6 +88,7 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
                 cell?.userLabel.text = dict["name"]
                 //        cell?.sexLabel.text = dict["sex"]
                 cell?.departmentLabel.text = dict["department"]
+        
                 return cell!
     }
     
@@ -107,22 +108,57 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         print(indexPath.row)
         let dict:Dictionary = self.mate[indexPath.row]
         recipient = dict["uid"]
-        
-//        messageId = messageDetail[indexPath.row].messageRef.key
-        
-        performSegue(withIdentifier: "toMessages", sender: nil)
-    }
+        let userID = Auth.auth().currentUser?.uid
 
+        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with:{
+            (snapshot) in
+            if snapshot.hasChild("messages"){
+                self.getMessageId()
+        }else{
+                self.performSegue(withIdentifier: "toMessages", sender: nil)}
+        })
+            
+        
+    }
+    
+    
+    func getMessageId(){
+        let userID = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(userID!).child("messages").observeSingleEvent(of: .value, with: { (snapshot) in
+          // Get user value
+          let msgs = snapshot.value as? Dictionary<String, AnyObject>
+          //                print(value)
+          for (key, value) in msgs!{
+            let dictionary = value as! Dictionary<String,String>
+            let reci = dictionary["recipient"]!
+            if reci == self.recipient{
+                print("find,and")
+                print(key)
+                self.messageId = key
+            }
+            }
+            self.performSegue(withIdentifier: "toMessages", sender: nil)
+            }){ (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let destinationViewController = segue.destination as? MessageDetailViewController {
             
-            destinationViewController.recipient = recipient
+            destinationViewController.recipient = self.recipient
             
-            destinationViewController.messageId = messageId
+            print("preparing.....")
+            print(self.recipient)
+            
+            
+            
+            print(self.messageId)
+            destinationViewController.messageId = self.messageId
         }
     }
-
+    
                    
     func currentTime() -> String {
         

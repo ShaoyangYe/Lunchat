@@ -66,6 +66,7 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             cell?.iconImv.image = UIImage(named:"no-user-image-square")
         }
         cell?.uid = dict["uid"]
+        cell?.iconImv.contentMode = .scaleAspectFill
 //        cell?.iconImv.image = UIImage(named: dict["icon"]!)
         cell?.userLabel.text = dict["name"]
         //        cell?.sexLabel.text = dict["sex"]

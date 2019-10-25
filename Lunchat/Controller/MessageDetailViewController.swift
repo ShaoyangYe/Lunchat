@@ -54,12 +54,18 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
 //        for index in 0...19 {
 //            messages.append("\(index)")
 //        }
-        print("messageId=====")
-        print(messageId)
+        
+    
+        
         if messageId != "" && messageId != nil {
             print("righthere!!???????why nothing happened ")
             loadData()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         
         //让列表重新加载数据
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -72,7 +78,7 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func keyboardWillShow(notify: NSNotification) {
+    @objc func keyboardWillShow(notify: NSNotification) {
         
         if let keyboardSize = (notify.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
@@ -83,7 +89,7 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func keyboardWillHide(notify: NSNotification) {
+    @objc func keyboardWillHide(notify: NSNotification) {
         
         if let keyboardSize = (notify.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             

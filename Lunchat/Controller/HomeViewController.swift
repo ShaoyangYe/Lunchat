@@ -27,7 +27,7 @@ class HomeViewController: UIViewController,AVAudioPlayerDelegate {
     weak var delegate : searchDelegate?
     weak var delegate2 : searchDelegate?
     weak var delegate3 : getDataDelegate?
-    
+    var recipentId: String?
     var locationManager: CLLocationManager?
     var notification: UIBarButtonItem?
     var mapview: MKMapView!
@@ -84,6 +84,7 @@ class HomeViewController: UIViewController,AVAudioPlayerDelegate {
         let vc1 = MateViewController()
 //        vc1.view.backgroundColor = UIColor.blue
         vc1.dataSource = mateData
+        vc1.delegate = self
         childVcs.append(vc1)
         
         let contentView = PageContentView(frame: contentFrame, childVcs: childVcs,  parentViewController: self)
@@ -296,3 +297,15 @@ extension HomeViewController : CLLocationManagerDelegate,MKMapViewDelegate{
     
 }
 
+extension HomeViewController:HomeViewDelegate2{
+    func forward(uid:String){
+        self.recipentId = uid
+        performSegue(withIdentifier: "1234", sender: nil)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destinationViewController = segue.destination as? MateProfileViewController {
+            destinationViewController.userId = self.recipentId!
+        }
+    }
+}

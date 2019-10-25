@@ -99,55 +99,61 @@ class ProfileViewController: UIViewController {
             }
             
             // Edu Background Label
-            if user.eduBackground != nil {
+            if user.eduBackground != nil && user.eduBackground != "" {
                 self.eduBackgroundLabel.text =  user.eduBackground!
             } else {
                 self.eduBackgroundLabel.text = "Add Education Background Now!"
             }
             
             // School Label
-            if user.school != nil {
+            if user.school != nil && user.school != "" {
                 self.schoolLabel.text = "Study at: " + user.school!
+                self.schoolLabel.textColor = UIColor.black
             } else {
                 self.schoolLabel.text = "Add School Information Now!"
                 self.schoolLabel.textColor = UIColor.gray
             }
             
             // Major Label
-            if user.major != nil {
+            if user.major != nil && user.major != "" {
                 self.majorLabel.text = "Major: " + user.major!
+                self.majorLabel.textColor = UIColor.black
             } else {
                 self.majorLabel.text = "Add Major Information Now!"
                 self.majorLabel.textColor = UIColor.gray
             }
             
             // Company Label
-            if user.company != nil {
+            if user.company != nil && user.company != "" {
                 self.companyLabel.text = "Work at: " + user.company!
+                self.companyLabel.textColor = UIColor.black
             } else {
                 self.companyLabel.text = "Add Company Information Now!"
                 self.companyLabel.textColor = UIColor.gray
             }
             
             // Position Label
-            if user.position != nil {
+            if user.position != nil && user.position != "" {
                 self.positionLabel.text = "Position: " + user.position!
+                self.positionLabel.textColor = UIColor.black
             } else {
                 self.positionLabel.text = "Add Position Information Now!"
                 self.positionLabel.textColor = UIColor.gray
             }
             
             // Current Residence Label
-            if user.currentResidence != nil {
+            if user.currentResidence != nil && user.currentResidence != "" {
                 self.currentResidenceLabel.text = "Lives in: " + user.currentResidence!
+                self.currentResidenceLabel.textColor = UIColor.black
             } else {
                 self.currentResidenceLabel.text = "Add Current Residence Information Now!"
                 self.currentResidenceLabel.textColor = UIColor.gray
             }
             
             // OriginalResidence Label
-            if user.originalResidence != nil {
+            if user.originalResidence != nil && user.originalResidence != "" {
                 self.originalResidenceLabel.text = "OriginalResidence: " + user.originalResidence!
+                self.originalResidenceLabel.textColor = UIColor.black
             } else {
                 self.originalResidenceLabel.text = "Add Original Residence Information Now!"
                 self.originalResidenceLabel.textColor = UIColor.gray

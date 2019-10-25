@@ -13,17 +13,11 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-//    var dataSource = [
-//        ["name":"Tom Marshall","sex":"male","icon":"no-user-image-square","department":"Master of Bussiness"],
-//        ["name":"Pena Valdez","sex":"female","icon":"no-user-image-square","department":"Master of Computer Science"],["name":"Jessica","sex":"female","icon":"no-user-image-square","department":"Master of teaching"],    ["name":"JIM","sex":"male","icon":"no-user-image-square","department":"Master of Information system"]]
+
+    var searchBar = UISearchBar()
     var mate = [[String:String]()]
     var tableView = UITableView()
     var dataSource = [[String:String]()]
-    
-    // Messages' info
-    //var messageDetail = [MessageDetail]()
-    
-    //var detail: MessageDetail!
     
     var recipient: String!
     
@@ -31,11 +25,26 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     var havefriend = false
 
-    // Messages' info
+    override func viewDidAppear(_ animated: Bool) {
+        getData(){ (mateResult:[[String:String]]) in
+                    // this will only be called when findUniqueId trigger completion(sID)...
+        //            print(mateResult)
+                    self.dataSource = mateResult
+                    self.mate = self.dataSource
+                    self.tableView.reloadData()
+                }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
+        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = "Search"
+        searchBar.frame.size.width = view.frame.size.width - 60
         
+        let searchItem = UIBarButtonItem(customView: searchBar)
+        self.navigationItem.rightBarButtonItem = searchItem
         self.tableView = UITableView(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height), style: .plain)
         tableView.backgroundColor = UIColor.white
         view.addSubview(tableView)
@@ -151,13 +160,7 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if let destinationViewController = segue.destination as? MessageDetailViewController {
             
             destinationViewController.recipient = self.recipient
-            
-            print("preparing.....")
-            print(self.recipient)
-            
-            
-            
-            print(self.messageId)
+
             destinationViewController.messageId = self.messageId
         }
     }
@@ -215,35 +218,35 @@ extension MessageViewController{
     }
     }
 }
+//
+extension MessageViewController : UISearchBarDelegate{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
+        if searchText.lowercased() == "" {
+                self.mate = self.dataSource
+           }
+         else {
 
-//extension MessageViewController : searchDelegate{
-//    func transmitString(context: String){
-//         if context == "" {
-//                self.mate = self.dataSource
-//           }
-//         else {
-//
-//           // 匹配用户输入的前缀，不区分大小写
-//            self.mate = []
-//            print(context)
-//            print(self.dataSource)
-//            print(self.mate)
-//            for arr in self.dataSource {
-//
-//                if ((arr["name"]?.lowercased().contains(context.lowercased()))!) {
-//                       self.mate.append(arr)
-//                   }
-//           }
-//            for arr in self.dataSource {
-//
-//                if ((arr["department"]?.lowercased().contains(context.lowercased()))!) {
-//                    if !self.mate.contains(arr){
-//                        self.mate.append(arr)
-//                    }
-//                }
-//            }
-//           }
-//        self.tableView.reloadData()
-////        print(context)
-//    }
-//}
+           // 匹配用户输入的前缀，不区分大小写
+            self.mate = []
+            print(searchText.lowercased())
+            print(self.dataSource)
+            print(self.mate)
+            for arr in self.dataSource {
+
+                if ((arr["name"]?.lowercased().contains(searchText.lowercased()))!) {
+                       self.mate.append(arr)
+                   }
+           }
+            for arr in self.dataSource {
+
+                if ((arr["department"]?.lowercased().contains(searchText.lowercased()))!) {
+                    if !self.mate.contains(arr){
+                        self.mate.append(arr)
+                    }
+                }
+            }
+           }
+        self.tableView.reloadData()
+//        print(context)
+    }
+}

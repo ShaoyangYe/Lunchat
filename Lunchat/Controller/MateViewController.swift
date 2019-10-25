@@ -9,6 +9,9 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+protocol HomeViewDelegate2 {
+    func forward(uid:String)
+}
 
 class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 //    var dataSource = [
@@ -19,11 +22,22 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var mate = [[String:String]()]
     var tableView = UITableView()
     var dataSource = [[String:String]()]
-    
+    var delegate: HomeViewDelegate2?
+
+    override func viewDidAppear(_ animated: Bool) {
+        getData(){ (mateResult:[[String:String]]) in
+                    // this will only be called when findUniqueId trigger completion(sID)...
+        //            print(mateResult)
+                    self.dataSource = mateResult
+                    self.mate = self.dataSource
+                    self.tableView.reloadData()
+                }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("delegate")
+//        delegate = PeopleViewController() as PeopleTableViewCellDelegate2
         self.tableView = UITableView(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height), style: .plain)
         tableView.backgroundColor = UIColor.white
         view.addSubview(tableView)
@@ -36,7 +50,6 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             self.mate = self.dataSource
             self.tableView.reloadData()
         }
-//        print("1")
 
     }
     
@@ -84,7 +97,17 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     // 选中cell后执行此方法
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+//        print(self.mate[indexPath.row]["uid"])
+        delegate?.forward(uid: self.mate[indexPath.row]["uid"]!)
+//        let targetStoryboardName = "Profile"
+//        let targetStoryboard = UIStoryboard(name: targetStoryboardName, bundle: nil)
+//        if let targetViewController = targetStoryboard.instantiateInitialViewController() {
+//            print(targetViewController)
+//            targetViewController.performSegue(withIdentifier: "ProfileSegue", sender: self.mate[indexPath.row]["uid"])
+//        }
+        
+//        
+
     }
     
     /*

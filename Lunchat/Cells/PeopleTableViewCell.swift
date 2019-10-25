@@ -13,7 +13,7 @@ protocol PeopleTableViewCellDelegate {
 }
 
 class PeopleTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
@@ -74,7 +74,6 @@ class PeopleTableViewCell: UITableViewCell {
             configureUnFollowButton()
             user!.isFollowing! = true
         }
-        print("asldijflsklkdjlakjsldfjksa")
         print(user!.hasFollower!)
         if user!.hasFollower! == true {
             let firendInfo: Dictionary<String, String> = [
@@ -82,7 +81,7 @@ class PeopleTableViewCell: UITableViewCell {
                 "profileImageUrl": user!.profileImageUrl!,
                 "username": user!.username!
             ]
-           print(firendInfo)
+            print(firendInfo)
             Api.User.REF_USERS.child(Api.User.CURRENT_USER!.uid).child("friends").child(user!.id!).setValue(firendInfo)
         }
     }
@@ -94,8 +93,7 @@ class PeopleTableViewCell: UITableViewCell {
             configureFollowButton()
             user!.isFollowing! = false
         }
-        
-        print("heherhehhe")
+
         print(user!.hasFollower!)
         if user!.hasFollower! == true {
             Api.User.REF_USERS.child(Api.User.CURRENT_USER!.uid).child("friends").child(user!.id!).removeValue()
@@ -112,7 +110,7 @@ class PeopleTableViewCell: UITableViewCell {
     @objc func nameLabel_TouchUpInside() {
         if let id = user?.id {
             delegate?.goToProfileUserVC(userId: id)
-//            peopleVC?.performSegue(withIdentifier: "ProfileSegue", sender: id)
+            //            peopleVC?.performSegue(withIdentifier: "ProfileSegue", sender: id)
         }
     }
     
@@ -121,5 +119,5 @@ class PeopleTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-
+    
 }

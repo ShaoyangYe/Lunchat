@@ -12,7 +12,6 @@
 		6E526E01235D5FD700027E53 /* FeedApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E526E00235D5FD700027E53 /* FeedApi.swift */; };
 		6E912FA22350A9D600041288 /* PageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FA12350A9D600041288 /* PageContentView.swift */; };
 		6E912FA42350A9E400041288 /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FA32350A9E300041288 /* PageTitleView.swift */; };
-		6E912FA62350AA2B00041288 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FA52350AA2B00041288 /* MapViewController.swift */; };
 		6E912FA82350AA3600041288 /* MateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FA72350AA3600041288 /* MateViewController.swift */; };
 		6E912FAA2350AA3F00041288 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FA92350AA3E00041288 /* RecommendViewController.swift */; };
 		6E912FAC2350AA6900041288 /* LCTableViewCelll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E912FAB2350AA6900041288 /* LCTableViewCelll.swift */; };
@@ -69,7 +68,6 @@
 		6E526E00235D5FD700027E53 /* FeedApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedApi.swift; sourceTree = "<group>"; };
 		6E912FA12350A9D600041288 /* PageContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageContentView.swift; sourceTree = "<group>"; };
 		6E912FA32350A9E300041288 /* PageTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
-		6E912FA52350AA2B00041288 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6E912FA72350AA3600041288 /* MateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MateViewController.swift; sourceTree = "<group>"; };
 		6E912FA92350AA3E00041288 /* RecommendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
 		6E912FAB2350AA6900041288 /* LCTableViewCelll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCTableViewCelll.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
 				6E912FA72350AA3600041288 /* MateViewController.swift */,
 				FC216A212328D909006FBA6E /* ManageViewController.swift */,
-				6E912FA52350AA2B00041288 /* MapViewController.swift */,
 				FC216A272328D937006FBA6E /* ProfileViewController.swift */,
 				FC596E19235F33A2003491F4 /* ProfileUserViewController.swift */,
 				FC216A252328D928006FBA6E /* MessageViewController.swift */,
@@ -439,7 +436,6 @@
 				FC9F37AB2348970A001B19FF /* AuthService.swift in Sources */,
 				6E912FA42350A9E400041288 /* PageTitleView.swift in Sources */,
 				6EC9159A235CC93A009CA7F4 /* PostApi.swift in Sources */,
-				6E912FA62350AA2B00041288 /* MapViewController.swift in Sources */,
 				FC9F37A9234896BF001B19FF /* ProgressHUD.m in Sources */,
 				6EC9159C235CC980009CA7F4 /* Post.swift in Sources */,
 				FC216A222328D909006FBA6E /* ManageViewController.swift in Sources */,

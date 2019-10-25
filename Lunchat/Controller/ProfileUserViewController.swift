@@ -20,7 +20,7 @@ class ProfileUserViewController: UIViewController {
     var user: UserModel!
     var userId = ""
     var delegate: ProfileViewControllerDelegate?
-//    var delegate2: ProfileUserViewControllerDelegateSwitchSettingVC?
+    //    var delegate2: ProfileUserViewControllerDelegateSwitchSettingVC?
     @IBOutlet weak var lunchatView: UIView!
     @IBOutlet weak var followingCountView: UIView!
     @IBOutlet weak var followersCountView: UIView!
@@ -63,17 +63,17 @@ class ProfileUserViewController: UIViewController {
     func updateView() {
         Api.User.observeUser (withId: userId){ (user) in
             self.isFollowing(userId: user.id!, completed: { (value) in
-            user.isFollowing = value
-            self.user = user
-            self.nameLabel.text = user.username
-            
-            if let photoUrlString = user.profileImageUrl {
-                let photoUrl = URL(string: photoUrlString)
-                let data = try? Data(contentsOf: photoUrl!)
-                self.profileImage.image = UIImage(data: data!)
+                user.isFollowing = value
+                self.user = user
+                self.nameLabel.text = user.username
                 
-            }
-            
+                if let photoUrlString = user.profileImageUrl {
+                    let photoUrl = URL(string: photoUrlString)
+                    let data = try? Data(contentsOf: photoUrl!)
+                    self.profileImage.image = UIImage(data: data!)
+                    
+                }
+                
                 Api.Follow.fetchCountFollowing(userId: user.id!) { (count) in
                     self.followingCount.text = "\(count)"
                 }
@@ -82,82 +82,82 @@ class ProfileUserViewController: UIViewController {
                     self.followersCount.text = "\(count)"
                 }
                 
-            if user.id == Api.User.CURRENT_USER?.uid {
-                self.followButton.setTitle("Edit Profile", for: UIControl.State.normal)
-                self.followButton.addTarget(self, action: #selector(self.goToSettingVC), for: UIControl.Event.touchUpInside)
+                if user.id == Api.User.CURRENT_USER?.uid {
+                    self.followButton.setTitle("Edit Profile", for: UIControl.State.normal)
+                    self.followButton.addTarget(self, action: #selector(self.goToSettingVC), for: UIControl.Event.touchUpInside)
+                    
+                } else {
+                    self.updateStateFollowButton()
+                }
                 
-            } else {
-                self.updateStateFollowButton()
-            }
-            
-            // Edu Background Label
-            if user.eduBackground != nil && user.eduBackground != "" {
-                self.eduBackgroundLabel.text =  user.eduBackground!
-            } else {
-                self.eduBackgroundLabel.text = "No Education Background Added (｡•́︿•̀｡)"
-            }
-            
-            // School Label
-            if user.school != nil && user.school != "" {
-                self.schoolLabel.text = "Study at: " + user.school!
-                self.schoolLabel.textColor = UIColor.black
-            } else {
-                self.schoolLabel.text = "No School Information Added (｡•́︿•̀｡)"
-                self.schoolLabel.textColor = UIColor.gray
-            }
-            
-            // Major Label
-            if user.major != nil && user.major != "" {
-                self.majorLabel.text = "Major: " + user.major!
-                self.majorLabel.textColor = UIColor.black
-            } else {
-                self.majorLabel.text = "No Major Information Added (｡•́︿•̀｡)"
-                self.majorLabel.textColor = UIColor.gray
-            }
-            
-            // Company Label
-            if user.company != nil && user.company != "" {
-                self.companyLabel.text = "Work at: " + user.company!
-                self.companyLabel.textColor = UIColor.black
-            } else {
-                self.companyLabel.text = "No Company Information Added (｡•́︿•̀｡)"
-                self.companyLabel.textColor = UIColor.gray
-            }
-            
-            // Position Label
-            if user.position != nil && user.position != "" {
-                self.positionLabel.text = "Position: " + user.position!
-                self.positionLabel.textColor = UIColor.black
-            } else {
-                self.positionLabel.text = "No Position Information Added (｡•́︿•̀｡)"
-                self.positionLabel.textColor = UIColor.gray
-            }
-            
-            // Current Residence Label
-            if user.currentResidence != nil && user.currentResidence != "" {
-                self.currentResidenceLabel.text = "Lives in: " + user.currentResidence!
-                self.currentResidenceLabel.textColor = UIColor.black
-            } else {
-                self.currentResidenceLabel.text = "No Current Residence Information Added (｡•́︿•̀｡)"
-                self.currentResidenceLabel.textColor = UIColor.gray
-            }
-            
-            // OriginalResidence Label
-            if user.originalResidence != nil && user.originalResidence != "" {
-                self.originalResidenceLabel.text = "OriginalResidence: " + user.originalResidence!
-                self.originalResidenceLabel.textColor = UIColor.black
-            } else {
-                self.originalResidenceLabel.text = "No Original Residence Information Added (｡•́︿•̀｡)"
-                self.originalResidenceLabel.textColor = UIColor.gray
-            }
-            
-        })
+                // Edu Background Label
+                if user.eduBackground != nil && user.eduBackground != "" {
+                    self.eduBackgroundLabel.text =  user.eduBackground!
+                } else {
+                    self.eduBackgroundLabel.text = "No Education Background Added (｡•́︿•̀｡)"
+                }
+                
+                // School Label
+                if user.school != nil && user.school != "" {
+                    self.schoolLabel.text = "Study at: " + user.school!
+                    self.schoolLabel.textColor = UIColor.black
+                } else {
+                    self.schoolLabel.text = "No School Information Added (｡•́︿•̀｡)"
+                    self.schoolLabel.textColor = UIColor.gray
+                }
+                
+                // Major Label
+                if user.major != nil && user.major != "" {
+                    self.majorLabel.text = "Major: " + user.major!
+                    self.majorLabel.textColor = UIColor.black
+                } else {
+                    self.majorLabel.text = "No Major Information Added (｡•́︿•̀｡)"
+                    self.majorLabel.textColor = UIColor.gray
+                }
+                
+                // Company Label
+                if user.company != nil && user.company != "" {
+                    self.companyLabel.text = "Work at: " + user.company!
+                    self.companyLabel.textColor = UIColor.black
+                } else {
+                    self.companyLabel.text = "No Company Information Added (｡•́︿•̀｡)"
+                    self.companyLabel.textColor = UIColor.gray
+                }
+                
+                // Position Label
+                if user.position != nil && user.position != "" {
+                    self.positionLabel.text = "Position: " + user.position!
+                    self.positionLabel.textColor = UIColor.black
+                } else {
+                    self.positionLabel.text = "No Position Information Added (｡•́︿•̀｡)"
+                    self.positionLabel.textColor = UIColor.gray
+                }
+                
+                // Current Residence Label
+                if user.currentResidence != nil && user.currentResidence != "" {
+                    self.currentResidenceLabel.text = "Lives in: " + user.currentResidence!
+                    self.currentResidenceLabel.textColor = UIColor.black
+                } else {
+                    self.currentResidenceLabel.text = "No Current Residence Information Added (｡•́︿•̀｡)"
+                    self.currentResidenceLabel.textColor = UIColor.gray
+                }
+                
+                // OriginalResidence Label
+                if user.originalResidence != nil && user.originalResidence != "" {
+                    self.originalResidenceLabel.text = "OriginalResidence: " + user.originalResidence!
+                    self.originalResidenceLabel.textColor = UIColor.black
+                } else {
+                    self.originalResidenceLabel.text = "No Original Residence Information Added (｡•́︿•̀｡)"
+                    self.originalResidenceLabel.textColor = UIColor.gray
+                }
+                
+            })
         }
     }
-   
-//    @objc func goToSettingVC() {
-//        delegate2?.goToSettingVC()
-//    }
+    
+    //    @objc func goToSettingVC() {
+    //        delegate2?.goToSettingVC()
+    //    }
     @objc func goToSettingVC() {
         performSegue(withIdentifier: "ProfileUser_SettingSegue", sender: nil)
     }

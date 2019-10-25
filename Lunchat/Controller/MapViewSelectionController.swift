@@ -51,10 +51,10 @@ class MapViewSelectionController: UIViewController, UISearchBarDelegate {
     
     
     func centerViewOnUserLocation() {
-//        if let location = locationManager.location?.coordinate {
-//            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-//            myMap.setRegion(region, animated: true)
-//        }
+        //        if let location = locationManager.location?.coordinate {
+        //            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        //            myMap.setRegion(region, animated: true)
+        //        }
         let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let center:CLLocation = CLLocation(latitude: -37.796915927734375, longitude: 144.96056159442693)
         let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,

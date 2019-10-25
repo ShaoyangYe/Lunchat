@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
     var searchBar = UISearchBar()
     var mate = [[String:String]()]
     var tableView = UITableView()
@@ -24,15 +24,15 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var messageId: String!
     
     var havefriend = false
-
+    
     override func viewDidAppear(_ animated: Bool) {
         getData(){ (mateResult:[[String:String]]) in
-                    // this will only be called when findUniqueId trigger completion(sID)...
-        //            print(mateResult)
-                    self.dataSource = mateResult
-                    self.mate = self.dataSource
-                    self.tableView.reloadData()
-                }
+            // this will only be called when findUniqueId trigger completion(sID)...
+            //            print(mateResult)
+            self.dataSource = mateResult
+            self.mate = self.dataSource
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -53,27 +53,27 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         
         
-//            self.mate = self.dataSource
+        //            self.mate = self.dataSource
         
-//        tableView.reloadData()
+        //        tableView.reloadData()
         getData(){ (mateResult:[[String:String]]) in
-                    // this will only be called when findUniqueId trigger completion(sID)...
-        //            print(mateResult)
-                    self.dataSource = mateResult
-                    self.mate = self.dataSource
-                    self.tableView.reloadData()
+            // this will only be called when findUniqueId trigger completion(sID)...
+            //            print(mateResult)
+            self.dataSource = mateResult
+            self.mate = self.dataSource
+            self.tableView.reloadData()
         }
         //        print("1")
-
-}
+        
+    }
     
     //MARK: UITableViewDataSource
     // cell的个数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.mate.count
     }
-
-
+    
+    
     // UITableViewCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellid = "mateCellID"
@@ -82,25 +82,25 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
             cell = MassageMateTableViewCell(style: .subtitle, reuseIdentifier:cellid)
         }
         let dict:Dictionary = self.mate[indexPath.row]
-       if dict["icon"] != nil{
-                    let url : URL = URL.init(string: dict["icon"]!)!
-                     let data : NSData! = NSData(contentsOf: url)
-                     if data != nil {
-                        cell?.iconImv.image = UIImage.init(data: data as Data, scale: 1) //赋值图片
-                     }
-                     else{
-                         cell?.iconImv.image = UIImage(named:"no-user-image-square")
-                     }
-                }else{
-                    cell?.iconImv.image = UIImage(named:"no-user-image-square")
-                }
-                cell?.uid = dict["uid"]
+        if dict["icon"] != nil{
+            let url : URL = URL.init(string: dict["icon"]!)!
+            let data : NSData! = NSData(contentsOf: url)
+            if data != nil {
+                cell?.iconImv.image = UIImage.init(data: data as Data, scale: 1) //赋值图片
+            }
+            else{
+                cell?.iconImv.image = UIImage(named:"no-user-image-square")
+            }
+        }else{
+            cell?.iconImv.image = UIImage(named:"no-user-image-square")
+        }
+        cell?.uid = dict["uid"]
         //        cell?.iconImv.image = UIImage(named: dict["icon"]!)
-                cell?.userLabel.text = dict["name"]
-                //        cell?.sexLabel.text = dict["sex"]
-                cell?.departmentLabel.text = dict["department"]
+        cell?.userLabel.text = dict["name"]
+        //        cell?.sexLabel.text = dict["sex"]
+        cell?.departmentLabel.text = dict["department"]
         
-                return cell!
+        return cell!
     }
     
     //MARK: UITableViewDelegate
@@ -121,15 +121,15 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let dict:Dictionary = self.mate[indexPath.row]
         recipient = dict["uid"]
         let userID = Auth.auth().currentUser?.uid
-
+        
         Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with:{
             (snapshot) in
             if snapshot.hasChild("messages"){
                 self.getMessageId()
-        }else{
+            }else{
                 self.performSegue(withIdentifier: "toMessages", sender: nil)}
         })
-            
+        
         
     }
     
@@ -137,20 +137,19 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func getMessageId(){
         let userID = Auth.auth().currentUser?.uid
         Database.database().reference().child("users").child(userID!).child("messages").observeSingleEvent(of: .value, with: { (snapshot) in
-          // Get user value
-          let msgs = snapshot.value as? Dictionary<String, AnyObject>
-          //                print(value)
-          for (key, value) in msgs!{
-            let dictionary = value as! Dictionary<String,String>
-            let reci = dictionary["recipient"]!
-            if reci == self.recipient{
-                print("find,and")
-                print(key)
-                self.messageId = key
-            }
+            // Get user value
+            let msgs = snapshot.value as? Dictionary<String, AnyObject>
+            //                print(value)
+            for (key, value) in msgs!{
+                let dictionary = value as! Dictionary<String,String>
+                let reci = dictionary["recipient"]!
+                if reci == self.recipient{
+                    print(key)
+                    self.messageId = key
+                }
             }
             self.performSegue(withIdentifier: "toMessages", sender: nil)
-            }){ (error) in
+        }){ (error) in
             print(error.localizedDescription)
         }
     }
@@ -160,12 +159,12 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if let destinationViewController = segue.destination as? MessageDetailViewController {
             
             destinationViewController.recipient = self.recipient
-
+            
             destinationViewController.messageId = self.messageId
         }
     }
     
-                   
+    
     func currentTime() -> String {
         
         let dateformatter = DateFormatter()
@@ -177,18 +176,18 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         return dateformatter.string(from: Date())
         
     }
-//    func dohavefriend(){
-//        let userID = Auth.auth().currentUser?.uid
-//        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with:{
-//        (snapshot) in
-//        if snapshot.hasChild("friends")
-//        {
-//            havefrind = true
-//        }
-//    })
-//    }
-
-
+    //    func dohavefriend(){
+    //        let userID = Auth.auth().currentUser?.uid
+    //        Database.database().reference().child("users").child(userID!).observeSingleEvent(of: .value, with:{
+    //        (snapshot) in
+    //        if snapshot.hasChild("friends")
+    //        {
+    //            havefrind = true
+    //        }
+    //    })
+    //    }
+    
+    
 }
 
 
@@ -201,52 +200,52 @@ extension MessageViewController{
                 let users = snapshot.value as? Dictionary<String,Any>
                 //                print(value)
                 if users != nil {
-                for (key, value) in users!{
-                    let dict = value as! Dictionary<String,String>
-                    var mate = [String:String]()
-                    mate["name"] = dict["username"]
-                    mate["icon"] = dict["profileImageUrl"]
-                    mate["department"] = dict["email"]
-                    mate["uid"] = key
-                    result.append(mate)
-                }
+                    for (key, value) in users!{
+                        let dict = value as! Dictionary<String,String>
+                        var mate = [String:String]()
+                        mate["name"] = dict["username"]
+                        mate["icon"] = dict["profileImageUrl"]
+                        mate["department"] = dict["email"]
+                        mate["uid"] = key
+                        result.append(mate)
+                    }
                 }
                 completion(result)
-              }) { (error) in
+            }) { (error) in
                 print(error.localizedDescription)
             }
-    }
+        }
     }
 }
 //
 extension MessageViewController : UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String){
         if searchText.lowercased() == "" {
-                self.mate = self.dataSource
-           }
-         else {
-
-           // 匹配用户输入的前缀，不区分大小写
+            self.mate = self.dataSource
+        }
+        else {
+            
+            // 匹配用户输入的前缀，不区分大小写
             self.mate = []
             print(searchText.lowercased())
             print(self.dataSource)
             print(self.mate)
             for arr in self.dataSource {
-
+                
                 if ((arr["name"]?.lowercased().contains(searchText.lowercased()))!) {
-                       self.mate.append(arr)
-                   }
-           }
+                    self.mate.append(arr)
+                }
+            }
             for arr in self.dataSource {
-
+                
                 if ((arr["department"]?.lowercased().contains(searchText.lowercased()))!) {
                     if !self.mate.contains(arr){
                         self.mate.append(arr)
                     }
                 }
             }
-           }
+        }
         self.tableView.reloadData()
-//        print(context)
+        //        print(context)
     }
 }

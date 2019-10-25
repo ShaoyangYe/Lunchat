@@ -17,20 +17,18 @@ struct MyVariables {
     static var yourVariable = 0
 }
 class HelperService {
-//    static func uploadDataToServer(data: Data, videoUrl: URL? = nil, ratio: CGFloat, caption: String, onSuccess: @escaping () -> Void) {
-//
-//        sendDataToDatabase(topic: String, title: String, ratio: ratio, caption: caption, onSuccess: onSuccess)
-//    }
-//    var eventId = 0
+    //    static func uploadDataToServer(data: Data, videoUrl: URL? = nil, ratio: CGFloat, caption: String, onSuccess: @escaping () -> Void) {
+    //
+    //        sendDataToDatabase(topic: String, title: String, ratio: ratio, caption: caption, onSuccess: onSuccess)
+    //    }
+    //    var eventId = 0
     static func sendDataToDatabase(topic: String, title: String,date: String, time: String, address: String, numberpeople: Int,latitude: String, longtitude: String, onSuccess: @escaping () -> Void) {
-//        eventId += 1
+        //        eventId += 1
         MyVariables.yourVariable += 1
         let newPostId = Api.Post.REF_POSTS.childByAutoId().key
         let newPostReference = Api.Post.REF_POSTS.child(newPostId!)
         
-//        guard let currentUser = Api.User.CURRENT_USER else {
-//            return
-//        }
+
         
         let userID:String! = Auth.auth().currentUser!.uid
         var currentUsername :String!

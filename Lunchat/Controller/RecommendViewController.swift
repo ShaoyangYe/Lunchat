@@ -40,11 +40,11 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
         tableView.delegate = self
         tableView.isScrollEnabled = true
         tableView.bounces = false
-         //创建刷新控件
+        //创建刷新控件
         getData()
-//        self.result = self.dataSource
-//        self.tableView.reloadData()
-//        self.view.addSubview(self.tableView)
+        //        self.result = self.dataSource
+        //        self.tableView.reloadData()
+        //        self.view.addSubview(self.tableView)
     }
     //MARK: UITableViewDataSource
     // cell的个数
@@ -58,12 +58,12 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
         if cell==nil {
             cell = LCTableViewCell(style: .subtitle, reuseIdentifier: cellid)
         }
-//        print(self.result)
+        //        print(self.result)
         let dict:Dictionary = self.result[indexPath.row]
         cell?.titleLabel.text = dict["title"]
         cell?.themeLabel.text = dict["theme"]
         cell?.themeLabel.adjustsFontSizeToFitWidth = true
-//        cell?.locationLabel.text = location
+        //        cell?.locationLabel.text = location
         let maxNumber = dict["MaxParticipant"]
         cell?.participant.text = dict["participant"]!+"/"+maxNumber!
         cell?.timeLabel.text = dict["time"]
@@ -82,19 +82,19 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
         else{
             cell?.collecteButton.isSelected = false
         }
-//        cell?.collecteButton.addTarget(self, action: #selector(buttonAction(button:)),for:.touchUpInside)
+        //        cell?.collecteButton.addTarget(self, action: #selector(buttonAction(button:)),for:.touchUpInside)
         return cell!
     }
     
     //MARK: UITableViewDelegate
     // 设置cell高度
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100.0
-//    }
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return 100.0
+    //    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
-
+    
     // 选中cell后执行此方法
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != self.expandCell  {
@@ -106,14 +106,14 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
             if let ratableCell = tableView.cellForRow(at: indexPath) as? LCTableViewCell {
                 // set participant
                 let part_num:Int = Int(self.result[indexPath.row]["participant"]!)!
-//                let participantLabel = UITextView(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
+                //                let participantLabel = UITextView(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
                 let participantLabel = UILabel(frame: CGRect(x: 10, y: 110, width: view.bounds.width-240, height: 200))
- 
+                
                 let markattch = NSTextAttachment()
                 markattch.image = UIImage(named: "face")//初始化图片
                 markattch.bounds = CGRect(x: 0, y: -3.5, width: 17, height: 17) //初始化图片的 bounds
                 let markattchStr = NSAttributedString(attachment: markattch)
-
+                
                 let paraph = NSMutableParagraphStyle()
                 //将行间距设置为5
                 paraph.lineSpacing = 15
@@ -135,12 +135,12 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
                 ratableCell.addSubview(participantLabel)
                 // set map
                 let mapView=MKMapView.init(frame:CGRect.init(x: view.bounds.width-210, y:110 , width:200 , height:200 ))
-                    mapView.tag = 99
+                mapView.tag = 99
                 let objectAnnotation = MKPointAnnotation()
                 let latitude = (self.result[indexPath.row]["latitude"]! as NSString).doubleValue
                 let longitude = (self.result[indexPath.row]["longitude"]! as NSString).doubleValue
                 objectAnnotation.coordinate = CLLocation(latitude: latitude,
-                longitude: longitude).coordinate
+                                                         longitude: longitude).coordinate
                 objectAnnotation.title = self.result[indexPath.row]["location"]
                 //设置点击大头针之后显示的描述
                 objectAnnotation.subtitle = self.result[indexPath.row]["title"]
@@ -148,7 +148,7 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
                 let currentLocationSpan:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
                 let center:CLLocation = CLLocation(latitude: latitude, longitude: longitude)
                 let currentRegion:MKCoordinateRegion = MKCoordinateRegion(center: center.coordinate,
-                span: currentLocationSpan)
+                                                                          span: currentLocationSpan)
                 mapView.setRegion(currentRegion, animated: true)
                 mapView.layer.cornerRadius = 15
                 ratableCell.addSubview(mapView)
@@ -180,17 +180,17 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
                 ratableCell.viewWithTag(99)?.removeFromSuperview()
             }
         }
-
-            tableView.beginUpdates()
-            tableView.endUpdates()
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            if indexPath.row == self.expandCell {
-                return 370
-            } else {
-                return 100
-            }
+        if indexPath.row == self.expandCell {
+            return 370
+        } else {
+            return 100
+        }
     }
     // 点击按钮
     @objc private func buttonAction(button : UIButton) {
@@ -198,14 +198,14 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     func currentTime() -> String {
         
         let dateformatter = DateFormatter()
@@ -222,28 +222,28 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
 
 extension RecommendViewController : searchDelegate{
     func transmitString(context: String){
-         if context == "" {
-                self.result = self.dataSource
-           } else {
-               
-               // 匹配用户输入的前缀，不区分大小写
-               self.result = []
-               
-                for arr in self.dataSource {
-                   
-                    if ((arr["title"]?.lowercased().contains(context.lowercased()))!) {
-                           self.result.append(arr)
-                       }
-               }
-                for arr in self.dataSource {
-                          
-                    if ((arr["theme"]?.lowercased().contains(context.lowercased()))!) {
-                        if !self.result.contains(arr){
-                            self.result.append(arr)
-                        }
+        if context == "" {
+            self.result = self.dataSource
+        } else {
+            
+            // 匹配用户输入的前缀，不区分大小写
+            self.result = []
+            
+            for arr in self.dataSource {
+                
+                if ((arr["title"]?.lowercased().contains(context.lowercased()))!) {
+                    self.result.append(arr)
+                }
+            }
+            for arr in self.dataSource {
+                
+                if ((arr["theme"]?.lowercased().contains(context.lowercased()))!) {
+                    if !self.result.contains(arr){
+                        self.result.append(arr)
                     }
                 }
-           }
+            }
+        }
         self.tableView.reloadData()
     }
 }
@@ -265,48 +265,48 @@ extension RecommendViewController:getDataDelegate{
         
         let ref0 =  Database.database().reference().child("users").child(self.uid).child("username")
         ref0.observeSingleEvent(of: .value) { (snapshot) in
-          // Get user value
-              self.username = snapshot.value as? String
-          }
+            // Get user value
+            self.username = snapshot.value as? String
+        }
         
         let ref = Database.database().reference().child("events")
         ref.observeSingleEvent(of: .value) { (snapshot) in
-              // Get user value
-              let events = snapshot.value as? Dictionary<String,Any>
-//                print(value)
-                for (key, value) in events!{
-                    var transformed_events = [String:String]()
-                    let dicValue = value as! Dictionary<String,Any>
-                    transformed_events["title"] = dicValue["title"] as! String
-                    transformed_events["theme"] = dicValue["theme"] as! String
-                    transformed_events["location"] = dicValue["location"] as! String
-                    var participants = [String:String]()
-                    var num:Int = 0
-                    participants = dicValue["participants"] as! [String:String]
-                    for i in participants{
-                        transformed_events[String(num)] = i.key
-                        let user:String = "participant"+String(num)
-                        transformed_events[user] = i.value
-                        num = num + 1
-                    }
-                    transformed_events["participant"] = String(participants.count)
-                    transformed_events["MaxParticipant"] = String(dicValue["maxParticipants"] as! Int)
-                    transformed_events["time"] = dicValue["time"] as! String
-                    transformed_events["latitude"] = dicValue["latitude"] as! String
-                    transformed_events["longitude"] = dicValue["longitude"] as! String
-                    if participants.keys.contains(self.uid){
-                        transformed_events["collected"] = "true"
-                    }
-                    else{
-                        transformed_events["collected"] = "false"
-                    }
-                    transformed_events["eventID"] = key
-                    appointmentData.append(transformed_events)
+            // Get user value
+            let events = snapshot.value as? Dictionary<String,Any>
+            //                print(value)
+            for (key, value) in events!{
+                var transformed_events = [String:String]()
+                let dicValue = value as! Dictionary<String,Any>
+                transformed_events["title"] = dicValue["title"] as! String
+                transformed_events["theme"] = dicValue["theme"] as! String
+                transformed_events["location"] = dicValue["location"] as! String
+                var participants = [String:String]()
+                var num:Int = 0
+                participants = dicValue["participants"] as! [String:String]
+                for i in participants{
+                    transformed_events[String(num)] = i.key
+                    let user:String = "participant"+String(num)
+                    transformed_events[user] = i.value
+                    num = num + 1
                 }
+                transformed_events["participant"] = String(participants.count)
+                transformed_events["MaxParticipant"] = String(dicValue["maxParticipants"] as! Int)
+                transformed_events["time"] = dicValue["time"] as! String
+                transformed_events["latitude"] = dicValue["latitude"] as! String
+                transformed_events["longitude"] = dicValue["longitude"] as! String
+                if participants.keys.contains(self.uid){
+                    transformed_events["collected"] = "true"
+                }
+                else{
+                    transformed_events["collected"] = "false"
+                }
+                transformed_events["eventID"] = key
+                appointmentData.append(transformed_events)
+            }
             appointmentData = appointmentData.sorted(by: { (Obj1, Obj2) -> Bool in
-               let Obj1_time = Obj1["time"] ?? ""
-               let Obj2_time = Obj2["time"] ?? ""
-               return (Obj1_time.localizedCaseInsensitiveCompare(Obj2_time) == .orderedAscending)
+                let Obj1_time = Obj1["time"] ?? ""
+                let Obj2_time = Obj2["time"] ?? ""
+                return (Obj1_time.localizedCaseInsensitiveCompare(Obj2_time) == .orderedAscending)
             })
             self.result = appointmentData
             self.dataSource = appointmentData
@@ -316,11 +316,11 @@ extension RecommendViewController:getDataDelegate{
             self.view.addSubview(self.tableView)
             
             ProgressHUD.dismiss()
-            }
+        }
     }
     @objc private func join(tapGes : UITapGestureRecognizer){
-         Database.database().reference().child("events").child(self.eventID).observeSingleEvent(of: .value) { (snapshot) in
-        // Get user value
+        Database.database().reference().child("events").child(self.eventID).observeSingleEvent(of: .value) { (snapshot) in
+            // Get user value
             let dicValue = snapshot.value as! Dictionary<String,Any>
             var participants = [String:String]()
             var num:Int = 0
@@ -352,7 +352,7 @@ extension RecommendViewController:getDataDelegate{
     }
     @objc private func cancel(tapGes : UITapGestureRecognizer){
         Database.database().reference().child("events").child(self.eventID).observeSingleEvent(of: .value) { (snapshot) in
-              // Get user value
+            // Get user value
             let dicValue = snapshot.value as! Dictionary<String,Any>
             var participants = [String:String]()
             var num:Int = 0
@@ -372,9 +372,9 @@ extension RecommendViewController:getDataDelegate{
                 }
                 self.getData()
             }
-                
+            
         }
-
+        
     }
 }
 

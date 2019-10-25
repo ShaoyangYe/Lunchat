@@ -14,30 +14,30 @@ protocol HomeViewDelegate2 {
 }
 
 class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-//    var dataSource = [
-//    ["name":"Tom Marshall","sex":"male","icon":"no-user-image-square","department":"Master of Bussiness"],
-//    ["name":"Pena Valdez","sex":"female","icon":"no-user-image-square","department":"Master of Computer Science"],
-//    ["name":"Jessica","sex":"female","icon":"no-user-image-square","department":"Master of teaching"],
-//    ["name":"JIM","sex":"male","icon":"no-user-image-square","department":"Master of Information system"]]
+    //    var dataSource = [
+    //    ["name":"Tom Marshall","sex":"male","icon":"no-user-image-square","department":"Master of Bussiness"],
+    //    ["name":"Pena Valdez","sex":"female","icon":"no-user-image-square","department":"Master of Computer Science"],
+    //    ["name":"Jessica","sex":"female","icon":"no-user-image-square","department":"Master of teaching"],
+    //    ["name":"JIM","sex":"male","icon":"no-user-image-square","department":"Master of Information system"]]
     var mate = [[String:String]()]
     var tableView = UITableView()
     var dataSource = [[String:String]()]
     var delegate: HomeViewDelegate2?
-
+    
     override func viewDidAppear(_ animated: Bool) {
         getData(){ (mateResult:[[String:String]]) in
-                    // this will only be called when findUniqueId trigger completion(sID)...
-        //            print(mateResult)
-                    self.dataSource = mateResult
-                    self.mate = self.dataSource
-                    self.tableView.reloadData()
-                }
+            // this will only be called when findUniqueId trigger completion(sID)...
+            //            print(mateResult)
+            self.dataSource = mateResult
+            self.mate = self.dataSource
+            self.tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("delegate")
-//        delegate = PeopleViewController() as PeopleTableViewCellDelegate2
+        //        delegate = PeopleViewController() as PeopleTableViewCellDelegate2
         self.tableView = UITableView(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height), style: .plain)
         tableView.backgroundColor = UIColor.white
         view.addSubview(tableView)
@@ -45,12 +45,12 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         tableView.delegate = self
         getData(){ (mateResult:[[String:String]]) in
             // this will only be called when findUniqueId trigger completion(sID)...
-//            print(mateResult)
+            //            print(mateResult)
             self.dataSource = mateResult
             self.mate = self.dataSource
             self.tableView.reloadData()
         }
-
+        
     }
     
     //MARK: UITableViewDataSource
@@ -68,19 +68,19 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let dict:Dictionary = self.mate[indexPath.row]
         if dict["icon"] != nil{
             let url : URL = URL.init(string: dict["icon"]!)!
-             let data : NSData! = NSData(contentsOf: url)
-             if data != nil {
+            let data : NSData! = NSData(contentsOf: url)
+            if data != nil {
                 cell?.iconImv.image = UIImage.init(data: data as Data, scale: 1) //赋值图片
-             }
-             else{
-                 cell?.iconImv.image = UIImage(named:"no-user-image-square")
-             }
+            }
+            else{
+                cell?.iconImv.image = UIImage(named:"no-user-image-square")
+            }
         }else{
             cell?.iconImv.image = UIImage(named:"no-user-image-square")
         }
         cell?.uid = dict["uid"]
         cell?.iconImv.contentMode = .scaleAspectFill
-//        cell?.iconImv.image = UIImage(named: dict["icon"]!)
+        //        cell?.iconImv.image = UIImage(named: dict["icon"]!)
         cell?.userLabel.text = dict["name"]
         //        cell?.sexLabel.text = dict["sex"]
         cell?.departmentLabel.text = dict["department"]
@@ -97,17 +97,17 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     // 选中cell后执行此方法
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(self.mate[indexPath.row]["uid"])
+        //        print(self.mate[indexPath.row]["uid"])
         delegate?.forward(uid: self.mate[indexPath.row]["uid"]!)
-//        let targetStoryboardName = "Profile"
-//        let targetStoryboard = UIStoryboard(name: targetStoryboardName, bundle: nil)
-//        if let targetViewController = targetStoryboard.instantiateInitialViewController() {
-//            print(targetViewController)
-//            targetViewController.performSegue(withIdentifier: "ProfileSegue", sender: self.mate[indexPath.row]["uid"])
-//        }
+        //        let targetStoryboardName = "Profile"
+        //        let targetStoryboard = UIStoryboard(name: targetStoryboardName, bundle: nil)
+        //        if let targetViewController = targetStoryboard.instantiateInitialViewController() {
+        //            print(targetViewController)
+        //            targetViewController.performSegue(withIdentifier: "ProfileSegue", sender: self.mate[indexPath.row]["uid"])
+        //        }
         
-//        
-
+        //
+        
     }
     
     /*
@@ -169,18 +169,18 @@ extension MateViewController{
                 let users = snapshot.value as? Dictionary<String,Any>
                 //                print(value)
                 if users != nil {
-
-                for (key, value) in users!{
-                    let dict = value as! Dictionary<String,String>
-                    var mate = [String:String]()
-                    mate["name"] = dict["username"]
-                    mate["icon"] = dict["profileImageUrl"]
-                    mate["department"] = dict["email"]
-                    mate["uid"] = key
-                    result.append(mate)
+                    
+                    for (key, value) in users!{
+                        let dict = value as! Dictionary<String,String>
+                        var mate = [String:String]()
+                        mate["name"] = dict["username"]
+                        mate["icon"] = dict["profileImageUrl"]
+                        mate["department"] = dict["email"]
+                        mate["uid"] = key
+                        result.append(mate)
                     }}
                 completion(result)
-              }) { (error) in
+            }) { (error) in
                 print(error.localizedDescription)
             }
         }

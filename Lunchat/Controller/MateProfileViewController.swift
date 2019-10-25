@@ -15,12 +15,12 @@ class MateProfileViewController: UIViewController {
     
     var user: UserModel!
     var userId = ""
-//    var delegate2: ProfileUserViewControllerDelegateSwitchSettingVC?
+    //    var delegate2: ProfileUserViewControllerDelegateSwitchSettingVC?
     @IBOutlet weak var lunchatView: UIView!
     @IBOutlet weak var followingCountView: UIView!
     @IBOutlet weak var followersCountView: UIView!
     @IBOutlet weak var profileImage: UIImageView!
-        
+    
     @IBOutlet weak var lunchatCount: UILabel!
     @IBOutlet weak var followingCount: UILabel!
     @IBOutlet weak var followersCount: UILabel!
@@ -41,7 +41,7 @@ class MateProfileViewController: UIViewController {
         lunchatView.layer.cornerRadius = 5
         followingCountView.layer.cornerRadius = 5
         followersCountView.layer.cornerRadius = 5
-
+        
         profileImage.layer.cornerRadius = 60
         profileImage.layer.borderWidth = 5
         profileImage.layer.borderColor = UIColor.white.cgColor
@@ -64,14 +64,14 @@ class MateProfileViewController: UIViewController {
                 
             }
             
-                Api.Follow.fetchCountFollowing(userId: user.id!) { (count) in
-                    self.followingCount.text = "\(count)"
-                }
-                
-                Api.Follow.fetchCountFollowers(userId: user.id!) { (count) in
-                    self.followersCount.text = "\(count)"
-                }
-                
+            Api.Follow.fetchCountFollowing(userId: user.id!) { (count) in
+                self.followingCount.text = "\(count)"
+            }
+            
+            Api.Follow.fetchCountFollowers(userId: user.id!) { (count) in
+                self.followersCount.text = "\(count)"
+            }
+            
             
             // Edu Background Label
             if user.eduBackground != nil {
@@ -128,17 +128,17 @@ class MateProfileViewController: UIViewController {
                 self.originalResidenceLabel.textColor = UIColor.gray
             }
             
-        
+            
         }
     }
-   
-//    @objc func goToSettingVC() {
-//        delegate2?.goToSettingVC()
-//    }
-//    @objc func goToSettingVC() {
-//        performSegue(withIdentifier: "ProfileUser_SettingSegue", sender: nil)
-//    }
-//
-//
- 
+    
+    //    @objc func goToSettingVC() {
+    //        delegate2?.goToSettingVC()
+    //    }
+    //    @objc func goToSettingVC() {
+    //        performSegue(withIdentifier: "ProfileUser_SettingSegue", sender: nil)
+    //    }
+    //
+    //
+    
 }

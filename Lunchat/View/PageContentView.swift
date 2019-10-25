@@ -40,7 +40,7 @@ class PageContentView: UIView {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ContentCellID)
         
         return collectionView
-    }()
+        }()
     init(frame: CGRect , childVcs : [UIViewController], parentViewController : UIViewController?) {
         self.childVcs =  childVcs
         self.parentViewController =  parentViewController
@@ -66,7 +66,7 @@ extension PageContentView{
 
 extension PageContentView: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        print(childVcs.count)
+        //        print(childVcs.count)
         return childVcs.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -77,8 +77,8 @@ extension PageContentView: UICollectionViewDataSource{
         }
         let childVc = childVcs[indexPath.item]
         childVc.view.frame = cell.contentView.bounds
-//        print(cell.contentView.bounds)
-//        print(cell.frame)
+        //        print(cell.contentView.bounds)
+        //        print(cell.frame)
         cell.contentView.addSubview(childVc.view)
         return cell
     }
@@ -87,7 +87,7 @@ extension PageContentView: UICollectionViewDataSource{
 extension PageContentView : UICollectionViewDelegate{
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         startOffsetX = scrollView.contentOffset.x
-//        print(scrollView.contentOffset.x)
+        //        print(scrollView.contentOffset.x)
         print(scrollView.contentSize)
     }
     
@@ -129,7 +129,7 @@ extension PageContentView : UICollectionViewDelegate{
             }
             
         }
-//        print(scrollView.contentOffset.y)
+        //        print(scrollView.contentOffset.y)
         // 3.将progress/sourceIndex/targetIndex传递给titleView
         delegate?.pageContentView(contentView: self, progress: progess, sourceIndex: sourceIndex, targeIndex: targetIndex)
     }

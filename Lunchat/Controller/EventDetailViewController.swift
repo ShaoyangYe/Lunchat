@@ -18,7 +18,7 @@ protocol EventDetailViewControllerProtocol {
 }
 
 class EventDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var themeLabel: UILabel!
@@ -67,7 +67,7 @@ class EventDetailViewController: UIViewController {
         print("viewDidAppear")
         // Read data from firebase
         getParticipants()
-      //  print("get data once")
+        //  print("get data once")
         participantsTableView.reloadData()
         
     }
@@ -118,7 +118,7 @@ class EventDetailViewController: UIViewController {
         
         print(allParticipants.count)
         print(registeredParticipants.count)
-
+        
     }
     
     @IBAction func dismissTapped(_ sender: Any) {
@@ -185,7 +185,7 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         
         if indexPath.row < registeredParticipants.count {
             
-    //        let url = registeredParticipants[indexPath.row].profileImageUrl
+            //        let url = registeredParticipants[indexPath.row].profileImageUrl
             
             let url =   URL(string: registeredParticipants[indexPath.row].profileImageUrl!)
             if let data = try? Data(contentsOf: url!)

@@ -46,12 +46,10 @@ class LCTableViewCell: UITableViewCell,CLLocationManagerDelegate,MKMapViewDelega
         themeLabel.font = UIFont.systemFont(ofSize: 10, weight: .heavy)
         themeLabel.textAlignment = .center
         themeLabel.layer.cornerRadius = 4
-//        themeLabel.layer.borderColor = UIColor.orange.cgColor
-//        themeLabel.layer.borderWidth = 1
         themeLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-//        themeLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        
+        
         locationLabel = UILabel(frame: CGRect(x: 15, y: 0, width: 130, height: 15))
-//        locationLabel.setImage(UIImage(named: "video_ico_location"), for: .normal)
         locationLabel.font = UIFont.boldSystemFont(ofSize: 10)
         locationLabel.textAlignment = .left
         locationLabel.textColor = UIColor.black
@@ -64,7 +62,7 @@ class LCTableViewCell: UITableViewCell,CLLocationManagerDelegate,MKMapViewDelega
         participant = UILabel(frame: CGRect(x: 15, y: 0, width: 100, height: 15))
         people = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
         people.image =  UIImage(named: "home_live_player_normal")
-//        participant.addSubview(UILabel.init(frame: <#T##CGRect#>))
+        //        participant.addSubview(UILabel.init(frame: <#T##CGRect#>))
         participant.textColor = UIColor.black
         participant.font = UIFont.systemFont(ofSize: 10)
         peopleWithImage = UILabel(frame: CGRect(x: 2, y: 80, width: 100, height: 15))
@@ -77,7 +75,8 @@ class LCTableViewCell: UITableViewCell,CLLocationManagerDelegate,MKMapViewDelega
         timeLabel.textAlignment = .left
         timeImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
         timeImage.image = UIImage(named: "cmic_time_icon")
-//        timeImage.tintColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+       
+        
         timeWithImage = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width-102, y: 35, width: 100, height: 30))
         timeWithImage.addSubview(timeImage)
         timeWithImage.addSubview(timeLabel)
@@ -92,7 +91,7 @@ class LCTableViewCell: UITableViewCell,CLLocationManagerDelegate,MKMapViewDelega
         }else{
             viewWithTag(99)?.removeFromSuperview()
         }
-
+        
         contentView.addSubview(titleLabel)
         contentView.addSubview(themeLabel)
         contentView.addSubview(locationWithImage)
@@ -100,15 +99,15 @@ class LCTableViewCell: UITableViewCell,CLLocationManagerDelegate,MKMapViewDelega
         contentView.addSubview(timeWithImage)
         addSubview(collecteButton)
         // 出生日期
-//        departmentLabel = UILabel(frame: CGRect(x: 110, y: 49, width: width-94, height: 13))
-//        departmentLabel.textColor = UIColor.black
-//        departmentLabel.font = UIFont.systemFont(ofSize: 13)
-//        departmentLabel.textAlignment = .left
-//
-//        contentView.addSubview(iconImv)
-//        contentView.addSubview(titleLabel)
-//        //        contentView.addSubview(locationLabel)
-//        contentView.addSubview(departmentLabel)
+        //        departmentLabel = UILabel(frame: CGRect(x: 110, y: 49, width: width-94, height: 13))
+        //        departmentLabel.textColor = UIColor.black
+        //        departmentLabel.font = UIFont.systemFont(ofSize: 13)
+        //        departmentLabel.textAlignment = .left
+        //
+        //        contentView.addSubview(iconImv)
+        //        contentView.addSubview(titleLabel)
+        //        //        contentView.addSubview(locationLabel)
+        //        contentView.addSubview(departmentLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {

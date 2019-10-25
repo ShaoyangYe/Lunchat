@@ -13,7 +13,7 @@ import MapKit
 @IBDesignable
 
 class ManageViewController: UIViewController, EventDetailViewControllerProtocol {
-
+    
     @IBOutlet var vwView: UIView!
     
     @IBOutlet weak var scSegment: UISegmentedControl!
@@ -21,9 +21,9 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
     @IBOutlet weak var tableView: UITableView!
     
     let userID:String! = Auth.auth().currentUser!.uid
-   // let registered:[Int] = [0,1,2,3,4]
-   // let hosting = [0,1]
-   // let past = [3,4]
+    // let registered:[Int] = [0,1,2,3,4]
+    // let hosting = [0,1]
+    // let past = [3,4]
     // TEST
     
     var dbRef:DatabaseReference?
@@ -36,7 +36,7 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
     var registeredEvents = [Event]()
     var hostEvents = [Event]()
     var attendedEvents = [Event]()
-
+    
     var type = ""
     
     override func viewDidLoad() {
@@ -52,7 +52,7 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
         // Set self as the delegata and datasource for the tableview
         tableView.delegate = self
         tableView.dataSource = self
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -186,7 +186,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
                         
                         print("add registered events")
                         self.registeredEvents.append(n)
-
+                        
                     }
                     
                 }
@@ -198,7 +198,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             return self.registeredEvents.count
             
         }
-        // get host events
+            // get host events
         else if self.segmentIndex == 1 {
             
             // Build an array of events that are required to display
@@ -210,18 +210,18 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
                     self.hostEvents.append(n)
                     
                 }
-                    
+                
             }
             
             // Return the number of cells
             return self.hostEvents.count
-
+            
             
         }
         else if self.segmentIndex == 2 {
             
             // Build an array of events that are required to display
-                
+            
             for n in self.events {
                 
                 for i in n.participants! {
@@ -291,7 +291,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         }
-        // show host events
+            // show host events
         else if self.segmentIndex == 1 {
             
             if  indexPath.row < hostEvents.count {
@@ -316,7 +316,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-
+            
         }
         else if self.segmentIndex == 2 {
             
@@ -342,7 +342,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
-
+            
         }
         
         // Return the cell
@@ -377,10 +377,10 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             
             eventDetail!.currentEventID = registeredEvents[indexPath.row].eventID
             eventDetail!.participants = registeredEvents[indexPath.row].participants
-
+            
         }
-        
-        // for segment 1
+            
+            // for segment 1
         else if eventDetail != nil && segmentIndex == 1 {
             
             // Customize the popup text
@@ -402,8 +402,8 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             eventDetail!.participants = hostEvents[indexPath.row].participants
             
         }
-
-        // for segment 2
+            
+            // for segment 2
         else if eventDetail != nil && segmentIndex == 2 {
             
             // Customize the popup text
@@ -446,7 +446,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             eventDetail!.participants = registeredEvents[indexPath.row].participants
             
         }
-
+        
         // Trigger view will appear
         present(eventDetail!, animated: true, completion: nil)
         
@@ -455,7 +455,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 110.0
-    
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -466,7 +466,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             if segmentIndex == nil || segmentIndex == 0 {
                 
                 let deleteID = registeredEvents[indexPath.row].eventID
-
+                
                 registeredEvents.remove(at: indexPath.row)
                 var i = 0
                 for n in events {
@@ -477,7 +477,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
                     i += 1
                 }
                 
-            Database.database().reference().child("events").child(deleteID!).child("participants").child(userID).removeValue()
+                Database.database().reference().child("events").child(deleteID!).child("participants").child(userID).removeValue()
                 
             }
             else if segmentIndex == 1 {
@@ -504,7 +504,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
             print(indexPath.count)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-
+        
     }
     
 }

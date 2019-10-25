@@ -13,7 +13,7 @@ import FirebaseDatabase
 
 class MessageDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     //列表控件
-   
+    
     @IBOutlet weak var view1: UIView!
     
     @IBOutlet weak var messageField: UITextField!
@@ -22,43 +22,41 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     //列表数据源
-//    var messages:[String] = []
+    //    var messages:[String] = []
     var messageId: String!
     
     var messages = [Message]()
     
     var message: Message!
     
-//    var currentUser: String!
-
+    //    var currentUser: String!
+    
     var recipient: String!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         //设置列表数据源和代理
         tableView.dataSource = self
         tableView.delegate = self
         configureTableView()
-                        
+        
         tableView.separatorStyle = .none
         
         
-        print("假装")
         
         //增加模拟数据
         
-//        for index in 0...19 {
-//            messages.append("\(index)")
-//        }
+        //        for index in 0...19 {
+        //            messages.append("\(index)")
+        //        }
         
-    
+        
         
         if messageId != "" && messageId != nil {
-            print("righthere!!???????why nothing happened ")
             loadData()
         }
         
@@ -133,11 +131,10 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 300.0
         
-
+        
     }
     
     func loadData() {
-        print("loading Data")
         Database.database().reference().child("messages").child(messageId).observe(.value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot] {
@@ -173,94 +170,79 @@ class MessageDetailViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func sendPressed(_ sender: Any) {
         print("sent")
         let userID = Auth.auth().currentUser!.uid
-
+        
         dismissKeyboard()
         
         if (messageField.text != nil && messageField.text != "") {
             if messageId == nil {
                 let post: Dictionary<String, AnyObject> = [
-                        "message": messageField.text as AnyObject,
-                        "sender": userID as AnyObject
-                    ]
-                        
+                    "message": messageField.text as AnyObject,
+                    "sender": userID as AnyObject
+                ]
+                
                 let message: Dictionary<String, AnyObject> = [
-                        "lastmessage": messageField.text as AnyObject,
-                        "recipient": recipient as AnyObject
-                    ]
-                        
+                    "lastmessage": messageField.text as AnyObject,
+                    "recipient": recipient as AnyObject
+                ]
+                
                 let recipientMessage: Dictionary<String, AnyObject> = [
-                        "lastmessage": messageField.text as AnyObject,
-                        "recipient":userID as AnyObject
-                    ]
-                        
+                    "lastmessage": messageField.text as AnyObject,
+                    "recipient":userID as AnyObject
+                ]
+                
                 messageId = Database.database().reference().child("messages").childByAutoId().key
-                        
+                
                 let firebaseMessage = Database.database().reference().child("messages").child(messageId).childByAutoId()
-                        
+                
                 firebaseMessage.setValue(post)
                 
-            Api.User.REF_CURRENT_USER?.child("messages").child(messageId).setValue(message)
-                          
-                    
-//            Database.database().reference().child("users").child(recipient).child("messages").child(messageId).setValue(recipientMessage)
-                
+                Api.User.REF_CURRENT_USER?.child("messages").child(messageId).setValue(message)
                 Database.database().reference().child("users").child(recipient).child("messages").child(messageId).setValue(recipientMessage)
                 
-//                .observeSingleEvent(of: .value, with:{
-//                                   (snapshot) in snapshot.setValue(recipientMessage)
-//                })
                 
-                 print("???")
-                    
-                                            
+                
+                
+                
                 loadData()
-                        
-                    } else if messageId != "" {
-                        loadData()
-                        let post: Dictionary<String, AnyObject> = [
-                            "message": messageField.text as AnyObject,
-                            "sender": userID as AnyObject
-                        ]
-                        
-                        let message: Dictionary<String, AnyObject> = [
-                            "lastmessage": messageField.text as AnyObject,
-                            "recipient": recipient as AnyObject
-                        ]
-                        
-                        let recipientMessage: Dictionary<String, AnyObject> = [
-                            "lastmessage": messageField.text as AnyObject,
-                            "recipient": userID as AnyObject
-                        ]
-                        
+                
+            } else if messageId != "" {
+                loadData()
+                let post: Dictionary<String, AnyObject> = [
+                    "message": messageField.text as AnyObject,
+                    "sender": userID as AnyObject
+                ]
+                
+                let message: Dictionary<String, AnyObject> = [
+                    "lastmessage": messageField.text as AnyObject,
+                    "recipient": recipient as AnyObject
+                ]
+                
+                let recipientMessage: Dictionary<String, AnyObject> = [
+                    "lastmessage": messageField.text as AnyObject,
+                    "recipient": userID as AnyObject
+                ]
+                
                 //Firebase:post
                 let firebaseMessage = Database.database().reference().child("messages").child(messageId).childByAutoId()
-                        
-                        firebaseMessage.setValue(post)
-                        
+                
+                firebaseMessage.setValue(post)
+                
                 //Firebase:message
-            Api.User.REF_CURRENT_USER?.child("messages").child(messageId).setValue(message)
-
-               //Firebase:recipientMessage
-//            Database.database().reference().child("users").child(recipient).child("messages").observeSingleEvent(of: .value, with:{
-//                    (snapshot) in snapshot.setValue(recipientMessage, forKey: self.messageId)
-//                })
+                Api.User.REF_CURRENT_USER?.child("messages").child(messageId).setValue(message)
                 Database.database().reference().child("users").child(recipient).child("messages").child(messageId).setValue(recipientMessage)
-                        
-    
                 
-                        loadData()
-                    }
-                    
-                    messageField.text = ""
-                }
                 
-                moveToBottom()
+                
+                loadData()
+            }
+            
+            messageField.text = ""
+        }
+        
+        moveToBottom()
     }
-//    @IBAction func backPressed (_ sender: AnyObject) {
-//
-//        dismiss(animated: true, completion: nil)
-//    }
-
+   
+    
 }
 
 

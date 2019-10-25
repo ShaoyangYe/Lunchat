@@ -13,7 +13,7 @@ class MassageMateTableViewCell: UITableViewCell {
     var userLabel:UILabel!       // 名称
     var departmentLabel:UILabel!    // 部门
     var uid:String!
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         iconImv = UIImageView(frame: CGRect(x: 5, y: 5, width: 90, height: 90))
@@ -33,7 +33,7 @@ class MassageMateTableViewCell: UITableViewCell {
         contentView.addSubview(iconImv)
         contentView.addSubview(userLabel)
         contentView.addSubview(departmentLabel)
-
+        
         
     }
     

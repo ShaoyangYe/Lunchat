@@ -20,14 +20,14 @@ private let kNormalColor : (CGFloat,CGFloat,CGFloat) = (85,85,85)
 private let kSelectColor : (CGFloat,CGFloat,CGFloat) = (255,126,0)
 
 class PageTitleView: UIView {
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     private var currentIndex : Int = 0
     private var titles : [String]
     weak var delegate : PageTitleViewDelegate?
@@ -54,7 +54,7 @@ class PageTitleView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
 
 extension PageTitleView{
@@ -111,16 +111,16 @@ extension PageTitleView{
         // add first scrollLine
         guard let firstLabel = titleLabels.first else {return}
         firstLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-//        firstLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        //        firstLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         scrollView.addSubview(scrolllLine)
         scrolllLine.frame = CGRect(x: firstLabel.frame.origin.x, y: frame.height - kScrollLLineH, width: firstLabel.frame.width, height: kScrollLLineH)
     }
     // 地图按键
     @objc func buttonClick(){
-//        let mapview:MKMapView=MKMapView.init(frame:CGRect.init(x: 0, y: 0, width: 300, height: 300))
+        //        let mapview:MKMapView=MKMapView.init(frame:CGRect.init(x: 0, y: 0, width: 300, height: 300))
         delegate?.mapview(titleView: self, ifmap: true)
         //3.切换文字的颜色
-
+        
         
     }
 }
@@ -134,8 +134,8 @@ extension PageTitleView{
         //3.切换文字的颜色
         oldLabel.textColor = UIColor.darkGray
         currentLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-//        currentLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-
+        //        currentLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        
         //4.保存最新label下标
         currentIndex = currentLabel.tag
         
@@ -149,7 +149,7 @@ extension PageTitleView{
         // 6.通知代理
         delegate?.pageTitleView(titleView: self, selectedIndex: currentIndex)
     }
-
+    
 }
 
 
@@ -168,9 +168,9 @@ extension PageTitleView{
         //3.颜色改变
         sourceLabel.textColor = UIColor.gray
         targetLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-//        targetLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        //        targetLabel.textColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
         
         scrolllLine.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
-//        scrolllLine.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        //        scrolllLine.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
     }
 }

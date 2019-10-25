@@ -36,7 +36,7 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
     @IBOutlet weak var lbNumPeople: UILabel!
     
     
-   
+    
     //主色调
     let gray = (UIColor(red: 255/255.0, green: 140/255.0, blue: 105/255.0, alpha: 0.9))
     let datePicker = UIDatePicker()
@@ -58,8 +58,8 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/YYYY HH:mm"
-//        dateFormatter.dateStyle = .medium
-//        dateFormatter.timeStyle = .none
+        //        dateFormatter.dateStyle = .medium
+        //        dateFormatter.timeStyle = .none
         
         textTime.text = dateFormatter.string(from: datePicker.date)
         textTime.textColor = gray
@@ -131,7 +131,7 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
         customizeButtonG1(buttonName: btnBuildTopic, colorName: "btnBuildTopic.png",textPosition: 0)
         customizeButtonG1(buttonName: btnLunchat, colorName: "",textPosition: 1)
         customizeButtonG1(buttonName: btnSelectLocation, colorName: "map.png",textPosition: 0)
-         //文本框设置
+        //文本框设置
         customizeText(textField: textTitle)
         customizeText(textField: textTime)
         customizeText(textField: txtLocation)
@@ -218,9 +218,9 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
         {
             let alertController = UIAlertController(title: "Alert",
                                                     message: "Maximum one topics", preferredStyle: .alert)
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            //            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-//            alertController.addAction(cancelAction)
+            //            alertController.addAction(cancelAction)
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
         }
@@ -331,7 +331,7 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
                 self.tabBarController?.selectedIndex = 0
             })
         }
-//        self.dataDelegate?.getData()
+        //        self.dataDelegate?.getData()
     }
     
     func clean() {
@@ -354,30 +354,30 @@ class HostViewController: UIViewController , UITextFieldDelegate,MapViewSelectio
 extension UITextField{
     
     //MARK:-设置暂位文字的颜色
-//    var placeholderColor:UIColor {
-//
-//        get{
-//            let color =   self.value(forKeyPath: "_placeholderLabel.textColor")
-//            if(color == nil){
-//                return UIColor.white;
-//            }
-//            return color as! UIColor;
-//
-//        }
-//
-//        set{
-//
-//            self.setValue(newValue, forKeyPath: "_placeholderLabel.textColor")
-//        }
-//
-//
-//    }
-//
+    //    var placeholderColor:UIColor {
+    //
+    //        get{
+    //            let color =   self.value(forKeyPath: "_placeholderLabel.textColor")
+    //            if(color == nil){
+    //                return UIColor.white;
+    //            }
+    //            return color as! UIColor;
+    //
+    //        }
+    //
+    //        set{
+    //
+    //            self.setValue(newValue, forKeyPath: "_placeholderLabel.textColor")
+    //        }
+    //
+    //
+    //    }
+    //
     func placeholderColor(_ color: UIColor) {
         // Color
         var attributes: [NSAttributedString.Key: Any] = [.foregroundColor: color]
         var range = NSRange(location: 0, length: 1)
-
+        
         // Font
         if let text = attributedText, text.length > 0, let attrs = attributedText?.attributes(at: 0, effectiveRange: &range), let font = attrs[.font] {
             attributes[.font] = font

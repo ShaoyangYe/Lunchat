@@ -9,7 +9,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Change to profileImage shape into circle.
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
         profileImage.clipsToBounds = true
@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
- 
+    
     
     @IBAction func dismiss_onClick(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -70,6 +70,6 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
             profileImage.image = image
         }
         dismiss(animated: true, completion: nil)
-    
+        
     }
 }

@@ -12,7 +12,7 @@ class SigninViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-
+    
     @IBOutlet weak var signInButton: UIButton!
     
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class SigninViewController: UIViewController {
         super.viewDidAppear(animated)
         
         let defaults = UserDefaults.standard
-
+        
         if Api.User.CURRENT_USER != nil {
             self.performSegue(withIdentifier: "signInToTabbarVC", sender: nil)
             

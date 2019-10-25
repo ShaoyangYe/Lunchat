@@ -13,7 +13,7 @@ protocol SettingTableViewControllerDelegate {
 }
 
 class SettingTableViewController: UITableViewController {
-
+    
     var delegate: SettingTableViewControllerDelegate?
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -31,7 +31,7 @@ class SettingTableViewController: UITableViewController {
     
     @IBOutlet weak var currentResidenceText: UITextField!
     @IBOutlet weak var originalResidenceText: UITextField!
-   
+    
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
     
@@ -107,7 +107,7 @@ class SettingTableViewController: UITableViewController {
             } else {
                 self.currentResidenceText.text = ""
             }
-        
+            
             if user.originalResidence != nil {
                 self.originalResidenceText.text = user.originalResidence!
             } else {

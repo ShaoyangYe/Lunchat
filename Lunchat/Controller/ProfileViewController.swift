@@ -16,7 +16,7 @@ protocol ProfileViewControllerDelegate {
 //}
 
 class ProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var lunchatView: UIView!
     @IBOutlet weak var followingCountView: UIView!
     @IBOutlet weak var followersCountView: UIView!
@@ -42,7 +42,7 @@ class ProfileViewController: UIViewController {
     
     var user: UserModel!
     var delegate: ProfileViewControllerDelegate?
-//    var delegate2: ProfileViewControllerDelegateSwitchSettingVC?
+    //    var delegate2: ProfileViewControllerDelegateSwitchSettingVC?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateView()
@@ -51,16 +51,16 @@ class ProfileViewController: UIViewController {
         followersCountView.layer.cornerRadius = 5
         
         editButton.layer.cornerRadius = 5
-   
+        
         profileImage.layer.cornerRadius = 60
         profileImage.layer.borderWidth = 5
         profileImage.layer.borderColor = UIColor.white.cgColor
-
+        
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
     }
-
+    
     @IBAction func logoutBtn_TouchUpInside(_ sender: Any) {
         AuthService.logout(onSuccess: {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -70,7 +70,7 @@ class ProfileViewController: UIViewController {
             ProgressHUD.showError(errorMessage)
         }
     }
-
+    
     
     func updateView() {
         Api.User.observeCurrentUser{ (user) in
@@ -211,9 +211,9 @@ class ProfileViewController: UIViewController {
         }
     }
     
-//    @objc func goToSettingVC() {
-//        delegate2?.goToSettingVC()
-//    }
+    //    @objc func goToSettingVC() {
+    //        delegate2?.goToSettingVC()
+    //    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Profile_SettingSegue" {
             let settingVC = segue.destination as! SettingTableViewController

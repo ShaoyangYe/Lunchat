@@ -157,6 +157,10 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCell(withIdentifier: "participantsCell", for: indexPath)
         
         let image = cell.viewWithTag(10) as? UIImageView
+        image?.frame = CGRect(x: 5, y: 5, width: 90, height: 90)
+        image?.layer.cornerRadius = 45
+        image?.layer.masksToBounds = true
+        image?.contentMode = .scaleAspectFill
         let usernameLabel = cell.viewWithTag(11) as? UILabel
         
         if indexPath.row < registeredParticipants.count {

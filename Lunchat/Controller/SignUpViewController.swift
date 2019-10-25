@@ -49,7 +49,7 @@ class SignUpViewController: UIViewController {
         
         view.endEditing(true)
         ProgressHUD.show("Waiting...", interaction: false)
-        if let profileImg = self.selectedImage, let imageData = profileImg.jpegData(compressionQuality: 0.1) {
+        if let profileImg = self.selectedImage, let imageData = profileImg.jpegData(compressionQuality: 0.001) {
             AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: imageData, onSuccess: {
                 ProgressHUD.showSuccess("Success")
                 self.performSegue(withIdentifier: "signUpToTabbarVC", sender: nil)

@@ -19,6 +19,16 @@ struct Event {
     var theme: String?
     var time: String?
     var title: String?
+    var latitude: String?
+    var longitude: String?
     
 }
 
+// For registered user
+struct Participants {
+    
+    var id: String?
+    var username: String?
+    var profileImageUrl: String?
+    
+}

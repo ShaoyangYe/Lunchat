@@ -13,7 +13,6 @@ import FirebaseAuth
 import MapKit
 
 class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
-    
     private var dateCellExpanded: Bool = false
     var uid : String!
     var username: String!
@@ -47,7 +46,6 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
 //        self.tableView.reloadData()
 //        self.view.addSubview(self.tableView)
     }
-
     //MARK: UITableViewDataSource
     // cell的个数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,7 +111,7 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
  
                 let markattch = NSTextAttachment()
                 markattch.image = UIImage(named: "face")//初始化图片
-                markattch.bounds = CGRect(x: 0, y: -2, width: 17, height: 17) //初始化图片的 bounds
+                markattch.bounds = CGRect(x: 0, y: -3.5, width: 17, height: 17) //初始化图片的 bounds
                 let markattchStr = NSAttributedString(attachment: markattch)
 
                 let paraph = NSMutableParagraphStyle()
@@ -252,7 +250,7 @@ extension RecommendViewController : searchDelegate{
 
 
 
-extension RecommendViewController{
+extension RecommendViewController:getDataDelegate{
     
     func getData()  {
         self.uid = Auth.auth().currentUser?.uid
@@ -382,3 +380,16 @@ extension RecommendViewController{
 
 
 // 对外暴露的方法
+//extension RecommendViewController {
+//
+//    override open var canBecomeFirstResponder: Bool {
+//        return true
+//    }
+//
+//    override open func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+//        if motion == .motionShake {
+//            print("开始摇动")
+//        }
+//
+//    }
+//}

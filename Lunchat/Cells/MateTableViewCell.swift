@@ -21,6 +21,7 @@ class MateTableViewCell: UITableViewCell {
         iconImv.layer.cornerRadius = 45
         iconImv.layer.masksToBounds = true
         
+        
         userLabel = UILabel(frame: CGRect(x: 110, y: 20, width: 200, height: 20))
         userLabel.textColor = UIColor.black
         userLabel.font = UIFont.boldSystemFont(ofSize: 17)

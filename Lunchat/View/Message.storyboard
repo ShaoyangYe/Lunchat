@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -90,10 +90,10 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFl-pW-Ujf">
-                                                    <rect key="frame" x="390" y="4" width="16" height="52"/>
+                                                    <rect key="frame" x="150" y="4" width="256" height="52"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4E5-Mm-tRw">
-                                                            <rect key="frame" x="8" y="8" width="0.0" height="36"/>
+                                                            <rect key="frame" x="8" y="8" width="240" height="36"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -103,20 +103,21 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="4E5-Mm-tRw" secondAttribute="bottom" constant="8" id="Ix6-tO-Vk4"/>
                                                         <constraint firstItem="4E5-Mm-tRw" firstAttribute="top" secondItem="lFl-pW-Ujf" secondAttribute="top" constant="8" id="LXz-qF-922"/>
-                                                        <constraint firstAttribute="leading" relation="lessThanOrEqual" secondItem="4E5-Mm-tRw" secondAttribute="leading" constant="150" id="gYd-W6-4i8"/>
+                                                        <constraint firstAttribute="leading" secondItem="4E5-Mm-tRw" secondAttribute="leading" constant="-8" id="gYd-W6-4i8"/>
                                                         <constraint firstAttribute="trailing" secondItem="4E5-Mm-tRw" secondAttribute="trailing" constant="8" id="qDr-e6-Tk8"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lFl-pW-Ujf" firstAttribute="leading" secondItem="Z2B-qY-Dcc" secondAttribute="leading" constant="390" id="0NW-cH-Hmb"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JaL-Uf-Cwc" secondAttribute="trailing" constant="150" id="4ec-d8-mQX"/>
                                                 <constraint firstAttribute="bottom" secondItem="lFl-pW-Ujf" secondAttribute="bottom" constant="4" id="AHu-31-vyn"/>
+                                                <constraint firstItem="lFl-pW-Ujf" firstAttribute="leading" secondItem="Z2B-qY-Dcc" secondAttribute="leading" constant="150" id="Ctk-mt-HBf"/>
                                                 <constraint firstItem="JaL-Uf-Cwc" firstAttribute="top" secondItem="Z2B-qY-Dcc" secondAttribute="top" constant="4" id="Njm-2o-8gy"/>
                                                 <constraint firstItem="lFl-pW-Ujf" firstAttribute="top" secondItem="Z2B-qY-Dcc" secondAttribute="top" constant="4" id="f7t-yx-9x2"/>
                                                 <constraint firstAttribute="trailing" secondItem="lFl-pW-Ujf" secondAttribute="trailing" constant="8" id="gv4-2l-eMz"/>
                                                 <constraint firstItem="JaL-Uf-Cwc" firstAttribute="leading" secondItem="Z2B-qY-Dcc" secondAttribute="leading" constant="8" id="psA-5n-Pfp"/>
                                                 <constraint firstAttribute="bottom" secondItem="JaL-Uf-Cwc" secondAttribute="bottom" constant="4" id="s0D-YS-fNW"/>
+                                                <constraint firstItem="lFl-pW-Ujf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Z2B-qY-Dcc" secondAttribute="leading" constant="150" id="wus-Zj-xDU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

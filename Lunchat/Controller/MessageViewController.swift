@@ -32,6 +32,16 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var havefriend = false
 
     // Messages' info
+    override func viewDidAppear(_ animated: Bool) {
+        getData(){ (mateResult:[[String:String]]) in
+                    // this will only be called when findUniqueId trigger completion(sID)...
+        //            print(mateResult)
+                    self.dataSource = mateResult
+                    self.mate = self.dataSource
+                    self.tableView.reloadData()
+                }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

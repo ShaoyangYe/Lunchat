@@ -12,7 +12,7 @@ Group Members:
 4: [YI5, yi5@student.unimelb.edu.au] 
 5: [douk, douk@student.unimelb.edu.au]
 
-YouTube Link:
+YouTube Link: https://youtu.be/eHU6gjBDgaw
 
 README: https://github.com/ShaoyangYe/Lunchat/blob/master/README.md
 

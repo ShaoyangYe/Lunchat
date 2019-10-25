@@ -6,7 +6,7 @@ Group No: #27
 
 Group Members:
 
-1: [Username, Email] 
+1: [jiaqingc, jiaqingc@gmail.com] 
 2: [Username, Email] 
 3: [Username, Email] 
 4: [Username, Email] 

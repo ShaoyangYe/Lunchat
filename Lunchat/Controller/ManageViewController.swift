@@ -105,6 +105,7 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
         
         print("Start to get events")
         
+        // Get all the events
         dbRef = Database.database().reference().child("events")
         
         dbRef!.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -180,6 +181,22 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
         // get registered events
         if self.segmentIndex == nil || self.segmentIndex == 0 {
             
+            for n in self.events {
+                
+                for i in n.participants! {
+                    
+                    if i.key == userID {
+                        
+                        print("add registered events")
+                        self.registeredEvents.append(n)
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            /*
             // Count the number of cells
             var i = 0
             let count = self.registered.count
@@ -200,7 +217,7 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 i += 1
                 
-            }
+            } */
             
             // Return the number of cells
             return self.registeredEvents.count
@@ -481,5 +498,14 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
         return 110.0
     
     }
+    /*
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            
+            self.catNames.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    } */
     
 }

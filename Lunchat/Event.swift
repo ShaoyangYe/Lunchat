@@ -10,7 +10,7 @@ import Foundation
 
 struct Event {
     
-    var eventID: Int?
+    var eventID: String?
     var host: String?
     var location: String?
     var maxParticipants: Int?

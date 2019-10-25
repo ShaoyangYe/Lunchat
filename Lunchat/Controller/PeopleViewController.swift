@@ -36,9 +36,14 @@ class PeopleViewController: UIViewController {
         Api.User.observeUsers { (user) in
             self.isFollowing(userId: user.id!, completed: { (value) in
                 user.isFollowing = value
-                self.users.append(user)
-                self.tableView.reloadData()
+                self.hasFollower(userId: user.id!, completed: { (value1) in
+                    user.hasFollower = value1
+                    self.users.append(user)
+                    self.tableView.reloadData()
+                    
+                })
             })
+
         }
     }
 
@@ -46,6 +51,10 @@ class PeopleViewController: UIViewController {
         Api.Follow.isFollowing(userId: userId, completed: completed)
     }
     
+    func hasFollower(userId: String, completed: @escaping (Bool) -> Void) {
+        Api.Follow.hasFollower(userId: userId, completed: completed)
+    }
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ProfileSegue" {
             let profileVC = segue.destination as! ProfileUserViewController

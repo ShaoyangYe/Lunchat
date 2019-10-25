@@ -74,6 +74,17 @@ class PeopleTableViewCell: UITableViewCell {
             configureUnFollowButton()
             user!.isFollowing! = true
         }
+        print("asldijflsklkdjlakjsldfjksa")
+        print(user!.hasFollower!)
+        if user!.hasFollower! == true {
+            let firendInfo: Dictionary<String, String> = [
+                "email": user!.email!,
+                "profileImageUrl": user!.profileImageUrl!,
+                "username": user!.username!
+            ]
+           print(firendInfo)
+            Api.User.REF_USERS.child(Api.User.CURRENT_USER!.uid).child("friends").child(user!.id!).setValue(firendInfo)
+        }
     }
     
     @objc func unFollowAction() {
@@ -82,6 +93,12 @@ class PeopleTableViewCell: UITableViewCell {
             Api.Follow.unFollowAction(withUser: user!.id!)
             configureFollowButton()
             user!.isFollowing! = false
+        }
+        
+        print("heherhehhe")
+        print(user!.hasFollower!)
+        if user!.hasFollower! == true {
+            Api.User.REF_USERS.child(Api.User.CURRENT_USER!.uid).child("friends").child(user!.id!).removeValue()
         }
     }
     

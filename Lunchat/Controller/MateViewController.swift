@@ -37,7 +37,7 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         print("delegate")
-        delegate = PeopleViewController() as PeopleTableViewCellDelegate2
+//        delegate = PeopleViewController() as PeopleTableViewCellDelegate2
         self.tableView = UITableView(frame:CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height), style: .plain)
         tableView.backgroundColor = UIColor.white
         view.addSubview(tableView)

@@ -2,7 +2,7 @@
 //  PageContentView.swift
 //  Lunchat
 //
-//  Created by 杨昱程 on 19/9/19.
+//  Created by Yucheng Yang on 19/9/19.
 //  Copyright © 2019 MobileTeam. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  PageTitleView.swift
 //  Lunchat
 //
-//  Created by 杨昱程 on 16/9/19.
+//  Created by Yucheng Yang on 16/9/19.
 //  Copyright © 2019 MobileTeam. All rights reserved.
 //
 import MapKit

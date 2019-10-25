@@ -2,7 +2,7 @@
 //  LCViewController.swift
 //  Lunchat
 //
-//  Created by 杨昱程 on 22/9/19.
+//  Created by Yucheng Yang on 22/9/19.
 //  Copyright © 2019 MobileTeam. All rights reserved.
 //
 

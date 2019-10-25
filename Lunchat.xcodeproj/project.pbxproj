@@ -25,6 +25,7 @@
 		8339B8C42361E03800F1F578 /* rock_end.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8339B8C22361E03800F1F578 /* rock_end.mp3 */; };
 		8339B8C52361E03800F1F578 /* rock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8339B8C32361E03800F1F578 /* rock.mp3 */; };
 		835E5F88235C5F69002D2DDE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E5F87235C5F69002D2DDE /* Event.swift */; };
+		837CEEB42362BAC800AD812C /* MateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837CEEB32362BAC800AD812C /* MateProfileViewController.swift */; };
 		B33781E1236129900089D817 /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33781E0236129900089D817 /* MessagesCell.swift */; };
 		B33781E3236129C60089D817 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33781E2236129C60089D817 /* Message.swift */; };
 		B35B051A234D99720083B8EB /* MessageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35B0519234D99720083B8EB /* MessageDetailViewController.swift */; };
@@ -81,6 +82,7 @@
 		8339B8C22361E03800F1F578 /* rock_end.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rock_end.mp3; sourceTree = "<group>"; };
 		8339B8C32361E03800F1F578 /* rock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rock.mp3; sourceTree = "<group>"; };
 		835E5F87235C5F69002D2DDE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Event.swift; path = Lunchat/Event.swift; sourceTree = SOURCE_ROOT; };
+		837CEEB32362BAC800AD812C /* MateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MateProfileViewController.swift; sourceTree = "<group>"; };
 		B33781E0236129900089D817 /* MessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 		B33781E2236129C60089D817 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Lunchat/Cells/Message.swift; sourceTree = SOURCE_ROOT; };
 		B35B0519234D99720083B8EB /* MessageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDetailViewController.swift; sourceTree = "<group>"; };
@@ -175,9 +177,6 @@
 			children = (
 				FC56DE252327D2C10051B708 /* AppDelegate.swift */,
 				6E912FA92350AA3E00041288 /* RecommendViewController.swift */,
-				6E912FA72350AA3600041288 /* MateViewController.swift */,
-				FC216A212328D909006FBA6E /* ManageViewController.swift */,
-				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
 				0B1940CC235FE6EF00BD77B0 /* EventDetailViewController.swift */,
 				6E912FA72350AA3600041288 /* MateViewController.swift */,
 				FC216A212328D909006FBA6E /* ManageViewController.swift */,
@@ -187,6 +186,7 @@
 				FC216A252328D928006FBA6E /* MessageViewController.swift */,
 				FC216A232328D915006FBA6E /* HostViewController.swift */,
 				FC216A1F2328D78A006FBA6E /* HomeViewController.swift */,
+				837CEEB32362BAC800AD812C /* MateProfileViewController.swift */,
 				FC216A1D232897E4006FBA6E /* SignUpViewController.swift */,
 				FC2BBDCB2361565D00CFA678 /* SettingTableViewController.swift */,
 				FC56DE372327E7AC0051B708 /* SigninViewController.swift */,
@@ -429,6 +429,7 @@
 				6E912FA22350A9D600041288 /* PageContentView.swift in Sources */,
 				FCB3ECA2235DCD35001FC0B4 /* PeopleTableViewCell.swift in Sources */,
 				FC216A242328D915006FBA6E /* HostViewController.swift in Sources */,
+				837CEEB42362BAC800AD812C /* MateProfileViewController.swift in Sources */,
 				B33781E3236129C60089D817 /* Message.swift in Sources */,
 				835E5F88235C5F69002D2DDE /* Event.swift in Sources */,
 				FC596E1A235F33A2003491F4 /* ProfileUserViewController.swift in Sources */,

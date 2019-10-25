@@ -9,8 +9,8 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
-protocol PeopleTableViewCellDelegate2 {
-    func goToProfileUserVC(userId: String)
+protocol HomeViewDelegate2 {
+    func forward(uid:String)
 }
 
 class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -22,7 +22,7 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var mate = [[String:String]()]
     var tableView = UITableView()
     var dataSource = [[String:String]()]
-    var delegate: PeopleTableViewCellDelegate2?
+    var delegate: HomeViewDelegate2?
 
     override func viewDidAppear(_ animated: Bool) {
         getData(){ (mateResult:[[String:String]]) in
@@ -97,10 +97,8 @@ class MateViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     // 选中cell后执行此方法
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        print(self.mate[indexPath.row]["uid"])
-        print(delegate)
-        delegate?.goToProfileUserVC(userId: self.mate[indexPath.row]["uid"]!)
+//        print(self.mate[indexPath.row]["uid"])
+        delegate?.forward(uid: self.mate[indexPath.row]["uid"]!)
 //        let targetStoryboardName = "Profile"
 //        let targetStoryboard = UIStoryboard(name: targetStoryboardName, bundle: nil)
 //        if let targetViewController = targetStoryboard.instantiateInitialViewController() {

@@ -161,13 +161,7 @@ class MessageViewController: UIViewController,UITableViewDelegate,UITableViewDat
         if let destinationViewController = segue.destination as? MessageDetailViewController {
             
             destinationViewController.recipient = self.recipient
-            
-            print("preparing.....")
-            print(self.recipient)
-            
-            
-            
-            print(self.messageId)
+
             destinationViewController.messageId = self.messageId
         }
     }

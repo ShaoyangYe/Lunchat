@@ -111,7 +111,7 @@ class RecommendViewController: UIViewController,UITableViewDelegate,UITableViewD
  
                 let markattch = NSTextAttachment()
                 markattch.image = UIImage(named: "face")//初始化图片
-                markattch.bounds = CGRect(x: 0, y: -2, width: 17, height: 17) //初始化图片的 bounds
+                markattch.bounds = CGRect(x: 0, y: -3.5, width: 17, height: 17) //初始化图片的 bounds
                 let markattchStr = NSAttributedString(attachment: markattch)
 
                 let paraph = NSMutableParagraphStyle()

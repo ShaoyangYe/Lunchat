@@ -145,8 +145,8 @@
                                             <constraint firstItem="S7M-xY-8ae" firstAttribute="leading" secondItem="VGF-i3-6ya" secondAttribute="leading" constant="5" id="w6m-Qu-AYm"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="James Cullen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyM-cE-lfe">
-                                        <rect key="frame" x="131.5" y="5" width="151" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tyM-cE-lfe">
+                                        <rect key="frame" x="144.5" y="5" width="125.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="BMf-mc-YLU"/>
                                         </constraints>
@@ -154,8 +154,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Master of IT, computing " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxO-oc-3ig">
-                                        <rect key="frame" x="114" y="55" width="186" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Education Background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxO-oc-3ig">
+                                        <rect key="frame" x="120.5" y="55" width="173" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="eK2-wI-QDD"/>
                                         </constraints>
@@ -1159,8 +1159,8 @@
                                             <constraint firstItem="pKf-2C-6q3" firstAttribute="leading" secondItem="efg-2s-PLz" secondAttribute="leading" constant="26" id="yH3-4x-JyX"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="James Cullen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzq-MM-n74">
-                                        <rect key="frame" x="131.5" y="5" width="151" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzq-MM-n74">
+                                        <rect key="frame" x="144.5" y="5" width="125.5" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Kqa-DF-HLQ"/>
                                         </constraints>
@@ -1168,8 +1168,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Master of IT, computing " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVM-I2-ALc">
-                                        <rect key="frame" x="114" y="55" width="186" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Education Background" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JVM-I2-ALc">
+                                        <rect key="frame" x="120.5" y="55" width="173" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="wWC-vt-qHb"/>
                                         </constraints>
@@ -1437,6 +1437,6 @@
         <image name="userSeleted" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wdS-V2-1LI"/>
+        <segue reference="kiP-IE-3ur"/>
     </inferredMetricsTieBreakers>
 </document>

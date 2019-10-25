@@ -15,6 +15,7 @@ class UserModel {
     var username: String?
     var id: String?
     var isFollowing: Bool?
+    var hasFollower: Bool?
     var eduBackground: String?
     var school: String?
     var major: String?

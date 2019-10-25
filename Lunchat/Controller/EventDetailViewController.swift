@@ -63,7 +63,7 @@ class EventDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         // Read data from firebase
-        
+        getParticipants()
         participantsTableView.reloadData()
         
     }

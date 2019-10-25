@@ -6,7 +6,9 @@ This is an app that let people make more freinds and make society more connected
 ----
 Firebase is all set-up, and it's currently running.
 
-Just use the simulartor to run and enjoy!
+Down load the project, use cocoapods to install all pod files then open with Lunchat.xcworkspace.
+
+Just use the simulartor to run and enjoy! (Main features are specified below)
 
 ### Team Members Contribution
 ----
@@ -29,6 +31,10 @@ Just use the simulartor to run and enjoy!
 4, Add lunch mates
 
 5, Message and communication
+
+6, User profile can be follow or unfollow and curent user can edit profile
+
+7, If two users follow each other, them can become lunch mate and chat with each other.
 
 ### Sensors invovled
 ----

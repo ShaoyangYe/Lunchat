@@ -40,7 +40,7 @@ class EventDetailViewController: UIViewController {
     
     var dbRef:DatabaseReference?
     
-    var currentEventID: Int?
+    var currentEventID: String?
     var allParticipants = [Participants]()
     var participants: [String:String]?
     var participantsID: [String]!
@@ -48,6 +48,8 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("viewDidLoad")
         // Customize the popup box
         backgroundView.layer.cornerRadius = 10
         backgroundView.layer.borderWidth = 2
@@ -62,13 +64,17 @@ class EventDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
+        print("viewDidAppear")
         // Read data from firebase
         getParticipants()
+      //  print("get data once")
         participantsTableView.reloadData()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        print("viewWillApear")
         
         // Now the elements are loaded, set the text
         titleLabel.text = titleText
@@ -83,7 +89,9 @@ class EventDetailViewController: UIViewController {
     }
     
     func getParticipants() {
-    
+        
+        print("start to get participants")
+        
         dbRef = Database.database().reference().child("users")
         
         dbRef!.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -101,19 +109,25 @@ class EventDetailViewController: UIViewController {
                 let p = Participants(id: id, username: username, profileImageUrl: profileImageUrl)
                 
                 self.allParticipants.append(p)
-                
+                print("add all participants done")
             }
             
         })
         
         participantsID = Array(participants!.keys)
-        print("hhhhh")
-    
+        
+        print(allParticipants.count)
+        print(registeredParticipants.count)
+
     }
     
     @IBAction func dismissTapped(_ sender: Any) {
         
+        print("dismissTapped")
         participantsID.removeAll()
+        registeredParticipants.removeAll()
+        allParticipants.removeAll()
+        
         print(currentEventID!)
         // Dismiss the popup
         self.dismiss(animated: true, completion: nil)
@@ -128,6 +142,7 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        print("count rows of tableview")
         var i = 0
         let count = self.participantsID!.count
         
@@ -148,11 +163,16 @@ extension EventDetailViewController: UITableViewDelegate, UITableViewDataSource 
             
         }
         
+        print("checkpoint 1")
+        print(allParticipants.count)
+        print(registeredParticipants.count)
         return self.registeredParticipants.count
         
     }
     //participantsCell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        print("show data in the table rows")
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "participantsCell", for: indexPath)
         

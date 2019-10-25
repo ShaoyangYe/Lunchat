@@ -21,9 +21,9 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
     @IBOutlet weak var tableView: UITableView!
     
     let userID:String! = Auth.auth().currentUser!.uid
-    let registered:[Int] = [0,1,2,3,4]
-    let hosting = [0,1]
-    let past = [3,4]
+   // let registered:[Int] = [0,1,2,3,4]
+   // let hosting = [0,1]
+   // let past = [3,4]
     // TEST
     
     var dbRef:DatabaseReference?
@@ -59,7 +59,6 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
         
         // Read data from firebase
         getData()
-        tableView.reloadData()
         
     }
     
@@ -74,19 +73,16 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
         case 0:
             self.vwView.backgroundColor = UIColor.white
             getData()
-            tableView.reloadData()
             
         // Hosting events segment
         case 1:
             self.vwView.backgroundColor = UIColor.white
             getData()
-            tableView.reloadData()
             
         // Attended events segment
         case 2:
             self.vwView.backgroundColor = UIColor.white
             getData()
-            tableView.reloadData()
             
         default:
             print("No segment selected")
@@ -116,7 +112,7 @@ class ManageViewController: UIViewController, EventDetailViewControllerProtocol 
                 
                 let eventDict = snap.value as! [String:Any]
                 
-                let eventID = eventDict["eventID"] as! Int
+                let eventID = snap.key
                 let host = eventDict["host"] as! String
                 let location = eventDict["location"] as! String
                 let maxParticipants = eventDict["maxParticipants"] as! Int
@@ -181,71 +177,40 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
         // get registered events
         if self.segmentIndex == nil || self.segmentIndex == 0 {
             
+            registeredEvents.removeAll()
             for n in self.events {
                 
                 for i in n.participants! {
                     
-                    if i.key == userID {
+                    if i.key == userID && n.past == 0 {
                         
                         print("add registered events")
                         self.registeredEvents.append(n)
-                        
+
                     }
                     
                 }
                 
             }
             
-            /*
-            // Count the number of cells
-            var i = 0
-            let count = self.registered.count
-            
-            // Build an array of events that are required to display
-            while i < count {
-                
-                for n in self.events {
-                    
-                    if self.registered[i] == n.eventID && n.past == 0 {
-                        
-                        print("add registered events")
-                        self.registeredEvents.append(n)
-                        
-                    }
-                    
-                }
-                
-                i += 1
-                
-            } */
-            
-            // Return the number of cells
+            print("check", registeredEvents.count)
+            print("check", events.count)
             return self.registeredEvents.count
             
         }
         // get host events
         else if self.segmentIndex == 1 {
             
-            // Count the number of cells
-            var i = 0
-            let count = self.hosting.count
-            
             // Build an array of events that are required to display
-            while i < count {
+            for n in self.events {
                 
-                for n in self.events {
+                if n.host == userID && n.past == 0 {
                     
-                    if self.hosting[i] == n.eventID && n.past == 0 {
-                        
-                        print("add hosting events")
-                        self.hostEvents.append(n)
-                        
-                    }
+                    print("add hosting events")
+                    self.hostEvents.append(n)
                     
                 }
-                
-                i += 1
-                
+                    
             }
             
             // Return the number of cells
@@ -255,16 +220,13 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if self.segmentIndex == 2 {
             
-            // Count the number of cells
-            var i = 0
-            let count = self.past.count
-            
             // Build an array of events that are required to display
-            while i < count {
                 
-                for n in self.events {
+            for n in self.events {
+                
+                for i in n.participants! {
                     
-                    if self.past[i] == n.eventID && n.past == 1 {
+                    if i.key == userID && n.past == 1 {
                         
                         print("add attended events")
                         self.attendedEvents.append(n)
@@ -272,8 +234,6 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                     
                 }
-                
-                i += 1
                 
             }
             
@@ -395,96 +355,95 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         // identify the event that is tapped
-        currentEventsIndex = registered[indexPath.row]
+        currentEventsIndex = indexPath.row
         
         // Show the pop up for segment 0
-        if eventDetail != nil && currentEventsIndex != nil && segmentIndex == 0 {
+        if eventDetail != nil && segmentIndex == 0 {
             
             // Customize the popup text
-            eventDetail!.titleText = registeredEvents[currentEventsIndex!].title!
-            eventDetail!.themeText = registeredEvents[currentEventsIndex!].theme!
-            eventDetail!.timeText = registeredEvents[currentEventsIndex!].time!
-            eventDetail!.locationText = registeredEvents[currentEventsIndex!].location!
+            eventDetail!.titleText = registeredEvents[indexPath.row].title!
+            eventDetail!.themeText = registeredEvents[indexPath.row].theme!
+            eventDetail!.timeText = registeredEvents[indexPath.row].time!
+            eventDetail!.locationText = registeredEvents[indexPath.row].location!
             
-            let num = registeredEvents[currentEventsIndex!].participants?.count
+            let num = registeredEvents[indexPath.row].participants?.count
             var content:String = ""
             
             if num != nil {
-                content = "\(num!) / \(registeredEvents[currentEventsIndex!].maxParticipants ?? 10)"
+                content = "\(num!) / \(registeredEvents[indexPath.row].maxParticipants ?? 10)"
             }
             
             eventDetail!.participantsText = content
             
-            eventDetail!.currentEventID = registeredEvents[currentEventsIndex!].eventID
-            eventDetail!.participants = registeredEvents[currentEventsIndex!].participants
+            eventDetail!.currentEventID = registeredEvents[indexPath.row].eventID
+            eventDetail!.participants = registeredEvents[indexPath.row].participants
 
         }
         
         // for segment 1
-        else if eventDetail != nil && currentEventsIndex != nil && segmentIndex == 1 {
+        else if eventDetail != nil && segmentIndex == 1 {
             
             // Customize the popup text
-            eventDetail!.titleText = hostEvents[currentEventsIndex!].title!
-            eventDetail!.themeText = hostEvents[currentEventsIndex!].theme!
-            eventDetail!.timeText = hostEvents[currentEventsIndex!].time!
-            eventDetail!.locationText = hostEvents[currentEventsIndex!].location!
+            eventDetail!.titleText = hostEvents[indexPath.row].title!
+            eventDetail!.themeText = hostEvents[indexPath.row].theme!
+            eventDetail!.timeText = hostEvents[indexPath.row].time!
+            eventDetail!.locationText = hostEvents[indexPath.row].location!
             
-            let num = hostEvents[currentEventsIndex!].participants?.count
+            let num = hostEvents[indexPath.row].participants?.count
             var content:String = ""
             
             if num != nil {
-                content = "\(num!) / \(hostEvents[currentEventsIndex!].maxParticipants ?? 10)"
+                content = "\(num!) / \(hostEvents[indexPath.row].maxParticipants ?? 10)"
             }
             
             eventDetail!.participantsText = content
             
-            eventDetail!.currentEventID = hostEvents[currentEventsIndex!].eventID
-            eventDetail!.participants = hostEvents[currentEventsIndex!].participants
+            eventDetail!.currentEventID = hostEvents[indexPath.row].eventID
+            eventDetail!.participants = hostEvents[indexPath.row].participants
             
         }
 
         // for segment 2
-        else if eventDetail != nil && currentEventsIndex != nil && segmentIndex == 2 {
+        else if eventDetail != nil && segmentIndex == 2 {
             
             // Customize the popup text
-            eventDetail!.titleText = attendedEvents[currentEventsIndex!].title!
-            eventDetail!.themeText = attendedEvents[currentEventsIndex!].theme!
-            eventDetail!.timeText = attendedEvents[currentEventsIndex!].time!
-            eventDetail!.locationText = attendedEvents[currentEventsIndex!].location!
+            eventDetail!.titleText = attendedEvents[indexPath.row].title!
+            eventDetail!.themeText = attendedEvents[indexPath.row].theme!
+            eventDetail!.timeText = attendedEvents[indexPath.row].time!
+            eventDetail!.locationText = attendedEvents[indexPath.row].location!
             
-            let num = attendedEvents[currentEventsIndex!].participants?.count
+            let num = attendedEvents[indexPath.row].participants?.count
             var content:String = ""
             
             if num != nil {
-                content = "\(num!) / \(attendedEvents[currentEventsIndex!].maxParticipants ?? 10)"
+                content = "\(num!) / \(attendedEvents[indexPath.row].maxParticipants ?? 10)"
             }
             
             eventDetail!.participantsText = content
             
-            eventDetail!.currentEventID = attendedEvents[currentEventsIndex!].eventID
-            eventDetail!.participants = attendedEvents[currentEventsIndex!].participants
+            eventDetail!.currentEventID = attendedEvents[indexPath.row].eventID
+            eventDetail!.participants = attendedEvents[indexPath.row].participants
             
         }
-        else if eventDetail != nil && currentEventsIndex != nil {
+        else {
             
             // Customize the popup text
-            eventDetail!.titleText = registeredEvents[currentEventsIndex!].title!
-            eventDetail!.themeText = registeredEvents[currentEventsIndex!].theme!
-            eventDetail!.timeText = registeredEvents[currentEventsIndex!].time!
-            eventDetail!.locationText = registeredEvents[currentEventsIndex!].location!
+            eventDetail!.titleText = registeredEvents[indexPath.row].title!
+            eventDetail!.themeText = registeredEvents[indexPath.row].theme!
+            eventDetail!.timeText = registeredEvents[indexPath.row].time!
+            eventDetail!.locationText = registeredEvents[indexPath.row].location!
             
-            let num = registeredEvents[currentEventsIndex!].participants?.count
+            let num = registeredEvents[indexPath.row].participants?.count
             var content:String = ""
             
             if num != nil {
-                content = "\(num!) / \(registeredEvents[currentEventsIndex!].maxParticipants ?? 10)"
+                content = "\(num!) / \(registeredEvents[indexPath.row].maxParticipants ?? 10)"
             }
             
             eventDetail!.participantsText = content
             
-            eventDetail!.currentEventID = registeredEvents[currentEventsIndex!].eventID
-            eventDetail!.participants = registeredEvents[currentEventsIndex!].participants
-
+            eventDetail!.currentEventID = registeredEvents[indexPath.row].eventID
+            eventDetail!.participants = registeredEvents[indexPath.row].participants
             
         }
 
@@ -498,14 +457,54 @@ extension ManageViewController: UITableViewDelegate, UITableViewDataSource {
         return 110.0
     
     }
-    /*
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
             print("Deleted")
             
-            self.catNames.remove(at: indexPath.row)
+            if segmentIndex == nil || segmentIndex == 0 {
+                
+                let deleteID = registeredEvents[indexPath.row].eventID
+
+                registeredEvents.remove(at: indexPath.row)
+                var i = 0
+                for n in events {
+                    
+                    if n.eventID == deleteID {
+                        events.remove(at: i)
+                    }
+                    i += 1
+                }
+                
+            Database.database().reference().child("events").child(deleteID!).child("participants").child(userID).removeValue()
+                
+            }
+            else if segmentIndex == 1 {
+                
+                let deleteID = hostEvents[indexPath.row].eventID
+                
+                hostEvents.remove(at: indexPath.row)
+                var i = 0
+                for n in events {
+                    
+                    if n.eventID == deleteID {
+                        events.remove(at: i)
+                    }
+                    i += 1
+                }
+                
+                Database.database().reference().child("events").child(deleteID!).removeValue()
+                
+            }
+            
+            print("check")
+            print(registeredEvents.count)
+            print(events.count)
+            print(indexPath.count)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
         }
-    } */
+
+    }
     
 }

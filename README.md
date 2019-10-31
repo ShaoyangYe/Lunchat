@@ -1,12 +1,12 @@
 # Lunchat
 ----
-This is an app that let people make more freinds and make society more connected just by having lunch together.
+This is an app that let people make more freinds and make social connection by having lunch together.
 
 ### Instruction
 ----
 Firebase is all set-up, and it's currently running.
 
-Down load the project, use cocoapods to install all pod files then open with Lunchat.xcworkspace.
+Download the project, use cocoapods to install all pod files then open with Lunchat.xcworkspace.
 
 Just use the simulartor to run and enjoy! (Main features are specified below)
 
@@ -34,7 +34,7 @@ Just use the simulartor to run and enjoy! (Main features are specified below)
 
 6, User profile can be follow or unfollow and curent user can edit profile
 
-7, If two users follow each other, them can become lunch mate and chat with each other.
+7, If two users follows each other, then they can become lunch mates and be able to chat with each other.
 
 ### Sensors invovled
 ----
